@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Count de Money</title>
+  <script type="text/javascript">
+  let total = 0
+  let coins = { // Instead of const for future implementation of `reset`?
+    pennies: [0, 1],
+    nickels: [0, 5],
+    dimes: [0, 10],
+    quarters: [0, 25]
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const totalSpan = document.querySelector(`#total`)
+    const buttons = document.querySelectorAll('button')
+    for (let index = 0; index < buttons.length; index++) {
+      const button = buttons[index]
+      button.addEventListener('click', () => {
+        const coinType = button.getAttribute('data-target-type')
+        const multiplierValue = button.getAttribute('data-multiplier') || 1
+        let [numberOfCoins, valueOfCoin] = coins[coinType]
+        numberOfCoins = coins[coinType][0] = numberOfCoins + ~~multiplierValue
+        total = total + valueOfCoin * multiplierValue
+        // Conform to original text specification String.charAt(0).toUpperCase() + String.slice(1)
+        document.querySelector(`#${coinType}`).textContent = `${coinType.charAt(0).toUpperCase() + coinType.slice(1)}: ${numberOfCoins}`
+        // Pennies to dollars and conform to .00 (total / 10e1).toFixed(2)
+        totalSpan.textContent = `Total: $${(total / 10e1).toFixed(2)}`
+      })
+    }
+  })
+  </script>
+</head>
+<body>
+  <div>
+    <button data-target-type="pennies">Add Penny</button>
+    <button data-multiplier="-1" data-target-type="pennies">Remove Penny</button>
+  	<span id="pennies">Pennies: 0</span>
+  </div>
+  <div>
+  	<button data-target-type="nickels">Add Nickel</button>
+    <button data-multiplier="-1" data-target-type="nickels">Remove Nickel</button>
+  	<span id="nickels">Nickels: 0</span>
+  </div>
+  <div>
+  	<button data-target-type="dimes">Add Dime</button>
+    <button data-multiplier="-1" data-target-type="dimes">Remove Dime</button>
+  	<span id="dimes">Dimes: 0</span>
+  </div>
+  <div>
+  	<button data-target-type="quarters">Add Quarter</button>
+    <button data-multiplier="-1" data-target-type="quarters">Remove Quarter</button>
+  	<span id="quarters">Quarters: 0</span>
+  </div>
+  <span id="total">Total: $0.00</span>
+</body>
+</html>

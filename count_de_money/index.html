@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Count de Money</title>
+  <script type="text/javascript">
+  let total = 0
+  let coins = { // Instead of const for future implementation of `reset`?
+    pennies: [0, 1],
+    nickels: [0, 5],
+    dimes: [0, 10],
+    quarters: [0, 25]
+  }
+
+  function add (type, multiplier = 1) {
+    const targetSpan = document.querySelector(`#${type}`)
+    const totalSpan = document.querySelector(`#total`)
+    let [numberOfCoins, valueOfCoin] = coins[type]
+    numberOfCoins = coins[type][0] = numberOfCoins + multiplier
+    total = total + valueOfCoin * multiplier
+    // Conform to original text specification String.charAt(0).toUpperCase() + String.slice(1)
+    targetSpan.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)}: ${numberOfCoins}`
+    // Pennies to dollars and conform to .00 (total / 10e1).toFixed(2)
+    totalSpan.textContent = `Total: $${(total / 10e1).toFixed(2)}`
+  }
+  </script>
+</head>
+<body>
+  <div>
+  	<button onclick="add('pennies')">Add Penny</button>
+  	<button onclick="add('pennies', -1)">Remove Penny</button>
+  	<span id="pennies">Pennies: 0</span>
+  </div>
+  <div>
+  	<button onclick="add('nickels')">Add Nickel</button>
+  	<button onclick="add('nickels', -1)">Remove Nickel</button>
+  	<span id="nickels">Nickels: 0</span>
+  </div>
+  <div>
+  	<button onclick="add('dimes')">Add Dime</button>
+  	<button onclick="add('dimes', -1)">Remove Dime</button>
+  	<span id="dimes">Dimes: 0</span>
+  </div>
+  <div>
+  	<button onclick="add('quarters')">Add Quarter</button>
+  	<button onclick="add('quarters', -1)">Remove Quarter</button>
+  	<span id="quarters">Quarters: 0</span>
+  </div>
+  <span id="total">Total: $0.00</span>
+</body>
+</html>
