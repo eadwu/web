@@ -9,18 +9,29 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Count de Money</title>
   <script type="text/javascript">
-  let total = 0
-  let coins = { // Instead of const for future implementation of `reset`?
+  const coins = {
     pennies: [0, 1],
     nickels: [0, 5],
     dimes: [0, 10],
     quarters: [0, 25]
   }
 
+  let total = 0
+
   document.addEventListener('DOMContentLoaded', () => {
     const totalSpan = document.querySelector(`#total`)
     const buttons = document.querySelectorAll('button')
-    for (let index = 0; index < buttons.length; index++) {
+    const resetButton = document.querySelector('#reset')
+
+    resetButton.addEventListener('click', () => {
+      total = 0
+      for (const cType in coins) {
+        coins[cType][0] = 0
+        document.querySelector(`#${cType}`).textContent = '0'
+      }
+      totalSpan.textContent = '0.00'
+    })
+    for (let index = 0; index < buttons.length - 1; index++) {
       const button = buttons[index]
       button.addEventListener('click', () => {
         const coinType = button.getAttribute('data-target-type')
@@ -28,10 +39,8 @@
         let [numberOfCoins, valueOfCoin] = coins[coinType]
         numberOfCoins = coins[coinType][0] = numberOfCoins + ~~multiplierValue
         total = total + valueOfCoin * multiplierValue
-        // Conform to original text specification String.charAt(0).toUpperCase() + String.slice(1)
-        document.querySelector(`#${coinType}`).textContent = `${coinType.charAt(0).toUpperCase() + coinType.slice(1)}: ${numberOfCoins}`
-        // Pennies to dollars and conform to .00 (total / 10e1).toFixed(2)
-        totalSpan.textContent = `Total: $${(total / 10e1).toFixed(2)}`
+        document.querySelector(`#${coinType}`).textContent = numberOfCoins
+        totalSpan.textContent = (total / 10e1).toFixed(2)
       })
     }
   })
@@ -43,29 +52,37 @@
     <button data-multiplier="-1" data-target-type="pennies">Remove Penny</button>
     <button data-multiplier="5" data-target-type="pennies">Add 5 Pennies</button>
     <button data-multiplier="-5" data-target-type="pennies">Remove 5 Pennies</button>
-  	<span id="pennies">Pennies: 0</span>
+  	Pennies: <span id="pennies">0</span>
   </div>
+  <hr/>
   <div>
   	<button data-target-type="nickels">Add Nickel</button>
     <button data-multiplier="-1" data-target-type="nickels">Remove Nickel</button>
     <button data-multiplier="5" data-target-type="nickels">Add 5 Nickels</button>
     <button data-multiplier="-5" data-target-type="nickels">Remove 5 Nickels</button>
-  	<span id="nickels">Nickels: 0</span>
+  	Nickels: <span id="nickels">0</span>
   </div>
+  <hr/>
   <div>
   	<button data-target-type="dimes">Add Dime</button>
     <button data-multiplier="-1" data-target-type="dimes">Remove Dime</button>
     <button data-multiplier="5" data-target-type="dimes">Add 5 Dimes</button>
     <button data-multiplier="-5" data-target-type="dimes">Remove 5 Dimes</button>
-  	<span id="dimes">Dimes: 0</span>
+  	Dimes: <span id="dimes">0</span>
   </div>
+  <hr/>
   <div>
   	<button data-target-type="quarters">Add Quarter</button>
     <button data-multiplier="-1" data-target-type="quarters">Remove Quarter</button>
     <button data-multiplier="5" data-target-type="quarters">Add 5 Quarters</button>
     <button data-multiplier="-5" data-target-type="quarters">Remove 5 Quarters</button>
-  	<span id="quarters">Quarters: 0</span>
+  	Quarters: <span id="quarters">0</span>
   </div>
-  <span id="total">Total: $0.00</span>
+  <hr/>
+  <div>
+    <button id="reset">Reset</button>
+  </div>
+  <hr/>
+  Total: $<span id="total">0.00</span>
 </body>
 </html>

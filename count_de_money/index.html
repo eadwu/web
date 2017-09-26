@@ -9,13 +9,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Count de Money</title>
   <script type="text/javascript">
-  let total = 0
-  let coins = { // Instead of const for future implementation of `reset`?
+  const coins = {
     pennies: [0, 1],
     nickels: [0, 5],
     dimes: [0, 10],
     quarters: [0, 25]
   }
+
+  let total = 0
 
   function add (type, multiplier = 1) {
     const targetSpan = document.querySelector(`#${type}`)
@@ -23,10 +24,17 @@
     let [numberOfCoins, valueOfCoin] = coins[type]
     numberOfCoins = coins[type][0] = numberOfCoins + multiplier
     total = total + valueOfCoin * multiplier
-    // Conform to original text specification String.charAt(0).toUpperCase() + String.slice(1)
-    targetSpan.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)}: ${numberOfCoins}`
-    // Pennies to dollars and conform to .00 (total / 10e1).toFixed(2)
-    totalSpan.textContent = `Total: $${(total / 10e1).toFixed(2)}`
+    targetSpan.textContent = numberOfCoins
+    totalSpan.textContent = (total / 10e1).toFixed(2)
+  }
+
+  function reset () {
+    total = 0
+    for (const coinType in coins) {
+      coins[coinType][0] = 0
+      document.querySelector(`#${coinType}`).textContent = '0'
+    }
+    document.querySelector('#total').textContent = '0.00'
   }
   </script>
 </head>
@@ -36,29 +44,37 @@
   	<button onclick="add('pennies', -1)">Remove Penny</button>
     <button onclick="add('pennies', 5)">Add 5 Pennies</button>
   	<button onclick="add('pennies', -5)">Remove 5 Pennies</button>
-  	<span id="pennies">Pennies: 0</span>
+  	Pennies: <span id="pennies">0</span>
   </div>
+  <hr/>
   <div>
   	<button onclick="add('nickels')">Add Nickel</button>
   	<button onclick="add('nickels', -1)">Remove Nickel</button>
     <button onclick="add('nickels', 5)">Add 5 Nickels</button>
   	<button onclick="add('nickels', -5)">Remove 5 Nickels</button>
-  	<span id="nickels">Nickels: 0</span>
+  	Nickels: <span id="nickels">0</span>
   </div>
+  <hr/>
   <div>
   	<button onclick="add('dimes')">Add Dime</button>
   	<button onclick="add('dimes', -1)">Remove Dime</button>
     <button onclick="add('dimes', 5)">Add 5 Dimes</button>
   	<button onclick="add('dimes', -5)">Remove 5 Dimes</button>
-  	<span id="dimes">Dimes: 0</span>
+  	Dimes: <span id="dimes">0</span>
   </div>
+  <hr/>
   <div>
   	<button onclick="add('quarters')">Add Quarter</button>
   	<button onclick="add('quarters', -1)">Remove Quarter</button>
     <button onclick="add('quarters', 5)">Add 5 Quarters</button>
   	<button onclick="add('quarters', -5)">Remove 5 Quarters</button>
-  	<span id="quarters">Quarters: 0</span>
+  	Quarters: <span id="quarters">0</span>
   </div>
-  <span id="total">Total: $0.00</span>
+  <hr/>
+  <div>
+    <button onclick="reset()">Reset</button>
+  </div>
+  <hr/>
+  Total: $<span id="total">0.00</span>
 </body>
 </html>
