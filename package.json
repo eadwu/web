@@ -1,0 +1,30 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "standard **/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bt-wcsp/WebDevelopment.git"
+  },
+  "author": "Edmund Wu",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint-plugin-html": "^3.2.2",
+    "semistandard": "^11.0.0"
+  },
+  "standard-engine": "semistandard",
+  "semistandard": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "html"
+    ],
+    "env": {
+      "browser": true
+    }
+  }
+}
