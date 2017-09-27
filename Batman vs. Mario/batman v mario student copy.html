@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html>
+<head>
+  <title>Batman vs. Mario</title>
+  <style></style>
+  <script type="text/javascript">
+    function initialize ()
+    {
+      marioClicks = 0;
+      batmanClicks = 0;
+
+      theStatus = document.getElementById("the_status");
+      marioCount = document.getElementById("mario_count");
+      batmanCount = document.getElementById("batman_count");
+    }
+
+    function batClick ()
+    {
+      batmanClicks = batmanClicks + 1;
+      batmanCount.innerHTML = batmanClicks;
+      theStatus.innerHTML = "You clicked on Batman.";
+    }
+
+    function marClick ()
+    {
+      marioClicks = marioClicks + 1;
+      marioCount.innerHTML = marioClicks;
+      theStatus.innerHTML = "You clicked on Mario.";
+    }
+  </script>
+</head>
+<body onload="initialize();">
+  <div id="the_status">Click on one of the images to select a hero.</div>
+
+  <hr />
+
+  <div>Batman has been selected <span id="batman_count">0</span> time(s).</div>
+  <div>Mario has been selected <span id="mario_count">0</span> time(s).</div>
+
+  <hr />
+
+  <img id="batman" onclick="batClick();" src="https://lh3.google.com/u/2/d/0B1xFkGC6pB2tRk0zdTRZNnY1Vms=w1400-h779-iv1">
+  <img id="mario" onclick="marClick();" src="https://lh3.google.com/u/2/d/0B1xFkGC6pB2tZ1RiWk1ON3NzUG8=w1400-h779-iv1">
+</body>
+</html>
