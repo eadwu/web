@@ -5,11 +5,13 @@
  curly: [2, "multi", "consistent"]
  */
 
+var input = "";
+
 var number;
 var degree;
-var inputElement;
 var tableElement;
 var statusElement;
+var displayElement;
 
 var activeGame = true;
 
@@ -22,18 +24,19 @@ function display ()
   if (!activeGame)
   {
     degree = "";
-    statusElement.innerHTML = "You win!";
+    statusElement.textContent = "You win!";
   }
 
-  entryGuess.innerHTML = inputElement.value;
-  entryStatus.innerHTML = degree;
-  inputElement.value = "";
+  entryGuess.textContent = input;
+  entryStatus.textContent = degree;
+
+  input = "";
+  displayElement.textContent = "";
 }
 
 function getStatus ()
 {
-  const guess = inputElement.value;
-  const displacement = Math.abs(number - guess);
+  const displacement = Math.abs(number - input);
 
   if (displacement === 0)
     activeGame = false;
@@ -60,12 +63,24 @@ function getStatus ()
 document.addEventListener("DOMContentLoaded", () =>
 {
   let tries = 5;
+  const inputButtons = document.querySelectorAll("div button");
   const submitGuess = document.querySelector("#submit_guess");
 
   number = Math.floor(Math.random() * 100 + 0.5);
-  inputElement = document.querySelector("#user_input");
   tableElement = document.querySelector("#data_table");
+  displayElement = document.querySelector("#input");
   statusElement = document.querySelector("#game_status");
+
+  for (let index = 0; index < inputButtons.length; index++)
+  {
+    const inputButton = inputButtons[index];
+
+    inputButton.addEventListener("click", () =>
+    {
+      input = input + inputButton.textContent;
+      displayElement.textContent = input;
+    });
+  }
 
   submitGuess.addEventListener("click", () =>
   {
@@ -79,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () =>
       if (tries === 0 && activeGame)
       {
         activeGame = false;
-        statusElement.innerHTML = "You lose!";
+        statusElement.textContent = "You lose!";
       }
     }
   });

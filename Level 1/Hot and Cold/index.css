@@ -1,26 +1,31 @@
+div {
+  margin-bottom: 5px;
+}
+
 table {
-  border: 1px solid #D84315;
+  border: 1px solid #d84315;
   border-collapse: collapse;
 }
 
 th {
-  color: #FFF;
-  background-color: #D84315;
+  color: #fff;
+  background-color: #d84315;
   text-decoration: underline;
 }
 
-th, td {
+td,
+th {
   padding: 3px;
   text-align: left;
-  border-bottom: 1px solid #D84315;
+  border-bottom: 1px solid #d84315;
 }
 
 tr:nth-child(odd) td {
-  border-right: 1px solid #D84315;
+  border-right: 1px solid #d84315;
 }
 
 th:first-child {
-  border-right: 1px solid #E0E0E0;
+  border-right: 1px solid #e0e0e0;
 }
 
 td:first-child {
