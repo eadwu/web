@@ -12,23 +12,23 @@
       marioClicks = 0;
       batmanClicks = 0;
 
-      theStatus = document.getElementById("the_status");
-      marioCount = document.getElementById("mario_count");
-      batmanCount = document.getElementById("batman_count");
+      theStatus = document.querySelector("#the_status");
+      marioCount = document.querySelector("#mario_count");
+      batmanCount = document.querySelector("#batman_count");
     }
 
-    function batClick ()
+    function selectBatman ()
     {
-      batmanClicks = batmanClicks + 1;
-      batmanCount.innerHTML = batmanClicks;
-      theStatus.innerHTML = "You clicked on Batman.";
+      batmanClicks++;
+      batmanCount.textContent = batmanClicks;
+      theStatus.textContent = "You clicked on Batman.";
     }
 
-    function marClick ()
+    function selectMario ()
     {
-      marioClicks = marioClicks + 1;
-      marioCount.innerHTML = marioClicks;
-      theStatus.innerHTML = "You clicked on Mario.";
+      marioClicks++;
+      marioCount.textContent = marioClicks;
+      theStatus.textContent = "You clicked on Mario.";
     }
   </script>
 </head>
@@ -42,7 +42,7 @@
 
   <hr />
 
-  <img id="batman" onclick="batClick();" src="https://lh3.google.com/u/2/d/0B1xFkGC6pB2tRk0zdTRZNnY1Vms=w1400-h779-iv1">
-  <img id="mario" onclick="marClick();" src="https://lh3.google.com/u/2/d/0B1xFkGC6pB2tZ1RiWk1ON3NzUG8=w1400-h779-iv1">
+  <img id="batman" onclick="selectBatman();" src="https://lh3.google.com/u/2/d/0B1xFkGC6pB2tRk0zdTRZNnY1Vms=w1400-h779-iv1">
+  <img id="mario" onclick="selectMario();" src="https://lh3.google.com/u/2/d/0B1xFkGC6pB2tZ1RiWk1ON3NzUG8=w1400-h779-iv1">
 </body>
 </html>
