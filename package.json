@@ -14,15 +14,13 @@
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-preset-env": "^1.6.0",
-    "eslint-plugin-html": "^3.2.2",
-    "semistandard": "^11.0.0"
+    "semistandard": "^11.0.0",
+    "stylelint-config-standard": "^17.0.0",
+    "stylelint-no-unsupported-browser-features": "^1.0.0"
   },
   "standard-engine": "semistandard",
   "semistandard": {
     "parser": "babel-eslint",
-    "plugins": [
-      "html"
-    ],
     "env": {
       "browser": true
     }
