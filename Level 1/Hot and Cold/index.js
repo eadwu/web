@@ -1,10 +1,3 @@
-/*
- eslint
- quotes: [2, "double"]
- brace-style: [2, "allman"]
- curly: [2, "multi", "consistent"]
- */
-
 var input = "";
 
 var number;

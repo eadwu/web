@@ -1,0 +1,18 @@
+---
+  extends: semistandard
+  parser: babel-eslint
+  env:
+    browser: true
+  rules:
+    quotes:
+      - 2
+      - double
+    brace-style:
+      - 2
+      - allman
+    curly:
+      - 2
+      - multi
+      - consistent
+  plugins:
+    - html
