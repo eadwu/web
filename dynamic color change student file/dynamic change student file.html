@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<!--
+  Edmund Wu
+-->
+<html>
+<head>
+  <title>Dynamic Color Change</title>
+  <style>
+    body
+    {
+      color: #000;
+      background-color: rgb(255, 255, 255);
+    }
+  </style>
+  <script type = "text/javascript">
+    function initialize ()
+    {
+      redValue = 255;
+      greenValue = 255;
+      blueValue = 255;
+
+      redVal = document.getElementById("redval");
+      greenVal = document.getElementById("greenval");
+      blueVal = document.getElementById("blueval");
+    }
+
+    function updateRed (value)
+    {
+      redValue = (256 + (redValue + value)) % 256;
+      display();
+    }
+
+    function updateGreen (value)
+    {
+      greenValue = (256 + (greenValue + value)) % 256;
+      display();
+    }
+
+    function updateBlue (value)
+    {
+      blueValue = (256 + (blueValue + value)) % 256;
+      display();
+    }
+
+    function display ()
+    {
+      redVal.innerHTML = redValue;
+      greenVal.innerHTML = greenValue;
+      blueVal.innerHTML = blueValue;
+
+      document.body.style.backgroundColor = "rgb(" + redValue + "," + greenValue + "," + blueValue + ")";
+      document.body.style.color = "rgb(" + (255 - redValue) + "," + (255 - greenValue) + "," + (255 - blueValue) + ")";
+    }
+  </script>
+</head>
+<body onload = "initialize();">
+  <p>
+    The Red Value is <span id = "redval">255</span><br />
+    <button onclick = "updateRed(1);">+1</button>
+    <button onclick = "updateRed(5);">+5</button>
+    <button onclick = "updateRed(10);">+10</button>
+    <button onclick = "updateRed(-1);">-1</button>
+    <button onclick = "updateRed(-5);">-5</button>
+  </p>
+
+  <p>
+    The Green Value is <span id = "greenval">255</span><br />
+    <button onclick = "updateGreen(1);">+1</button>
+    <button onclick = "updateGreen(5);">+5</button>
+    <button onclick = "updateGreen(10);">+10</button>
+    <button onclick = "updateGreen(-1);">-1</button>
+    <button onclick = "updateGreen(-5);">-5</button>
+  </p>
+
+  <p>
+    The Blue Value is <span id = "blueval">255</span><br />
+    <button onclick = "updateBlue(1);">+1</button>
+    <button onclick = "updateBlue(5);">+5</button>
+    <button onclick = "updateBlue(10);">+10</button>
+    <button onclick = "updateBlue(-1);">-1</button>
+    <button onclick = "updateBlue(-5);">-5</button>
+  </p>
+</body>
+</html>

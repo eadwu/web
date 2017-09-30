@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<!--
+  Edmund Wu
+-->
+<html>
+<head>
+  <title>Dynamic Color Change</title>
+  <style>
+    body
+    {
+      color: #000;
+      background-color: rgb(255, 255, 255);
+    }
+  </style>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () =>
+    {
+      const redSpan = document.querySelector("#redval");
+      const greenSpan = document.querySelector("#greenval");
+      const blueSpan = document.querySelector("#blueval");
+      const buttons = document.querySelectorAll("button");
+
+      for (let index = 0; index < buttons.length; index++)
+      {
+        const button = buttons[index];
+        const targetValue = button.parentElement.getAttribute("data-target");
+        const targetSpan = document.querySelector(`#${targetValue}`);
+
+        button.addEventListener("click", () =>
+        {
+          targetSpan.textContent = eval(`(256 + (${targetSpan.textContent}${button.textContent})) % 256`);
+
+          const redValue = redSpan.textContent;
+          const greenValue = blueSpan.textContent;
+          const blueValue = greenSpan.textContent;
+
+          document.body.style.backgroundColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`;
+          document.body.style.color = `rgb(${255 - redValue}, ${255 - greenValue}, ${255 - blueValue})`;
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <p data-target="redval">
+    The Red Value is <span id="redval">255</span><br />
+    <button>+1</button>
+    <button>+5</button>
+    <button>+10</button>
+    <button>-1</button>
+    <button>-5</button>
+  </p>
+
+  <p data-target="greenval">
+    The Green Value is <span id="greenval">255</span><br />
+    <button>+1</button>
+    <button>+5</button>
+    <button>+10</button>
+    <button>-1</button>
+    <button>-5</button>
+  </p>
+
+  <p data-target="blueval">
+    The Blue Value is <span id="blueval">255</span><br />
+    <button>+1</button>
+    <button>+5</button>
+    <button>+10</button>
+    <button>-1</button>
+    <button>-5</button>
+  </p>
+</body>
+</html>
