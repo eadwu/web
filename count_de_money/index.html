@@ -9,33 +9,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Count de Money</title>
   <script type="text/javascript">
-  const coins = {
-    pennies: [0, 1],
-    nickels: [0, 5],
-    dimes: [0, 10],
-    quarters: [0, 25]
-  }
-
-  let total = 0
-
-  function add (type, multiplier = 1) {
-    const targetSpan = document.querySelector(`#${type}`)
-    const totalSpan = document.querySelector(`#total`)
-    let [numberOfCoins, valueOfCoin] = coins[type]
-    numberOfCoins = coins[type][0] = numberOfCoins + multiplier
-    total = total + valueOfCoin * multiplier
-    targetSpan.textContent = numberOfCoins
-    totalSpan.textContent = (total / 10e1).toFixed(2)
-  }
-
-  function reset () {
-    total = 0
-    for (const coinType in coins) {
-      coins[coinType][0] = 0
-      document.querySelector(`#${coinType}`).textContent = '0'
+    const coins = {
+      pennies: [0, 1],
+      nickels: [0, 5],
+      dimes: [0, 10],
+      quarters: [0, 25]
     }
-    document.querySelector('#total').textContent = '0.00'
-  }
+
+    let total = 0
+
+    function add (type, multiplier = 1) {
+      const targetSpan = document.querySelector(`#${type}`)
+      const totalSpan = document.querySelector(`#total`)
+      let [numberOfCoins, valueOfCoin] = coins[type]
+      numberOfCoins = coins[type][0] = numberOfCoins + multiplier
+      total = total + valueOfCoin * multiplier
+      targetSpan.textContent = numberOfCoins
+      totalSpan.textContent = (total / 10e1).toFixed(2)
+    }
+
+    function reset () {
+      total = 0
+      for (const coinType in coins) {
+        coins[coinType][0] = 0
+        document.querySelector(`#${coinType}`).textContent = '0'
+      }
+      document.querySelector('#total').textContent = '0.00'
+    }
   </script>
 </head>
 <body>

@@ -9,41 +9,41 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Count de Money</title>
   <script type="text/javascript">
-  const coins = {
-    pennies: [0, 1],
-    nickels: [0, 5],
-    dimes: [0, 10],
-    quarters: [0, 25]
-  }
-
-  let total = 0
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const totalSpan = document.querySelector(`#total`)
-    const buttons = document.querySelectorAll('button')
-    const resetButton = document.querySelector('#reset')
-
-    resetButton.addEventListener('click', () => {
-      total = 0
-      for (const cType in coins) {
-        coins[cType][0] = 0
-        document.querySelector(`#${cType}`).textContent = '0'
-      }
-      totalSpan.textContent = '0.00'
-    })
-    for (let index = 0; index < buttons.length - 1; index++) {
-      const button = buttons[index]
-      button.addEventListener('click', () => {
-        const coinType = button.getAttribute('data-target-type')
-        const multiplierValue = button.getAttribute('data-multiplier') || 1
-        let [numberOfCoins, valueOfCoin] = coins[coinType]
-        numberOfCoins = coins[coinType][0] = numberOfCoins + ~~multiplierValue
-        total = total + valueOfCoin * multiplierValue
-        document.querySelector(`#${coinType}`).textContent = numberOfCoins
-        totalSpan.textContent = (total / 10e1).toFixed(2)
-      })
+    const coins = {
+      pennies: [0, 1],
+      nickels: [0, 5],
+      dimes: [0, 10],
+      quarters: [0, 25]
     }
-  })
+
+    let total = 0
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const totalSpan = document.querySelector(`#total`)
+      const buttons = document.querySelectorAll('button')
+      const resetButton = document.querySelector('#reset')
+
+      resetButton.addEventListener('click', () => {
+        total = 0
+        for (const cType in coins) {
+          coins[cType][0] = 0
+          document.querySelector(`#${cType}`).textContent = '0'
+        }
+        totalSpan.textContent = '0.00'
+      })
+      for (let index = 0; index < buttons.length - 1; index++) {
+        const button = buttons[index]
+        button.addEventListener('click', () => {
+          const coinType = button.getAttribute('data-target-type')
+          const multiplierValue = button.getAttribute('data-multiplier') || 1
+          let [numberOfCoins, valueOfCoin] = coins[coinType]
+          numberOfCoins = coins[coinType][0] = numberOfCoins + ~~multiplierValue
+          total = total + valueOfCoin * multiplierValue
+          document.querySelector(`#${coinType}`).textContent = numberOfCoins
+          totalSpan.textContent = (total / 10e1).toFixed(2)
+        })
+      }
+    })
   </script>
 </head>
 <body>

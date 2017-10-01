@@ -9,26 +9,26 @@
   <script type="text/javascript">
     function initialize ()
     {
-      marioClicks = 0;
-      batmanClicks = 0;
+      marioClicks = 0
+      batmanClicks = 0
 
-      theStatus = document.querySelector("#the_status");
-      marioCount = document.querySelector("#mario_count");
-      batmanCount = document.querySelector("#batman_count");
+      theStatus = document.querySelector("#the_status")
+      marioCount = document.querySelector("#mario_count")
+      batmanCount = document.querySelector("#batman_count")
     }
 
     function selectBatman ()
     {
-      batmanClicks++;
-      batmanCount.textContent = batmanClicks;
-      theStatus.textContent = "You clicked on Batman.";
+      batmanClicks++
+      batmanCount.textContent = batmanClicks
+      theStatus.textContent = "You clicked on Batman."
     }
 
     function selectMario ()
     {
-      marioClicks++;
-      marioCount.textContent = marioClicks;
-      theStatus.textContent = "You clicked on Mario.";
+      marioClicks++
+      marioCount.textContent = marioClicks
+      theStatus.textContent = "You clicked on Mario."
     }
   </script>
 </head>
