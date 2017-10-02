@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+  <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+  <title>Swap Colors</title>
+  <style></style>
+  <script type = "text/javascript" async>
+    document.addEventListener("DOMContentLoaded", () =>
+    {
+      const div = document.querySelector("div");
+      const button = document.querySelector("button");
+
+      div.style.backgroundColor = "#f00";
+      div.style.color = "#0f0";
+      button.addEventListener("click", () =>
+      {
+        const tmp = div.style.backgroundColor;
+        div.style.backgroundColor = div.style.color;
+        div.style.color = tmp;
+      });
+    });
+  </script>
+</head>
+<body>
+  <div>Click the button to swap colors with the button</div>
+  <button>Toggle Colors</button>
+</body>
+</html>

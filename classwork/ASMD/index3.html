@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html>
+<head>
+  <title></title>
+  <style></style>
+  <script type = "text/javascript">
+    function display ()
+    {
+      theAmount.textContent = amount;
+    }
+
+    function modify (increment)
+    {
+      amount = amount + increment;
+      display();
+    }
+
+    function initialize ()
+    {
+      amount = 0;
+      theAmount = document.querySelector("#the_amount");
+
+      display();
+    }
+  </script>
+</head>
+<body onload = "initialize();">
+  <div>
+    <button onclick = "modify(1);">Add 1</button>
+    <button onclick = "modify(-1);">Subtract 1</button>
+  </div>
+
+  <hr />
+  <br />
+
+  <div>
+    <button onclick = "modify(5);">Add 5</button>
+    <button onclick = "modify(-5);">Subtract 5</button>
+  </div>
+
+  <hr />
+  <br />
+
+  <div>
+    <button onclick = "modify(10);">Add 10</button>
+    <button onclick = "modify(-10);">Subtract 10</button>
+  </div>
+
+  <hr />
+  <br />
+
+  <div>
+    <button onclick = "modify(25);">Add 25</button>
+    <button onclick = "modify(-25);">Subtract 25</button>
+  </div>
+
+  <hr />
+  <br />
+
+  <div>
+    <button onclick="amount = 0; display();">Reset</button>
+  </div>
+
+  <hr />
+  <br />
+
+  <div>
+    Current amount: <span id="the_amount"></span>
+  </div>
+</body>
+</html>

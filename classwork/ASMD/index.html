@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html>
+<head>
+  <style></style>
+  <script type = "text/javascript">
+    function add (number1, number2)
+    {
+      return number1 + number2;
+    }
+
+    function addOneTo (num)
+    {
+      return add(num, 1);
+    }
+
+    function subtract (number1, number2)
+    {
+      return number1 - number2;
+    }
+
+    function subtractOneFrom (num)
+    {
+      return subtract(num, 1);
+    }
+
+    function multiply (number1, number2)
+    {
+      return number1 * number2;
+    }
+
+    function square (num)
+    {
+      return multiply(num, num);
+    }
+
+    function divide (number1, number2)
+    {
+      return number1 / number2;
+    }
+
+    function initialize ()
+    {
+      var total = add(11, 13);
+      alert(total);
+
+      var x = 3;
+      var y = 10;
+      total = add(x, y);
+      alert(total);
+
+      var increment = addOneTo(5);
+      alert(increment);
+      alert(subtract(4, 2));
+      alert(subtractOneFrom(5));
+      alert(multiply(2, 3));
+      alert(square(5));
+      alert(divide(10, 2));
+    }
+  </script>
+</head>
+<body onload = "initialize();">
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+  <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+  <title>Toggle</title>
+  <style></style>
+  <script type = "text/javascript">
+    function toggle ()
+    {
+      var theStatus = document.getElementById("the_status");
+      var text = theStatus.innerHTML;
+
+      if (text === "on")
+      {
+        theStatus.innerHTML = "off";
+      } else {
+        theStatus.innerHTML = "on";
+      }
+    }
+  </script>
+</head>
+<body>
+  <div>The toggle is <span id = "the_status">off</span></div>
+  <button onclick = "toggle();">Toggle</button>
+</body>
+</html>
