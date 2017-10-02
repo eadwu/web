@@ -2,11 +2,11 @@
   "name": "web",
   "version": "1.0.0",
   "scripts": {
-    "test": "standard **/*.html"
+    "test": "semistandard **/*.html"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bt-wcsp/WebDevelopment.git"
+    "url": "git+https://github.com/bt-wcsp/web.git"
   },
   "author": "Edmund Wu",
   "license": "UNLICENSED",
