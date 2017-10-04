@@ -18,7 +18,8 @@
       const redSpan = document.querySelector("#redval")
       const greenSpan = document.querySelector("#greenval")
       const blueSpan = document.querySelector("#blueval")
-      const buttons = document.querySelectorAll("button")
+      const randomButton = document.querySelector("body > button")
+      const buttons = document.querySelectorAll("p > button")
 
       for (let index = 0; index < buttons.length; index++)
       {
@@ -38,6 +39,16 @@
           document.body.style.color = `rgb(${255 - redValue}, ${255 - greenValue}, ${255 - blueValue})`
         })
       }
+
+      randomButton.addEventListener("click", () =>
+      {
+        const redValue = Math.floor(Math.random() * 255 + 0.5)
+        const greenValue = Math.floor(Math.random() * 255 + 0.5)
+        const blueValue = Math.floor(Math.random() * 255 + 0.5)
+
+        document.body.style.backgroundColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`
+        document.body.style.color = `rgb(${255 - redValue}, ${255 - greenValue}, ${255 - blueValue})`
+      })
     })
   </script>
 </head>
@@ -49,6 +60,7 @@
     <button>+10</button>
     <button>-1</button>
     <button>-5</button>
+    <button>-10</button>
   </p>
 
   <p data-target="greenval">
@@ -58,6 +70,7 @@
     <button>+10</button>
     <button>-1</button>
     <button>-5</button>
+    <button>-10</button>
   </p>
 
   <p data-target="blueval">
@@ -67,6 +80,8 @@
     <button>+10</button>
     <button>-1</button>
     <button>-5</button>
+    <button>-10</button>
   </p>
+  <button>Random Color</button>
 </body>
 </html>

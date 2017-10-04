@@ -42,6 +42,11 @@
       display();
     }
 
+    function randomColorComponent ()
+    {
+      return parseInt(Math.random() * 256);
+    }
+
     function display ()
     {
       redVal.innerHTML = redValue;
@@ -50,6 +55,15 @@
 
       document.body.style.backgroundColor = "rgb(" + redValue + "," + greenValue + "," + blueValue + ")";
       document.body.style.color = "rgb(" + (255 - redValue) + "," + (255 - greenValue) + "," + (255 - blueValue) + ")";
+    }
+
+    function randomColor ()
+    {
+      redValue = randomColorComponent();
+      greenValue = randomColorComponent();
+      blueValue = randomColorComponent();
+
+      display();
     }
   </script>
 </head>
@@ -61,6 +75,7 @@
     <button onclick = "updateRed(10);">+10</button>
     <button onclick = "updateRed(-1);">-1</button>
     <button onclick = "updateRed(-5);">-5</button>
+    <button onclick = "updateRed(-10);">-10</button>
   </p>
 
   <p>
@@ -70,6 +85,7 @@
     <button onclick = "updateGreen(10);">+10</button>
     <button onclick = "updateGreen(-1);">-1</button>
     <button onclick = "updateGreen(-5);">-5</button>
+    <button onclick = "updateGreen(-10);">-10</button>
   </p>
 
   <p>
@@ -79,6 +95,8 @@
     <button onclick = "updateBlue(10);">+10</button>
     <button onclick = "updateBlue(-1);">-1</button>
     <button onclick = "updateBlue(-5);">-5</button>
+    <button onclick = "updateBlue(-10);">-10</button>
   </p>
+  <button onclick = "randomColor();">Random Color</button>
 </body>
 </html>
