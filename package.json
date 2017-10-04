@@ -1,9 +1,6 @@
 {
   "name": "web",
   "version": "1.0.0",
-  "scripts": {
-    "test": "semistandard **/*.html"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bt-wcsp/web.git"

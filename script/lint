@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+const { repositoryRootPath } = require("./config");
+const { CLIEngine } = require("eslint");
+const chalk = require("chalk");
+
+const { log } = console;
+const severities = [ "OFF", "WARN", "ERROR" ];
+
+const cli = new CLIEngine({
+  baseConfig: "semistandard",
+  cwd: repositoryRootPath,
+  envs: [ "browser" ],
+  extensions: [ ".html", ".js" ],
+  parser: "babel-eslint",
+  plugins: [ "html" ],
+  rules: {
+    quotes: [ 2, "double" ],
+    "brace-style": [ 2, "allman" ],
+    curly: [ 2, "multi", "consistent" ]
+  }
+});
+
+const { results } = cli.executeOnFiles([ repositoryRootPath ]);
+
+for (let index = 0; index < results.length; index++)
+{
+  const result = results[index];
+  const { filePath, messages } = result;
+
+  if (messages.length > 0)
+  {
+    log(chalk`{white.bgBlue.bold ${filePath}}`);
+    for (let msg = 0; msg < messages.length; msg++)
+    {
+      const messageObject = messages[msg];
+      const { severity, source, message, line, column } = messageObject;
+
+      log(chalk`{red.bgBlack ${severities[severity]}}, {cyan.bgBlack ${line}:${column}}
+        {blue ${source}}
+        {magenta.bgBlack ${message}}\n`);
+    }
+  }
+}
