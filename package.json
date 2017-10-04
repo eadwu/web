@@ -10,10 +10,11 @@
   },
   "author": "Edmund Wu",
   "license": "UNLICENSED",
-  "devDependencies": {
+  "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-preset-env": "^1.6.0",
+    "chalk": "^2.1.0",
     "eslint": "^4.8.0",
     "eslint-config-semistandard": "^11.0.0",
     "eslint-config-standard": "^10.2.1",
