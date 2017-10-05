@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <script type="text/javascript">
+    function initialize ()
+    {
+      myText = document.getElementById("mytext");
+      textRed = getRandomColorComponent();
+      textGreen = getRandomColorComponent();
+      textBlue = getRandomColorComponent();
+    }
+
+    function getRandomColorComponent ()
+    {
+      return parseInt(Math.random() * 256);
+    }
+
+    function updateColor ()
+    {
+      textRed = getRandomColorComponent();
+      textGreen = getRandomColorComponent();
+      textBlue = getRandomColorComponent();
+      display();
+    }
+
+    function display ()
+    {
+      myText.style.color = "rgb(" + textRed + "," + textGreen + "," + textBlue + ")";
+    }
+  </script>
+</head>
+<body onload="initialize();">
+  <div id="mytext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue ipsum, ultricies in sagittis sed, dictum quis purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent nulla ante, placerat ultrices ullamcorper sed, interdum vel magna. Phasellus ac pulvinar enim. Donec ultricies laoreet elit, eget sagittis elit eleifend eu. Phasellus et sapien eget erat scelerisque tempor a ac neque. Maecenas vestibulum lorem rutrum ex aliquet posuere id ac elit. Nunc porttitor sit amet dui vel lacinia.</div>
+  <button onclick="updateColor();">Random Color</button>
+</body>
+</html>
