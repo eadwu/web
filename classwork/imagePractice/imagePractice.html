@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    img
+    {
+      display: block;
+      margin: auto;
+      /*
+      position: relative;
+      left: calc(50% - 75px);
+       */
+       width: 150px;
+       height: 150px;
+    }
+  </style>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () =>
+    {
+      const image = document.querySelector("img");
+      const buttons = document.querySelectorAll("button");
+
+      for (let index = 0; index < buttons.length; index++)
+      {
+        const button = buttons[index];
+        button.addEventListener("click", () =>
+        {
+          image.setAttribute("src", button.getAttribute("data-image"));
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <img src="https://lh4.googleusercontent.com/ZrN2pkeH2eNCvkOL7-eNIJ_8MDP0wHhnghFyH76WiaSjHQnMDh07K41Jkgh6UNQeySgIdvE4w9Yre0E=w1400-h779">
+  <button data-image="https://lh4.googleusercontent.com/ZrN2pkeH2eNCvkOL7-eNIJ_8MDP0wHhnghFyH76WiaSjHQnMDh07K41Jkgh6UNQeySgIdvE4w9Yre0E=w1400-h779">Image 1</button>
+  <button data-image="https://lh3.googleusercontent.com/EqEw4v5SvbDQVR_Lpfdu9DbGZxg0_HDPZcBxNQjnU5PepmVXuLGPRKhSNypGOmSPGtHg0S9_fJSxv7k=w1400-h779">Image 2</button>
+  <button data-image="https://lh3.googleusercontent.com/MFvraCyjM5InXnYkbUL565iBHmUsInUNb_LThFuxeqW0_wcyarlnEbesUoogAaWV_PgzcUmvbkwgE0A=w1400-h779">Image 3</button>
+</body>
+</html>
