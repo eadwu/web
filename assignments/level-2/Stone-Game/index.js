@@ -18,23 +18,20 @@
   let isPlayerTurn = false;
   let stonePiles = tmp.slice();
 
-  function arrayLoop (array, func)
+  // λsource. λindex. λcondition. λfunc. void
+  const recurse = source => index => condition => func =>
   {
-    if (!array) return;
-    for (let index = 0; index < array.length; index++)
-      func(array[index], index);
-  }
+    const [ value, ..._ ] = source;
+    func(value)(index);
+    if (condition(index)(_)) recurse(_)(++index)(condition)(func);
+  };
 
-  function setRandomInsult ()
-  {
-    if (!activeGame) return;
-    const arrayIndex = floor(random() * unkInsults.length);
-    unkOutput.textContent = unkInsults[arrayIndex];
-  }
+  // λ. string
+  const getRandomInsult = () => unkInsults[floor(random() * unkInsults.length)];
 
   function disableInvalidButtons ()
   {
-    arrayLoop(takeStoneButtons, (takeStoneButton) =>
+    recurse(takeStoneButtons)(0)(() => arr => arr.length > 0)(takeStoneButton => () =>
     {
       const pileIndex = takeStoneButton.parentNode.getAttribute("data-pile");
       const stoneAmount = takeStoneButton.getAttribute("data-amount");
@@ -46,7 +43,7 @@
 
   function syncDisplayToSource ()
   {
-    arrayLoop(stonePiles, (amount, pile) =>
+    recurse(stonePiles)(0)(() => arr => arr.length > 0)(amount => pile =>
     {
       document.querySelector(`#count${pile}`).textContent = amount;
     });
@@ -56,7 +53,7 @@
   {
     let index;
     let tmp = 0;
-    arrayLoop(stonePiles, (amount, pile) =>
+    recurse(stonePiles)(0)(() => arr => arr.length > 0)(amount => pile =>
     {
       if (amount > tmp)
       {
@@ -97,7 +94,7 @@
   function isGameOver ()
   {
     let gameOver = true;
-    arrayLoop(takeStoneButtons, (takeStoneButton) =>
+    recurse(takeStoneButtons)(0)(() => arr => arr.length > 0)(takeStoneButton => () =>
     {
       if (!takeStoneButton.hasAttribute("disabled"))
         gameOver = false;
@@ -120,7 +117,7 @@
 
     initialize();
 
-    arrayLoop(takeStoneButtons, (takeStoneButton) =>
+    recurse(takeStoneButtons)(0)(() => arr => arr.length > 0)(takeStoneButton => () =>
     {
       takeStoneButton.addEventListener("click", () =>
       {
@@ -131,14 +128,14 @@
         isPlayerTurn = !isPlayerTurn;
         takeStonesFromPile(stoneArrayIndex, amount, true);
         initArtificalMove();
-        setRandomInsult();
+        if (activeGame) unkOutput.textContent = getRandomInsult();
       });
     });
 
     resetButton.addEventListener("click", () =>
     {
       stonePiles = tmp.slice();
-      arrayLoop(takeStoneButtons, (takeStoneButton) =>
+      recurse(takeStoneButtons)(0)(() => arr => arr.length > 0)(takeStoneButton => () =>
       {
         activeGame = true;
         isPlayerTurn = false;
