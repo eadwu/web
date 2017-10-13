@@ -129,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
   submitGuess.addEventListener("click", () =>
   {
+    if (userInput.length <= 0) return;
     tries--;
     setDegree();
     display();
