@@ -1,6 +1,40 @@
+button
+{
+  border: none;
+  color: #e0e0e0;
+  border-radius: 3px;
+  transition: box-shadow 1ms;
+  box-shadow: 1px 1px 4px #616161;
+}
+
+button:focus
+{
+  outline: none;
+}
+
+button:active
+{
+  box-shadow: 0 0 0 #616161;
+}
+
 div
 {
   margin-bottom: 5px;
+}
+
+div > button
+{
+  background-color: #616161;
+}
+
+#reset
+{
+  background-color: #ef5350;
+}
+
+#submit_guess
+{
+  background-color: #78909c;
 }
 
 table
