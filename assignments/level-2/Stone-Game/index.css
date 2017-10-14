@@ -1,3 +1,28 @@
+button
+{
+  border: none;
+  color: #e0e0e0;
+  background-color: #616161;
+  border-radius: 3px;
+  transition: box-shadow 1ms, color 1000ms, background-color 1000ms;
+  box-shadow: 1px 1px 4px #616161;
+}
+
+button:focus
+{
+  outline: none;
+}
+
+button:active
+{
+  box-shadow: 0 0 0 #616161;
+}
+
+button:disabled, button[disabled]
+{
+  background-color: #fff;
+}
+
 div
 {
   margin-bottom: 20px;
@@ -6,4 +31,9 @@ div
 img
 {
   width: 30%;
+}
+
+#reset
+{
+  background-color: #ef5350;
 }
