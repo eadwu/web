@@ -7,7 +7,10 @@ var displayInput;
 var tries = 5;
 var userInput = "";
 var rangeDegree = "";
-
+/**
+ * setDegree()
+ * Gets the degree of the guess and handles pre-end game procedures
+ */
 function setDegree ()
 {
   const displacement = Math.abs(randomNumber - userInput);
@@ -56,7 +59,11 @@ function setDegree ()
     rangeDegree = "Very Cold";
   }
 }
-
+/**
+ * endGame(trueEnd)
+ * @param {boolean} trueEnd - A boolean whose value represents whether or not
+ * the Player successfully guessed the number (true) or used all tries (false)
+ */
 function endGame (trueEnd)
 {
   if (trueEnd)
@@ -66,13 +73,19 @@ function endGame (trueEnd)
 
   resetButton.textContent = "Reset Game";
 }
-
+/**
+ * resetUserInput()
+ * Does what the function name says, resets the currently inputted `guess`
+ */
 function resetUserInput ()
 {
   userInput = "";
   displayInput.textContent = "";
 }
-
+/**
+ * display()
+ * Adds cells to the table to show the guess and its degree
+ */
 function display ()
 {
   if (tries < 0) return;
@@ -98,29 +111,29 @@ document.addEventListener("DOMContentLoaded", () =>
   const submitGuess = document.querySelector("#submit_guess");
 
   for (let index = 0; index < fakeNumberPad.length; index++)
-  {
-    const padNumberButton = fakeNumberPad[index];
-
-    padNumberButton.addEventListener("click", () =>
+    // lazy workaround without const
+    (() =>
     {
-      userInput = userInput + padNumberButton.textContent;
-      displayInput.textContent = userInput;
-    });
-  }
+      const padNumberButton = fakeNumberPad[index];
+
+      padNumberButton.addEventListener("click", () =>
+      {
+        userInput = userInput + padNumberButton.textContent;
+        displayInput.textContent = userInput;
+      });
+    })();
 
   resetButton.addEventListener("click", () =>
   {
     resetUserInput();
     if (resetButton.textContent === "Reset Game")
     {
-      // lazy bum way
-      // window.location.reload();
       tries = 5;
       resetButton.textContent = "Reset";
       randomNumber = Math.floor(Math.random() * 101);
-
+      // Remove all guesses from the table, outputTableData can be defined out of this scope
       const outputTableData = outputTable.querySelector("tbody");
-      const outputTableEntries = outputTableData.childNodes.length - 1;
+      const outputTableEntries = outputTableData.childNodes.length - 1; // Don't target the first 2 cells
       for (let child = 0; child < outputTableEntries; child++)
         outputTableData.removeChild(outputTableData.lastChild);
     }
