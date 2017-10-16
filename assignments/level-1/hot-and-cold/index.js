@@ -88,8 +88,7 @@ function display ()
 
 document.addEventListener("DOMContentLoaded", () =>
 {
-  // parseInt rounds down; Math.floor does the same; add 0.5 to fix rounding problems
-  randomNumber = Math.floor(Math.random() * 100 + 0.5);
+  randomNumber = Math.floor(Math.random() * 101);
 
   resetButton = document.querySelector("#reset");
   outputTable = document.querySelector("#data_table");
@@ -118,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () =>
       // window.location.reload();
       tries = 5;
       resetButton.textContent = "Reset";
-      randomNumber = Math.floor(Math.random() * 100 + 0.5);
+      randomNumber = Math.floor(Math.random() * 101);
 
       const outputTableData = outputTable.querySelector("tbody");
       const outputTableEntries = outputTableData.childNodes.length - 1;
