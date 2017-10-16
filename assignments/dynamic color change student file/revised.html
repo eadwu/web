@@ -42,9 +42,9 @@
 
       randomButton.addEventListener("click", () =>
       {
-        const redValue = Math.floor(Math.random() * 255 + 0.5)
-        const greenValue = Math.floor(Math.random() * 255 + 0.5)
-        const blueValue = Math.floor(Math.random() * 255 + 0.5)
+        const redValue = Math.floor(Math.random() * 256)
+        const greenValue = Math.floor(Math.random() * 256)
+        const blueValue = Math.floor(Math.random() * 256)
 
         document.body.style.backgroundColor = `rgb(${redValue}, ${greenValue}, ${blueValue})`
         document.body.style.color = `rgb(${255 - redValue}, ${255 - greenValue}, ${255 - blueValue})`
