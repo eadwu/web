@@ -51,17 +51,21 @@
 
   function getLargestStonePile ()
   {
-    let index;
     let tmp = 0;
+    let largestPiles = [];
     recurse(stonePiles)(0)(() => arr => arr.length > 0)(amount => pile =>
     {
       if (amount > tmp)
       {
+        largestPiles = [ pile ];
         tmp = amount;
-        index = pile;
+      }
+      else if (amount === tmp)
+      {
+        largestPiles.push(pile);
       }
     });
-    return index;
+    return largestPiles[floor(random() * largestPiles.length)];
   }
 
   function takeStonesFromPile (pile, stones, isPlayer)
