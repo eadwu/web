@@ -111,17 +111,15 @@ document.addEventListener("DOMContentLoaded", () =>
   const submitGuess = document.querySelector("#submit_guess");
 
   for (let index = 0; index < fakeNumberPad.length; index++)
-    // lazy workaround without const
-    (() =>
-    {
-      const padNumberButton = fakeNumberPad[index];
+  {
+    const padNumberButton = fakeNumberPad[index];
 
-      padNumberButton.addEventListener("click", () =>
-      {
-        userInput = userInput + padNumberButton.textContent;
-        displayInput.textContent = userInput;
-      });
-    })();
+    padNumberButton.addEventListener("click", () =>
+    {
+      userInput = userInput + padNumberButton.textContent;
+      displayInput.textContent = userInput;
+    });
+  }
 
   resetButton.addEventListener("click", () =>
   {
