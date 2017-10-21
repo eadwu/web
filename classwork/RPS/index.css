@@ -1,0 +1,11 @@
+img
+{
+  width: 150px;
+  height: 150px;
+}
+
+h1, h2, div
+{
+  width: 100%;
+  text-align: center;
+}
