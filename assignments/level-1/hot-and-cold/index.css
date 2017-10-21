@@ -1,11 +1,17 @@
 button
 {
-  border: none;
   color: #e0e0e0;
   background-color: #616161;
+
+  border: none;
   border-radius: 3px;
-  transition: box-shadow 1ms;
+
+  width: 70px;
+  height: 30px;
+
+  word-wrap: break-word;
   box-shadow: 1px 1px 4px #616161;
+  transition: box-shadow 1ms;
 }
 
 button:focus
@@ -16,6 +22,11 @@ button:focus
 button:active
 {
   box-shadow: 0 0 0 #616161;
+}
+
+div > button
+{
+  width: 30px;
 }
 
 div
