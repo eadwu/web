@@ -1,0 +1,40 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Stone Game (Linux)",
+      "file": "${workspaceRoot}/assignments/level-2/Stone-Game/index.html",
+      "runtimeExecutable": "/usr/bin/opera-developer",
+      "runtimeArgs": ["--user-data-dir=/tmp/opera-debug", "--remote-debugging-port=9222"]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Stone Game (Windows)",
+      "file": "${workspaceRoot}/assignments/level-2/Stone-Game/index.html",
+      "runtimeExecutable": "chrome.exe",
+      "runtimeArgs": ["--user-data-dir=/tmp/chrome-debug", "--remote-debugging-port=9222"]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Rock Paper Scissors (Linux)",
+      "file": "${workspaceRoot}/classwork/RPS/index.html",
+      "runtimeExecutable": "/usr/bin/opera-developer",
+      "runtimeArgs": ["--user-data-dir=/tmp/opera-debug", "--remote-debugging-port=9222"]
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Rock Paper Scissors (Windows)",
+      "file": "${workspaceRoot}/classwork/RPS/index.html",
+      "runtimeExecutable": "chrome.exe",
+      "runtimeArgs": ["--user-data-dir=/tmp/chrome-debug", "--remote-debugging-port=9222"]
+    }
+  ]
+}
