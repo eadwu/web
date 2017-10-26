@@ -89,7 +89,7 @@
     const chosenPile = getLargestStonePile();
     takeStonesFromPile(
       chosenPile,
-      Math.floor(Math.random() * stonePiles[chosenPile]) + 1,
+      floor(random() * stonePiles[chosenPile]) + 1,
       false
     );
     isPlayerTurn = !isPlayerTurn;
@@ -132,7 +132,8 @@
         isPlayerTurn = !isPlayerTurn;
         takeStonesFromPile(stoneArrayIndex, amount, true);
         initArtificalMove();
-        if (activeGame) unkOutput.textContent = getRandomInsult();
+        if (activeGame)
+          unkOutput.textContent = getRandomInsult();
       });
     });
 
