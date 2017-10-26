@@ -1,5 +1,7 @@
 ---
-  extends: semistandard
+  extends:
+    - semistandard
+    - plugin:flowtype/recommended
   parser: babel-eslint
   env:
     browser: true
@@ -18,3 +20,7 @@
   plugins:
     - html
     - compat
+    - flowtype
+  settings:
+    flowtype:
+      onlyFilesWithFlowAnnotation: true

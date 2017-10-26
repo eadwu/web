@@ -10,6 +10,10 @@
           "Safari >= 3.2"
         ]
       }
-    }]
+    }],
+    "flow"
+  ],
+  "plugins": [
+    "transform-flow-strip-types"
   ]
 }
