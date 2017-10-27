@@ -26,19 +26,40 @@
 
     function updateRed (value)
     {
-      redValue = (256 + (redValue + value)) % 256;
+      if (redValue + value >= 255)
+        redValue = 255;
+      else if (redValue + value <= 0)
+        redValue = 0;
+      else
+        redValue = redValue + value;
+
+      // redValue = (256 + (redValue + value)) % 256;
       display();
     }
 
     function updateGreen (value)
     {
-      greenValue = (256 + (greenValue + value)) % 256;
+      if (greenValue + value >= 255)
+        greenValue = 255;
+      else if (greenValue + value <= 0)
+        greenValue = 0;
+      else
+        greenValue = greenValue + value;
+
+      // greenValue = (256 + (greenValue + value)) % 256;
       display();
     }
 
     function updateBlue (value)
     {
-      blueValue = (256 + (blueValue + value)) % 256;
+      if (blueValue + value >= 255)
+        blueValue = 255;
+      else if (blueValue + value <= 0)
+        blueValue = 0;
+      else
+        blueValue = blueValue + value;
+
+      // blueValue = (256 + (blueValue + value)) % 256;
       display();
     }
 
