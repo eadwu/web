@@ -198,9 +198,9 @@ function game (choice: string | number)
   // reform to Rock, Paper, or Scissor
   const reformedChoice = transformSelection("player", choice);
   // access playerRocks, playerPapers, playerScissors or if the player/computer runs out of weapons
-  if (window[`player${reformedChoice}s`] <= 0 ||
+  if (window[reformedChoice] <= 0 ||
       getValidUserWeapons("player").length <= 0 ||
-      getValidUserWeapons("computer") <= 0)
+      getValidUserWeapons("computer").length <= 0)
     return;
 
   playerSelection = window[choice] || choice;
