@@ -1,3 +1,4 @@
 [options]
 experimental.const_params=true
+module.file_ext=.es
 module.use_strict=true
