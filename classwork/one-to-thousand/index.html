@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+  <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+  <title>One to a Thousand</title>
+  <script src = "utilities.js" type = "application/javascript"></script>
+  <script>
+    function recurse (index)
+    {
+      var suffix = getOrdinalSuffix(index);
+      rootElement.innerHTML = rootElement.innerHTML + index + suffix + " Place" + "<br />";
+      /*
+      var newElement = document.createElement("span");
+
+      newElement.innerHTML = index + suffix + " Place";
+      rootElement.appendChild(newElement);
+      */
+      if (index < 1000) recurse(++index);
+    }
+
+    function initialize ()
+    {
+      rootElement = document.querySelector("div");
+
+      recurse(1);
+      /*
+      for (var index = 1; index <= 1000; index++)
+      {
+        (function ()
+        {
+          var suffix = getOrdinalSuffix(index);
+          var newElement = document.createElement("span");
+
+          newElement.innerHTML = index + suffix + " Place";
+          rootElement.appendChild(newElement);
+        })()
+      }
+      */
+    }
+  </script>
+  <style>
+    span
+    {
+      display: block;
+    }
+  </style>
+</head>
+<body onload = "initialize();">
+  <div></div>
+</body>
+</html>
