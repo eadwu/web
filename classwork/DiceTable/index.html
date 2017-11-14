@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+  <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+  <title>Document</title>
+  <script src = "utilities.js" type = "application/javascript"></script>
+  <script>
+    function initialize ()
+    {
+      dataTable = document.querySelector("table");
+      maxRows = getRandomInteger(50, 100);
+
+      for (var index = 0; index < maxRows; index++)
+        addRow(
+          getRandomInteger(1, 6),
+          getRandomInteger(1, 6)
+        )
+    }
+
+    function addRow (firstRoll, secondRoll)
+    {
+      var newRow = dataTable.insertRow();
+      var cellOne = newRow.insertCell();
+      var cellTwo = newRow.insertCell();
+      var cellTotal = newRow.insertCell();
+
+      cellOne.innerHTML = firstRoll;
+      cellTwo.innerHTML = secondRoll;
+      cellTotal.innerHTML = firstRoll + secondRoll;
+    }
+  </script>
+</head>
+<body onload = "initialize();">
+  <table>
+    <tr>
+      <th>Die 1</th>
+      <th>Die 2</th>
+      <th>Total Roll</th>
+    </tr>
+  </table>
+</body>
+</html>
