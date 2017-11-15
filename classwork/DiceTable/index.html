@@ -16,10 +16,15 @@
       maxRows = getRandomInteger(50, 100);
 
       for (var index = 0; index < maxRows; index++)
-        addRow(
-          getRandomInteger(1, 6),
-          getRandomInteger(1, 6)
-        )
+        newRow();
+    }
+
+    function newRow ()
+    {
+      addRow(
+        getRandomInteger(1, 6),
+        getRandomInteger(1, 6)
+      );
     }
 
     function addRow (firstRoll, secondRoll)
@@ -36,6 +41,7 @@
   </script>
 </head>
 <body onload = "initialize();">
+  <button onclick = "newRow();">Add New Row</button>
   <table>
     <tr>
       <th>Die 1</th>
