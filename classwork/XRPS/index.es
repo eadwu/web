@@ -43,7 +43,6 @@ let computerStrategies: Array<Function>;
 
 function transformSelection (user: string | number, selection: string): string
 {
-  selection = selection.toString();
   const newSelection = selection.charAt(0).toUpperCase() + selection.slice(1).toLowerCase();
 
   return `${user}${newSelection}s`;
@@ -160,24 +159,27 @@ function updateScore ()
 
 function display ()
 {
-  plrRocks.innerHTML = playerRocks;
-  plrPapers.innerHTML = playerPapers;
-  plrScissors.innerHTML = playerScissors;
+  const playerTargetImage = ((document.getElementById(playerSelection.toString()): any): HTMLImageElement);
+  const computerTargetImage = ((document.getElementById(computerSelection.toString()): any): HTMLImageElement);
 
-  compRocks.innerHTML = computerRocks;
-  compPapers.innerHTML = computerPapers;
-  compScissors.innerHTML = computerScissors;
+  plrRocks.innerHTML = playerRocks.toString();
+  plrPapers.innerHTML = playerPapers.toString();
+  plrScissors.innerHTML = playerScissors.toString();
 
-  plrScore.innerHTML = playerScore;
-  compScore.innerHTML = computerScore;
+  compRocks.innerHTML = computerRocks.toString();
+  compPapers.innerHTML = computerPapers.toString();
+  compScissors.innerHTML = computerScissors.toString();
+
+  plrScore.innerHTML = playerScore.toString();
+  compScore.innerHTML = computerScore.toString();
 
   playerChoice.setAttribute(
     "src",
-    document.getElementById(playerSelection).getAttribute("src")
+    playerTargetImage.getAttribute("src") || ""
   );
   computerChoice.setAttribute(
     "src",
-    document.getElementById(computerSelection).getAttribute("src")
+    computerTargetImage.getAttribute("src") || ""
   );
 
   if (roundWinner === 0)
@@ -189,21 +191,21 @@ function display ()
 
   if (getValidUserWeapons("player").length <= 0)
     gameFinale.innerHTML = "COMPUTER";
-  else if (getValidUserWeapons("computer") <= 0)
+  else if (getValidUserWeapons("computer").length <= 0)
     gameFinale.innerHTML = "PLAYER";
 }
 
 function game (choice: string | number)
 {
   // reform to Rock, Paper, or Scissor
-  const reformedChoice = transformSelection("player", choice);
+  const reformedChoice = transformSelection("player", choice.toString());
   // access playerRocks, playerPapers, playerScissors or if the player/computer runs out of weapons
   if (window[reformedChoice] <= 0 ||
       getValidUserWeapons("player").length <= 0 ||
       getValidUserWeapons("computer").length <= 0)
     return;
 
-  playerSelection = window[choice] || choice;
+  playerSelection = window[choice] || parseInt(choice);
   computerSelection = computerSelects();
   roundWinner = determineWinner();
   updateScore();
@@ -213,21 +215,21 @@ function game (choice: string | number)
 document.addEventListener("DOMContentLoaded", function ()
 {
   // Player Arsenal
-  plrRocks = document.querySelector("#PlayerRocks");
-  plrPapers = document.querySelector("#PlayerPapers");
-  plrScissors = document.querySelector("#PlayerScissors");
+  plrRocks = ((document.querySelector("#PlayerRocks"): any): HTMLSpanElement);
+  plrPapers = ((document.querySelector("#PlayerPapers"): any): HTMLSpanElement);
+  plrScissors = ((document.querySelector("#PlayerScissors"): any): HTMLSpanElement);
   // Computer Arsenal
-  compRocks = document.querySelector("#ComputerRocks");
-  compPapers = document.querySelector("#ComputerPapers");
-  compScissors = document.querySelector("#ComputerScissors");
+  compRocks = ((document.querySelector("#ComputerRocks"): any): HTMLSpanElement);
+  compPapers = ((document.querySelector("#ComputerPapers"): any): HTMLSpanElement);
+  compScissors = ((document.querySelector("#ComputerScissors"): any): HTMLSpanElement);
   // Scoreboard
-  plrScore = document.querySelector("#PlayerScore");
-  compScore = document.querySelector("#ComputerScore");
+  plrScore = ((document.querySelector("#PlayerScore"): any): HTMLSpanElement);
+  compScore = ((document.querySelector("#ComputerScore"): any): HTMLSpanElement);
   // Game Status
-  playerChoice = document.querySelector("#PlayerChoice");
-  computerChoice = document.querySelector("#ComputerChoice");
-  gameStatus = document.querySelector("#GameStatus");
-  gameFinale = document.querySelector("#GameFinale");
+  playerChoice = ((document.querySelector("#PlayerChoice"): any): HTMLImageElement);
+  computerChoice = ((document.querySelector("#ComputerChoice"): any): HTMLImageElement);
+  gameStatus = ((document.querySelector("#GameStatus"): any): HTMLSpanElement);
+  gameFinale = ((document.querySelector("#GameFinale"): any): HTMLSpanElement);
   // Computer Strategies
   computerStrategies = [
     () => getRandomWeapon(getValidUserWeapons("computer"))
