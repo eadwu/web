@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html>
+<head>
+  <title>Smiley Face</title>
+  <style>
+    div
+    {
+      display: inline-block;
+      padding: 5vh;
+    }
+
+    hr
+    {
+      display: none;
+      border: 0;
+      background-color: black;
+      padding: 3px;
+    }
+
+    span
+    {
+      display: block;
+      margin: auto;
+
+      width: 10%;
+      padding: 2vw 0 2vw 0;
+      text-align: center;
+    }
+
+    .mouth
+    {
+      display: block;
+      padding: 0 11.5vh 0 11.5vh;
+    }
+
+    div, span
+    {
+      border: 1px solid;
+      border-radius: 5vw;
+    }
+
+    div, span, .mouth
+    {
+      background-color: white;
+    }
+
+    .container:hover
+    {
+      background-color: red;
+    }
+
+    .container:hover hr
+    {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class = "container">
+    <hr />
+    <div class = "eyes">O</div>
+    <div class = "eyes">O</div><br />
+    <span>..</span><br />
+    <div class = "mouth"><h1></h1></div>
+  </div><br />
+  Hover to make me blush.
+</body>
+</html>
