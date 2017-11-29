@@ -1,6 +1,9 @@
 {
   "name": "web",
   "version": "1.0.0",
+  "scripts": {
+    "clean": "find . -not -path \\*node_modules\\* -type f -name \\*.js -delete"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bt-wcsp/web.git"
