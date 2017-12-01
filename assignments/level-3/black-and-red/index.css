@@ -1,0 +1,57 @@
+body
+{
+  background-color: white;
+}
+
+table
+{
+  width: 400px;
+  color: #fff;
+  table-layout: fixed;
+  display: inline-block;
+}
+
+td
+{
+  text-align: center;
+}
+
+div button
+{
+  display: block;
+  margin-top: 5px;
+  height: 25px;
+}
+
+tr, td, th
+{
+  padding: 5px 10px 5px 10px;
+}
+
+td:nth-of-type(odd), th:nth-of-type(odd)
+{
+  background-color: #f44336;
+}
+
+td:nth-of-type(even), th:nth-of-type(even)
+{
+  background-color: #424242;
+}
+
+#container
+{
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+}
+
+#game_output
+{
+  display: block;
+  position: absolute;
+}
+
+#container, #game_output
+{
+  color: black;
+}
