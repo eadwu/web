@@ -5,10 +5,11 @@ body
 
 table
 {
-  width: 400px;
-  color: #fff;
-  table-layout: fixed;
   display: inline-block;
+  position: absolute;
+  color: white;
+  margin-left: 5vw;
+  table-layout: fixed;
 }
 
 td
@@ -19,8 +20,8 @@ td
 div button
 {
   display: block;
-  margin-top: 5px;
-  height: 25px;
+  margin-top: 1vh;
+  height: 3vh;
 }
 
 tr, td, th
@@ -41,8 +42,6 @@ td:nth-of-type(even), th:nth-of-type(even)
 #container
 {
   display: inline-block;
-  position: absolute;
-  top: 0px;
 }
 
 #game_output
