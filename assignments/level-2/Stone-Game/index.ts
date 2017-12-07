@@ -40,7 +40,7 @@
    * Randomly picks an insult from the array `unkInsults`
    * @return {string} The string containing the insult picked
    */
-  const getRandomInsult = () => unkInsults[floor(random() * unkInsults.length)];
+  const getRandomInsult = () => unkInsults[ floor(random() * unkInsults.length) ];
   /**
    * Disables buttons that would make a pile negative if clicked upon
    */
@@ -51,7 +51,7 @@
       const pileIndex = takeStoneButton.parentNode.getAttribute("data-pile");
       const stoneAmount = takeStoneButton.getAttribute("data-amount");
 
-      if (stoneAmount > stonePiles[pileIndex])
+      if (stoneAmount > stonePiles[ pileIndex ])
         takeStoneButton.setAttribute("disabled", "");
     });
   }
@@ -85,7 +85,7 @@
         largestPiles.push(pile);
       }
     });
-    return largestPiles[floor(random() * largestPiles.length)];
+    return largestPiles[ floor(random() * largestPiles.length) ];
   }
   /**
    * Takes the amount of `stones` from `stonePiles[pile]` and handles some end
@@ -98,7 +98,7 @@
   function takeStonesFromPile (pile, stones, isPlayer)
   {
     if (!activeGame) return;
-    stonePiles[pile] -= stones;
+    stonePiles[ pile ] -= stones;
     syncDisplayToSource();
     disableInvalidButtons();
     if (isGameOver())
@@ -118,7 +118,7 @@
     const chosenPile = getLargestStonePile();
     takeStonesFromPile(
       chosenPile,
-      floor(random() * stonePiles[chosenPile]) + 1,
+      floor(random() * stonePiles[ chosenPile ]) + 1,
       false
     );
     isPlayerTurn = !isPlayerTurn;

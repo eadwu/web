@@ -1,9 +1,6 @@
-/**
- * @flow
- */
 function getRandomInteger (min: number, max: number): number
 {
-  return parseInt(Math.random() * (max + 1 - min)) + min;
+  return parseInt(Math.random() * (max + 1 - min), 10) + min;
 }
 /*
 function getOrdinalSuffix (num)

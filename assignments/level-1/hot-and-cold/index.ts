@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () =>
 
   for (let index = 0; index < fakeNumberPad.length; index++)
   {
-    const padNumberButton = fakeNumberPad[index];
+    const padNumberButton = fakeNumberPad[ index ];
 
     padNumberButton.addEventListener("click", () =>
     {

@@ -1,6 +1,3 @@
-/**
- * @flow
- */
 const { floor, random } = Math;
 
 const ROCK = 1;
@@ -39,7 +36,7 @@ let roundWinner: number;
 let playerSelection: number;
 let computerSelection: number;
 
-let computerStrategies: Array<Function>;
+let computerStrategies: Function[];
 
 function transformSelection (user: string | number, selection: string): string
 {
@@ -52,11 +49,11 @@ function getValidUserWeapons (user: string): Array<string>
 {
   let validWeapons = [];
 
-  if (window[`${user}Rocks`] > 0)
+  if (window[ `${user}Rocks` ] > 0)
     validWeapons.push("ROCK");
-  if (window[`${user}Papers`] > 0)
+  if (window[ `${user}Papers` ] > 0)
     validWeapons.push("PAPER");
-  if (window[`${user}Scissors`] > 0)
+  if (window[ `${user}Scissors` ] > 0)
     validWeapons.push("SCISSOR");
 
   return validWeapons;
@@ -107,13 +104,13 @@ function playerHasWeaponEmpty (): boolean
 
 function getRandomWeapon (weapons: Array<string>): number
 {
-  return window[weapons[floor(random() * weapons.length)]];
+  return window[ weapons[ floor(random() * weapons.length) ] ];
 }
 
 function computerSelects ()
 {
   const strategyIndex = floor(random() * computerStrategies.length);
-  return computerStrategies[strategyIndex]();
+  return computerStrategies[ strategyIndex ]();
 }
 
 function determineWinner (): number
@@ -121,8 +118,8 @@ function determineWinner (): number
   if (playerSelection - computerSelection === 0)
     return TIE;
   else if ((playerSelection === 1 && computerSelection === 3) ||
-          (playerSelection === 3 && computerSelection === 2) ||
-          (playerSelection === 2 && computerSelection === 1))
+    (playerSelection === 3 && computerSelection === 2) ||
+    (playerSelection === 2 && computerSelection === 1))
     return PLAYER;
   else
     return COMPUTER;
@@ -146,21 +143,21 @@ function updateScore ()
   if (roundWinner === PLAYER)
   {
     playerScore++;
-    window[`computer${compSelection}`] -= 1;
-    window[`player${compSelection}`] += 1;
+    window[ `computer${compSelection}` ] -= 1;
+    window[ `player${compSelection}` ] += 1;
   }
   else if (roundWinner === COMPUTER)
   {
     computerScore++;
-    window[`player${plrSelection}`] -= 1;
-    window[`computer${plrSelection}`] += 1;
+    window[ `player${plrSelection}` ] -= 1;
+    window[ `computer${plrSelection}` ] += 1;
   }
 }
 
 function display ()
 {
-  const playerTargetImage = ((document.getElementById(playerSelection.toString()): any): HTMLImageElement);
-  const computerTargetImage = ((document.getElementById(computerSelection.toString()): any): HTMLImageElement);
+  const playerTargetImage = document.getElementById(playerSelection.toString()) as HTMLImageElement;
+  const computerTargetImage = document.getElementById(computerSelection.toString()) as HTMLImageElement;
 
   plrRocks.innerHTML = playerRocks.toString();
   plrPapers.innerHTML = playerPapers.toString();
@@ -200,12 +197,12 @@ function game (choice: string | number)
   // reform to Rock, Paper, or Scissor
   const reformedChoice = transformSelection("player", choice.toString());
   // access playerRocks, playerPapers, playerScissors or if the player/computer runs out of weapons
-  if (window[reformedChoice] <= 0 ||
-      getValidUserWeapons("player").length <= 0 ||
-      getValidUserWeapons("computer").length <= 0)
+  if (window[ reformedChoice ] <= 0 ||
+    getValidUserWeapons("player").length <= 0 ||
+    getValidUserWeapons("computer").length <= 0)
     return;
 
-  playerSelection = window[choice] || parseInt(choice);
+  playerSelection = window[ choice ] || parseInt(choice, 10);
   computerSelection = computerSelects();
   roundWinner = determineWinner();
   updateScore();
@@ -215,21 +212,21 @@ function game (choice: string | number)
 document.addEventListener("DOMContentLoaded", function ()
 {
   // Player Arsenal
-  plrRocks = ((document.querySelector("#PlayerRocks"): any): HTMLSpanElement);
-  plrPapers = ((document.querySelector("#PlayerPapers"): any): HTMLSpanElement);
-  plrScissors = ((document.querySelector("#PlayerScissors"): any): HTMLSpanElement);
+  plrRocks = document.querySelector("#PlayerRocks");
+  plrPapers = document.querySelector("#PlayerPapers");
+  plrScissors = document.querySelector("#PlayerScissors");
   // Computer Arsenal
-  compRocks = ((document.querySelector("#ComputerRocks"): any): HTMLSpanElement);
-  compPapers = ((document.querySelector("#ComputerPapers"): any): HTMLSpanElement);
-  compScissors = ((document.querySelector("#ComputerScissors"): any): HTMLSpanElement);
+  compRocks = document.querySelector("#ComputerRocks");
+  compPapers = document.querySelector("#ComputerPapers");
+  compScissors = document.querySelector("#ComputerScissors");
   // Scoreboard
-  plrScore = ((document.querySelector("#PlayerScore"): any): HTMLSpanElement);
-  compScore = ((document.querySelector("#ComputerScore"): any): HTMLSpanElement);
+  plrScore = document.querySelector("#PlayerScore");
+  compScore = document.querySelector("#ComputerScore");
   // Game Status
-  playerChoice = ((document.querySelector("#PlayerChoice"): any): HTMLImageElement);
-  computerChoice = ((document.querySelector("#ComputerChoice"): any): HTMLImageElement);
-  gameStatus = ((document.querySelector("#GameStatus"): any): HTMLSpanElement);
-  gameFinale = ((document.querySelector("#GameFinale"): any): HTMLSpanElement);
+  playerChoice = document.querySelector("#PlayerChoice");
+  computerChoice = document.querySelector("#ComputerChoice");
+  gameStatus = document.querySelector("#GameStatus");
+  gameFinale = document.querySelector("#GameFinale");
   // Computer Strategies
   computerStrategies = [
     () => getRandomWeapon(getValidUserWeapons("computer"))
