@@ -20,13 +20,13 @@ function getOrdinalSuffix (num: number): string
   return "th";
 }
 
-function forNDo (n: number, func: number => any): void
+function forNDo (n: number, func: (index: number) => any): void
 {
   for (let index = 0; index < n; index++)
     func(index);
 }
 
-function mapRange (n: number, func: number => any): any[]
+function mapRange (n: number, func: (index: number) => any): any[]
 {
   const result = [];
   forNDo(n, index => result.push(func(index)));
