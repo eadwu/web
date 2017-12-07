@@ -1,7 +1,5 @@
 node_modules
 
 *.js
-!classwork/math-dot-random.js
-
 .DS_Store
 npm-debug.log
