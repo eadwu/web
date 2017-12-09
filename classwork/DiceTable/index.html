@@ -2,15 +2,15 @@
 <!--
   Edmund Wu
 -->
-<html lang = "en">
+<html lang="en">
 <head>
-  <meta charset = "UTF-8">
-  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-  <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script src = "utilities.js" type = "application/javascript"></script>
+  <script src="utilities.js" type="application/javascript"></script>
   <script>
-    function initialize ()
+    function initialize()
     {
       dataTable = document.querySelector("table");
       maxRows = getRandomInteger(50, 100);
@@ -19,7 +19,7 @@
         newRow();
     }
 
-    function newRow ()
+    function newRow()
     {
       addRow(
         getRandomInteger(1, 6),
@@ -27,7 +27,7 @@
       );
     }
 
-    function addRow (firstRoll, secondRoll)
+    function addRow(firstRoll, secondRoll)
     {
       var newRow = dataTable.insertRow();
       var cellOne = newRow.insertCell();
@@ -40,8 +40,8 @@
     }
   </script>
 </head>
-<body onload = "initialize();">
-  <button onclick = "newRow();">Add New Row</button>
+<body onload="initialize();">
+  <button onclick="newRow();">Add New Row</button>
   <table>
     <tr>
       <th>Die 1</th>

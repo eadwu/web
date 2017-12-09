@@ -2,15 +2,15 @@
 <!--
   Edmund Wu
 -->
-<html lang = "en">
+<html lang="en">
 <head>
-  <meta charset = "UTF-8">
-  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-  <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>One to a Thousand</title>
-  <script src = "utilities.js" type = "application/javascript"></script>
+  <script src="utilities.js" type="application/javascript"></script>
   <script>
-    function recurse (index)
+    function recurse(index)
     {
       var suffix = getOrdinalSuffix(index);
       rootElement.innerHTML = rootElement.innerHTML + index + suffix + " Place" + "<br />";
@@ -23,7 +23,7 @@
       if (index < 1000) recurse(++index);
     }
 
-    function initialize ()
+    function initialize()
     {
       rootElement = document.querySelector("div");
 
@@ -44,13 +44,12 @@
     }
   </script>
   <style>
-    span
-    {
+    span {
       display: block;
     }
   </style>
 </head>
-<body onload = "initialize();">
+<body onload="initialize();">
   <div></div>
 </body>
 </html>

@@ -7,7 +7,7 @@
   <title>Batman vs. Mario</title>
   <style></style>
   <script type="text/javascript">
-    function initialize ()
+    function initialize()
     {
       marioClicks = 0
       batmanClicks = 0
@@ -17,14 +17,14 @@
       batmanCount = document.querySelector("#batman_count")
     }
 
-    function selectBatman ()
+    function selectBatman()
     {
       batmanClicks++
       batmanCount.textContent = batmanClicks
       theStatus.textContent = "You clicked on Batman."
     }
 
-    function selectMario ()
+    function selectMario()
     {
       marioClicks++
       marioCount.textContent = marioClicks
@@ -37,8 +37,10 @@
 
   <hr />
 
-  <div>Batman has been selected <span id="batman_count">0</span> time(s).</div>
-  <div>Mario has been selected <span id="mario_count">0</span> time(s).</div>
+  <div>Batman has been selected
+    <span id="batman_count">0</span> time(s).</div>
+  <div>Mario has been selected
+    <span id="mario_count">0</span> time(s).</div>
 
   <hr />
 

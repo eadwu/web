@@ -6,42 +6,42 @@
 <head>
   <title></title>
   <style></style>
-  <script type = "text/javascript">
-    function display ()
+  <script type="text/javascript">
+    function display()
     {
       alert(`amount = ${amount}`);
     }
 
-    function modify (number1, number2)
+    function modify(number1, number2)
     {
       return number1 + number2;
     }
 
-    function initialize ()
+    function initialize()
     {
       amount = 0;
     }
   </script>
 </head>
-<body onload = "initialize();">
+<body onload="initialize();">
   <div>
-    <button onclick = "amount = modify(amount, 1); display();">Add 1</button>
-    <button onclick = "amount = modify(amount, -1); display();">Subtract 1</button>
+    <button onclick="amount = modify(amount, 1); display();">Add 1</button>
+    <button onclick="amount = modify(amount, -1); display();">Subtract 1</button>
   </div>
 
   <div>
-    <button onclick = "amount = modify(amount, 5); display();">Add 5</button>
-    <button onclick = "amount = modify(amount, -5); display();">Subtract 5</button>
+    <button onclick="amount = modify(amount, 5); display();">Add 5</button>
+    <button onclick="amount = modify(amount, -5); display();">Subtract 5</button>
   </div>
 
   <div>
-    <button onclick = "amount = modify(amount, 10); display();">Add 10</button>
-    <button onclick = "amount = modify(amount, -10); display();">Subtract 10</button>
+    <button onclick="amount = modify(amount, 10); display();">Add 10</button>
+    <button onclick="amount = modify(amount, -10); display();">Subtract 10</button>
   </div>
 
   <div>
-    <button onclick = "amount = modify(amount, 25); display();">Add 25</button>
-    <button onclick = "amount = modify(amount, -25); display();">Subtract 25</button>
+    <button onclick="amount = modify(amount, 25); display();">Add 25</button>
+    <button onclick="amount = modify(amount, -25); display();">Subtract 25</button>
   </div>
 
   <div>

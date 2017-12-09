@@ -2,55 +2,57 @@
 <!--
   Edmund Wu
 -->
-<html lang = "en">
+<html lang="en">
 <head>
-  <meta charset = "UTF-8">
-  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-  <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>XRPS</title>
-  <link rel = "stylesheet" href = "index.css" type = "text/css" />
-  <script src = "index.js" type = "application/javascript"></script>
+  <link rel="stylesheet" href="index.css" type="text/css" />
+  <script src="index.js" type="application/javascript"></script>
 </head>
 <body>
   <h1>EXTREME ROCK PAPER SCISSORS</h1>
   <h2>
-    Player Score: <span id = "PlayerScore">0</span>
-    <br />
-    Computer Score: <span id = "ComputerScore">0</span>
+    Player Score:
+    <span id="PlayerScore">0</span>
+    <br /> Computer Score:
+    <span id="ComputerScore">0</span>
   </h2>
 
   <hr />
 
   <div id>
-    <img src = "http://files.cluster2.hgsitebuilder.com/hostgator46951/image/rock.png" id = "1" onclick = "game('ROCK');" />
-    <img src = "https://static.pexels.com/photos/235985/pexels-photo-235985.jpeg" id = "2" onclick = "game('PAPER');" />
-    <img src = "http://www.pngall.com/wp-content/uploads/2016/03/Scissor-PNG-Clipart.png" id = "3" onclick = "game('SCISSOR');" />
+    <img src="http://files.cluster2.hgsitebuilder.com/hostgator46951/image/rock.png" id="1" onclick="game('ROCK');" />
+    <img src="https://static.pexels.com/photos/235985/pexels-photo-235985.jpeg" id="2" onclick="game('PAPER');" />
+    <img src="http://www.pngall.com/wp-content/uploads/2016/03/Scissor-PNG-Clipart.png" id="3" onclick="game('SCISSOR');" />
 
     <br />
 
     <span>Player's Weapons:
-      <span id = "PlayerRocks">5</span> Rocks,
-      <span id = "PlayerPapers">5</span> Papers,
-      <span id = "PlayerScissors">5</span> Scissors
+      <span id="PlayerRocks">5</span> Rocks,
+      <span id="PlayerPapers">5</span> Papers,
+      <span id="PlayerScissors">5</span> Scissors
     </span>
 
     <br />
 
     <span>Computer's Weapons:
-      <span id = "ComputerRocks">5</span> Rocks,
-      <span id = "ComputerPapers">5</span> Papers,
-      <span id = "ComputerScissors">5</span> Scissors
+      <span id="ComputerRocks">5</span> Rocks,
+      <span id="ComputerPapers">5</span> Papers,
+      <span id="ComputerScissors">5</span> Scissors
     </span>
   </div>
 
   <div>
-    Player Played: <img src id = "PlayerChoice" />
-    <br />
-    Computer Played: <img src id = "ComputerChoice" />
-    <br />
-    Round Winner: <span id = "GameStatus">N/A</span>
-    <br />
-    Game Winner: <span id = "GameFinale">N/A</span>
+    Player Played:
+    <img src id="PlayerChoice" />
+    <br /> Computer Played:
+    <img src id="ComputerChoice" />
+    <br /> Round Winner:
+    <span id="GameStatus">N/A</span>
+    <br /> Game Winner:
+    <span id="GameFinale">N/A</span>
   </div>
 </body>
 </html>

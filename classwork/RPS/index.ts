@@ -28,8 +28,8 @@ function determineWinner ()
   if (playerSelection - computerSelection === 0)
     return TIE;
   else if ((playerSelection === 1 && computerSelection === 3) ||
-          (playerSelection === 3 && computerSelection === 2) ||
-          (playerSelection === 2 && computerSelection === 1))
+    (playerSelection === 3 && computerSelection === 2) ||
+    (playerSelection === 2 && computerSelection === 1))
     return PLAYER;
   else
     return COMPUTER;
@@ -69,7 +69,7 @@ function display ()
 
 function game (choice)
 {
-  playerSelection = window[choice] || choice;
+  playerSelection = window[ choice ] || choice;
   computerSelection = computerSelects();
   roundWinner = determineWinner();
   updateScore();

@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title></title>
   <script type="text/javascript">
-    function initialize ()
+    function initialize()
     {
       myText = document.getElementById("mytext");
       textRed = getRandomColorComponent();
@@ -17,12 +17,12 @@
       textBlue = getRandomColorComponent();
     }
 
-    function getRandomColorComponent ()
+    function getRandomColorComponent()
     {
       return parseInt(Math.random() * 256);
     }
 
-    function updateColor ()
+    function updateColor()
     {
       textRed = getRandomColorComponent();
       textGreen = getRandomColorComponent();
@@ -30,7 +30,7 @@
       display();
     }
 
-    function display ()
+    function display()
     {
       myText.style.color = "rgb(" + textRed + "," + textGreen + "," + textBlue + ")";
     }

@@ -2,37 +2,40 @@
 <!--
   Edmund Wu
 -->
-<html lang = "en">
+<html lang="en">
 <head>
-  <meta charset = "UTF-8">
-  <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-  <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Utilities Testing</title>
-  <script src = "utilities.js" type = "application/javascript"></script>
+  <script src="utilities.js" type="application/javascript"></script>
   <script>
-    function initialize() {
+    function initialize()
+    {
       gradeOutput = document.getElementById("the_grade");
       suffixOutput = document.getElementById("the_suffix");
     }
 
-    function getRandomGrade(min, max) {
+    function getRandomGrade(min, max)
+    {
       randomGrade = getRandomInteger(min, max);
       suffix = getOrdinalSuffix(randomGrade);
 
       display()
     }
 
-    function display() {
+    function display()
+    {
       gradeOutput.innerHTML = randomGrade;
       suffixOutput.innerHTML = suffix;
     }
   </script>
 </head>
-<body onload = "initialize();">
-  <button onclick = "getRandomGrade(65, 100);">Get Random Grade</button>
+<body onload="initialize();">
+  <button onclick="getRandomGrade(65, 100);">Get Random Grade</button>
   <div>Grade:
-    <span id = "the_grade"></span>
-    <span id = "the_suffix"></span>
+    <span id="the_grade"></span>
+    <span id="the_suffix"></span>
   </div>
 </body>
 </html>
