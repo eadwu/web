@@ -9,16 +9,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    img
-    {
+    img {
       display: block;
       margin: auto;
       /*
       position: relative;
       left: calc(50% - 75px);
        */
-       width: 150px;
-       height: 150px;
+      width: 150px;
+      height: 150px;
     }
   </style>
   <script type="text/javascript">
@@ -29,7 +28,7 @@
 
       for (let index = 0; index < buttons.length; index++)
       {
-        const button = buttons[index];
+        const button = buttons[ index ];
         button.addEventListener("click", () =>
         {
           image.setAttribute("src", button.getAttribute("data-image"));

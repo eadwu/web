@@ -6,27 +6,27 @@
 <head>
   <title>Rat Race</title>
 
-  <link rel = "stylesheet" href = "https://www.dropbox.com/s/wo7gxbml1sc1gva/ratrace.css?raw=1" />
+  <link rel="stylesheet" href="https://www.dropbox.com/s/wo7gxbml1sc1gva/ratrace.css?raw=1" />
 
   <style></style>
 
-  <script src = "utilities.js" type = "application/javascript"></script>
+  <script src="utilities.js" type="application/javascript"></script>
 
   <script>
-    function getRatLeader ()
+    function getRatLeader()
     {
       var leader = "mickey";
 
-      if (itchy > window[leader])
+      if (itchy > window[ leader ])
         leader = "itchy";
 
-      if (jerry > window[leader])
+      if (jerry > window[ leader ])
         leader = "jerry"
 
       return leader;
     }
 
-    function runLap ()
+    function runLap()
     {
       if (currentLap >= FINALLAP) return;
       mickey += getRandomInteger(1, 10);
@@ -37,10 +37,10 @@
       showRats();
     }
 
-    function showRats ()
+    function showRats()
     {
       var leadRat = getRatLeader();
-      var formattedRatName = leadRat[0].toUpperCase() + leadRat.slice(1);
+      var formattedRatName = leadRat[ 0 ].toUpperCase() + leadRat.slice(1);
 
       mickeyOut.innerHTML = mickey;
       itchyOut.innerHTML = itchy;
@@ -53,7 +53,7 @@
         lapOut.innerHTML = "After the " + currentLap + getOrdinalSuffix(currentLap) + " lap, " + formattedRatName + " is in the lead."
     }
 
-    function initialize ()
+    function initialize()
     {
       mickeyOut = document.getElementById("mickeyspan");
       itchyOut = document.getElementById("itchyspan");
@@ -71,25 +71,28 @@
     }
   </script>
 </head>
-<body onload = "initialize();">
-  <p id = "laps">
+<body onload="initialize();">
+  <p id="laps">
     Gentlemen, start your mouses.
   </p>
   <h1>
-    <img src = "https://www.dropbox.com/s/4ifh84f28pqll8v/mickey.png?raw=1" /><br />
-    Mickey: <span id = "mickeyspan">0</span>
+    <img src="https://www.dropbox.com/s/4ifh84f28pqll8v/mickey.png?raw=1" />
+    <br /> Mickey:
+    <span id="mickeyspan">0</span>
   </h1>
   <h2>
-    <img src = "https://www.dropbox.com/s/v1i3lwgoroi576d/itchy.png?raw=1" /><br />
-    Itchy: <span id = "itchyspan">0</span>
+    <img src="https://www.dropbox.com/s/v1i3lwgoroi576d/itchy.png?raw=1" />
+    <br /> Itchy:
+    <span id="itchyspan">0</span>
   </h2>
   <h3>
-    <img src = "https://www.dropbox.com/s/25wybtp7jv0d9t9/jerry.png?raw=1" /><br />
-    Jerry: <span id = "jerryspan">0</span>
+    <img src="https://www.dropbox.com/s/25wybtp7jv0d9t9/jerry.png?raw=1" />
+    <br /> Jerry:
+    <span id="jerryspan">0</span>
   </h3>
 
   <h3>
-    <button onclick = "runLap();">Run!</button>
+    <button onclick="runLap();">Run!</button>
   </h3>
 </body>
 </html>

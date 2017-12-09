@@ -6,8 +6,7 @@
 <head>
   <title>Dynamic Color Change</title>
   <style>
-    body
-    {
+    body {
       color: #000;
       background-color: rgb(255, 255, 255);
     }
@@ -23,7 +22,7 @@
 
       for (let index = 0; index < buttons.length; index++)
       {
-        const button = buttons[index]
+        const button = buttons[ index ]
         const targetValue = button.parentElement.getAttribute("data-target")
         const targetSpan = document.querySelector(`#${targetValue}`)
 
@@ -54,7 +53,9 @@
 </head>
 <body>
   <p data-target="redval">
-    The Red Value is <span id="redval">255</span><br />
+    The Red Value is
+    <span id="redval">255</span>
+    <br />
     <button>+1</button>
     <button>+5</button>
     <button>+10</button>
@@ -64,7 +65,9 @@
   </p>
 
   <p data-target="greenval">
-    The Green Value is <span id="greenval">255</span><br />
+    The Green Value is
+    <span id="greenval">255</span>
+    <br />
     <button>+1</button>
     <button>+5</button>
     <button>+10</button>
@@ -74,7 +77,9 @@
   </p>
 
   <p data-target="blueval">
-    The Blue Value is <span id="blueval">255</span><br />
+    The Blue Value is
+    <span id="blueval">255</span>
+    <br />
     <button>+1</button>
     <button>+5</button>
     <button>+10</button>
