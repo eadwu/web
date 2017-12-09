@@ -2,42 +2,44 @@
 <!--
   Edmund Wu
 -->
-<html lang = "en">
+<html lang="en">
 <head>
-  <meta charset = "UTF-8" />
-  <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
-  <meta http-equiv = "X-UA-Compatible" content = "ie=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Black and Red</title>
-  <link rel = "stylesheet" href = "index.css" type = "text/css" />
-  <link rel = "stylesheet" href = "https://cdn.rawgit.com/eadwu/0b65543f417632fb13e21fd0bea73666/raw/e50edfd0f06c40d26036836cf6944b99a7ffe444/fake_lib.css" type = "text/css" />
-  <script src = "js/game.js" type = "text/javascript"></script>
-  <script src = "js/table.js" type = "text/javascript"></script>
-  <script src = "js/player.js" type = "text/javascript"></script>
-  <script src = "js/index.js" type = "text/javascript"></script>
-  <script src = "https://cdn.rawgit.com/eadwu/0b65543f417632fb13e21fd0bea73666/raw/3ef313e1380b1c5921c602afb77901b3b50ca80e/utilities.js" type = "text/javascript"></script>
+  <link rel="stylesheet" href="index.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.rawgit.com/eadwu/0b65543f417632fb13e21fd0bea73666/raw/e50edfd0f06c40d26036836cf6944b99a7ffe444/fake_lib.css" type="text/css" />
+  <script src="js/game.js" type="text/javascript"></script>
+  <script src="js/table.js" type="text/javascript"></script>
+  <script src="js/player.js" type="text/javascript"></script>
+  <script src="js/index.js" type="text/javascript"></script>
+  <script src="https://cdn.rawgit.com/eadwu/0b65543f417632fb13e21fd0bea73666/raw/3ef313e1380b1c5921c602afb77901b3b50ca80e/utilities.js" type="text/javascript"></script>
 </head>
 <body>
-  <div id = "container">
+  <div id="container">
     <button>Roll Dice</button>
-    <span>Red Die: <span></span>, Black Die: <span></span>
+    <span>Red Die:
+      <span></span>, Black Die:
+      <span></span>
     </span>
 
-    <button class = "strategy" data-strategy-index = "1" disabled>Strategy 1</button>
+    <button class="strategy" data-strategy-index="1" disabled>Strategy 1</button>
     <span>Remove red tokens from your pile and add black tokens to your opponent.</span>
 
-    <button class = "strategy" data-strategy-index = "2" disabled>Strategy 2</button>
+    <button class="strategy" data-strategy-index="2" disabled>Strategy 2</button>
     <span>Add red tokens to your pile and remove black tokens from your opponent.</span>
 
-    <button class = "strategy" data-strategy-index = "3" disabled>Strategy 3</button>
+    <button class="strategy" data-strategy-index="3" disabled>Strategy 3</button>
     <span>Remove black tokens from your pile and red tokens to your opponent.</span>
 
-    <button class = "strategy" data-strategy-index = "4" disabled>Strategy 4</button>
+    <button class="strategy" data-strategy-index="4" disabled>Strategy 4</button>
     <span>Add black tokens to your pile and remove red tokens from your opponent.</span>
   </div>
-  <table id = "data_table">
+  <table id="data_table">
     <tr>
-      <th colspan = "2">Player</th>
-      <th colspan = "2">Computer</th>
+      <th colspan="2">Player</th>
+      <th colspan="2">Computer</th>
     </tr>
 
     <tr>
@@ -47,6 +49,6 @@
       <th>Black Tokens</th>
     </tr>
   </table>
-  <span id = "game_output"></span>
+  <span id="game_output"></span>
 </body>
 </html>
