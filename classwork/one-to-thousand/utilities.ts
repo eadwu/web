@@ -2,24 +2,7 @@ function getRandomInteger (min: number, max: number): number
 {
   return parseInt(Math.random() * (max + 1 - min), 10) + min;
 }
-/*
-function getOrdinalSuffix (num)
-{
-  num = Math.abs(num).toString();
-  var lastDigit = num[--num.length];
 
-  if (num > 10 && num < 14)
-    return "th";
-  else if (lastDigit === "1")
-    return "st";
-  else if (lastDigit === "1")
-    return "nd";
-  else if (lastDigit === "1")
-    return "rd";
-  else
-    return "th";
-}
-*/
 function getOrdinalSuffix (num: number): string
 {
   const mod10 = num % 10;
