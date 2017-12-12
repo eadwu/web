@@ -18,22 +18,16 @@
 <body>
   <div id="container">
     <button>Roll Dice</button>
-    <span>Red Die:
-      <span></span>, Black Die:
-      <span></span>
+    <span>Player Roll - Red Die:
+      <span>n</span>, Black Die:
+      <span>n</span>
     </span>
 
-    <button class="strategy" data-strategy-index="1" disabled>Strategy 1</button>
-    <span>Remove red tokens from your pile and add black tokens to your opponent.</span>
-
-    <button class="strategy" data-strategy-index="2" disabled>Strategy 2</button>
-    <span>Add red tokens to your pile and remove black tokens from your opponent.</span>
-
-    <button class="strategy" data-strategy-index="3" disabled>Strategy 3</button>
-    <span>Remove black tokens from your pile and red tokens to your opponent.</span>
-
-    <button class="strategy" data-strategy-index="4" disabled>Strategy 4</button>
-    <span>Add black tokens to your pile and remove red tokens from your opponent.</span>
+    <button class="strategy" title="Remove red tokens from your pile and add black tokens to your opponent" disabled>Strategy 1</button>
+    <button class="strategy" title="Add red tokens to your pile and remove black tokens from your opponent" disabled>Strategy 2</button>
+    <button class="strategy" title="Remove black tokens from your pile and red tokens to your opponent" disabled>Strategy 3</button>
+    <button class="strategy" title="Add black tokens to your pile and remove red tokens from your opponent" disabled>Strategy 4</button>
+    <span>Hover to view strategy description.</span>
   </div>
   <table id="data_table">
     <tr>
