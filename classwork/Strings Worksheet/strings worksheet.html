@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<!--
+	Strings are an inherent part of programming, but are even more essential when it comes to web programming.  Use the information and the functions below to learn about using strings and their functions.
+
+	Write and test each of the functions outlined below.  Use the string inside of initialize as your experimental data (feel free to change it).
+
+	As you write the test functions, call them from initialize as necessary.  Remember to look at the functions for parameters so that you can provide proper arguments.
+
+	You MAY alter the HTML and CSS in any way you like to facilitate the testing of the functions.
+-->
+<html>
+<head>
+  <title>Strings</title>
+  <style>
+    body {
+      font: bold 24pt arial;
+    }
+  </style>
+
+  <script>
+    function initialize()
+    {
+      outputBox = document.getElementById("divout");
+
+      testString = "Mississipi mud makes messy Mondays."
+    }
+
+    /*
+      STEP 1
+      A string behaves like an array in many ways.  Each character in the string is indexed and the selectedCharacter index is 0.  The length of the string is one less than the last index.  A string has a .length property.
+
+      Unlike an array, you cannot alter the contents of the string by changing the value of length.  The object will readjust the variable based on the actual number of characters in the string.
+
+      FUNCTION lengthTest
+      Output the length of the incoming string to the outputBox.
+      Try changing the length directly and see what happens to it.
+    */
+    function lengthTest(str)
+    {
+      outputBox.textContent = str.length;
+    }
+
+    /*
+      STEP 2
+      Characters are actually just numbers.  Every character has a code associated with it.  In early computers, there were 256 usable characters and they were each given an ASCII code.  Now there are thousands and they are on the Unicode table.
+
+      You can find the character at any index in the string using the charAt function.
+      You can also return the Unicode value of a character at any index in the string using the charCodeAt function.
+      There is also a function called fromCharCode(), which takes a number as a parameter and returns the character as a string.  This function is not called for a specific string, but called in the format, String.fromCharCode(num).
+
+      There are a lot of uses for Unicode values, including testing the range of characters.  The characters 0 - 9, a - z, and A - Z all appear on the chart consecutively and in order.
+
+      FUNCTION characterTest
+      Output the character from the incoming string using the incoming index.  Output the unicode value of that character as well.
+    */
+    function characterTest(str, idx)
+    {
+      outputBox.textContent = str[ idx ] + ":" + str.charCodeAt(idx);
+    }
+
+    /*
+      STEP 3
+      Like arrays, strings have the indexOf and lastIndexOf functions, which return the index of the first or last occurrence of a search key.  In an array, you search for a particular item in the array.  With a string, you can search for a single character or a an entire substring.
+
+      FUNCTION indexOfTest
+      Output the index and the last index of the searchkey from the incoming string.
+    */
+    function indexOfTest(str, searchkey)
+    {
+      outputBox.textContent = str.indexOf(searchkey) + ":" + str.lastIndexOf(searchkey);
+    }
+
+    /*
+      STEP 4
+      There are several string functions that appear to alter the contents of the string.  Actually, none of these functions change the original string.  Instead, they create a new string and return it, leaving the original intact.  If you want to alter the original string, simply reassign the returned value back to the original.
+
+      str = str.toLowercase();
+        or
+      str = str.toUppercase();
+
+      The replace function will replace the first instance of a specified substring with a replacement substring.  What if you wanted to replace all occurrences of the specified substring?  How would you do that?
+
+      FUNCTION alterationsTest
+      Convert the incoming string to uppercase and to lowercase.  Also replace the first instance of "rep" with "repWith".
+    */
+    function alterationsTest(str, rep, repWith)
+    {
+      outputBox.textContent = str.toUpperCase() + ":" + str.toLowerCase() + ":" + str.replace(rep, repWith);
+    }
+
+    /*
+      STEP 5
+      There are 2 functions commonly used for breaking up a string.
+
+      The substring function takes in 2 parameters, a start index and an end index.  The function will create and return a string starting with the character at the start index and ending with the character at the index BEFORE the end index.
+
+      The substr function takes in 2 parameters, a start index and a length.  The function will create and return a string starting with the character at the start index and comprised of all of the subsequent characters until the string is the specified length.
+
+      Both functions allow you to omit the second parameter, each filling in the substring with all of the remaining characters after the start index.
+
+      FUNCTION substringTest
+      Using the substring and substr functions, output the results of those functions on the incoming string using idx1 and idx2 respectively.  Remember to bear in mind that each of those functions will use idx2 differently.
+    */
+    function substringTest(str, idx1, idx2)
+    {
+      outputBox.textContent = str.substring(idx1, idx2) + ":" + str.substr(idx1, idx2);
+    }
+
+  </script>
+</head>
+
+<body onload="initialize();">
+  <div id="divout"></div>
+</body>
+</html>
