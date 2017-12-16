@@ -6,9 +6,8 @@
     {
       "type": "typescript",
       "tsconfig": "web/tsconfig.json",
-      "option": "watch",
       "problemMatcher": [
-        "$tsc-watch"
+        "$tsc"
       ],
       "group": {
         "kind": "build",
