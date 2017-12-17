@@ -4,3 +4,5 @@
 
 declare function getRandomInteger (min: number, max: number): number;
 declare function getOrdinalSuffix (num: number): string;
+declare function forNDo (n: number, func: (index: number) => void): void;
+declare function mapRange (n: number, func: (index: number) => any): any[];
