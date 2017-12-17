@@ -33,10 +33,6 @@
     "tslint-config-standard": "^7.0.0"
   },
   "browserslist": [
-    "Chrome >= 1",
-    "Firefox >= 3.5",
-    "IE >= 9.0",
-    "Opera >= 10",
-    "Safari >= 3.2"
+    "defaults"
   ]
 }
