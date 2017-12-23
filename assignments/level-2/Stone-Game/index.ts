@@ -12,27 +12,27 @@
   ];
 
   /** @type {HTMLSpanElement} */
-  let unkOutput;
+  let unkOutput: HTMLSpanElement;
   /** @type {HTMLButtonElement[]} */
-  let takeStoneButtons;
+  let takeStoneButtons: NodeList;
 
   let activeGame = true;
   let isPlayerTurn = false;
   let stonePiles = tmp.slice();
   /**
-   * Recursion with FP principles
+   * Recursion through a(n) [transformed] Array
    * @param {number} index - The index to start the function on
    * @param {*} source - An Object that is convertable to an Array
-   * @param {function(number, Array<any>): boolean} condition - Function
+   * @param {function(param0: number, param1: Array<any>): boolean} condition - Function
    *   with parameters of the current index and the new array; should
    *   return a boolean that tells whether or not the recursion should
    *   continue
-   * @param {function(*, number): void} func - The function to invoke on
+   * @param {function(param0: *, param1: number): void} func - The function to invoke on
    *   the value of the current index
    */
   const recurse = source => index => condition => func =>
   {
-    const [ value, ..._ ] = source;
+    const [ value, ..._ ] = Array.isArray(source) ? source : Array.from(source);
     func(value)(index);
     if (condition(index)(_)) recurse(_)(++index)(condition)(func);
   };
@@ -40,13 +40,13 @@
    * Randomly picks an insult from the array `unkInsults`
    * @return {string} The string containing the insult picked
    */
-  const getRandomInsult = () => unkInsults[ floor(random() * unkInsults.length) ];
+  const getRandomInsult = () => (unkInsults[ floor(random() * unkInsults.length) ]);
   /**
    * Disables buttons that would make a pile negative if clicked upon
    */
   function disableInvalidButtons ()
   {
-    recurse(takeStoneButtons)(0)(() => arr => arr.length > 0)(takeStoneButton => () =>
+    recurse(takeStoneButtons)(0)(() => arr => (arr.length > 0))(takeStoneButton => () =>
     {
       const pileIndex = takeStoneButton.parentNode.getAttribute("data-pile");
       const stoneAmount = takeStoneButton.getAttribute("data-amount");
@@ -60,7 +60,7 @@
    */
   function syncDisplayToSource ()
   {
-    recurse(stonePiles)(0)(() => arr => arr.length > 0)(amount => pile =>
+    recurse(stonePiles)(0)(() => arr => (arr.length > 0))(amount => pile =>
     {
       document.querySelector(`#count${pile}`).textContent = amount;
     });
@@ -73,7 +73,7 @@
   {
     let tmp = 0;
     let largestPiles = [];
-    recurse(stonePiles)(0)(() => arr => arr.length > 0)(amount => pile =>
+    recurse(stonePiles)(0)(() => arr => (arr.length > 0))(amount => pile =>
     {
       if (amount > tmp)
       {
@@ -95,7 +95,7 @@
    * @param {number} stones - The amount of stones to take from the pile
    * @param {boolean} isPlayer - Whether this is an action of the player
    */
-  function takeStonesFromPile (pile, stones, isPlayer)
+  function takeStonesFromPile (pile: number, stones: number, isPlayer: boolean)
   {
     if (!activeGame) return;
     stonePiles[ pile ] -= stones;
@@ -131,7 +131,7 @@
   function isGameOver ()
   {
     let gameOver = true;
-    recurse(takeStoneButtons)(0)(() => arr => arr.length > 0)(takeStoneButton => () =>
+    recurse(takeStoneButtons)(0)(() => arr => (arr.length > 0))(takeStoneButton => () =>
     {
       if (!takeStoneButton.hasAttribute("disabled"))
         gameOver = false;
@@ -156,7 +156,7 @@
 
     initialize();
 
-    recurse(takeStoneButtons)(0)(() => arr => arr.length > 0)(takeStoneButton => () =>
+    recurse(takeStoneButtons)(0)(() => arr => (arr.length > 0))(takeStoneButton => () =>
     {
       takeStoneButton.addEventListener("click", () =>
       {
@@ -175,7 +175,7 @@
     resetButton.addEventListener("click", () =>
     {
       stonePiles = tmp.slice();
-      recurse(takeStoneButtons)(0)(() => arr => arr.length > 0)(takeStoneButton => () =>
+      recurse(takeStoneButtons)(0)(() => arr => (arr.length > 0))(takeStoneButton => () =>
       {
         activeGame = true;
         isPlayerTurn = false;
