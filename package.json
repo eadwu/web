@@ -2,7 +2,7 @@
   "name": "web",
   "version": "1.0.0",
   "scripts": {
-    "clean": "find . -not -path \\*node_modules\\* -type f -name \\*.js -delete"
+    "clean": "git clean -fX"
   },
   "repository": {
     "type": "git",
