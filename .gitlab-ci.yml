@@ -32,8 +32,8 @@ test:
     paths:
       - test
 
-deploy:
-  stage: pages
+pages:
+  stage: deploy
   dependencies:
     - build
   only:
@@ -47,4 +47,4 @@ deploy:
 stages:
   - build
   - test
-  - pages
+  - deploy
