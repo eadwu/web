@@ -1,0 +1,50 @@
+image: starefossen/ruby-node:latest
+
+variables:
+  JEKYLL_ENV: production
+  NODE_ENV: production
+
+before_script:
+  - bundle install
+  - npm install
+
+after_script:
+  - rm -r typings
+  - find . -type f \( -name \*.ts -o -name \*.jade \) -delete
+
+build:
+  stage: build
+  artifacts:
+    expire_in: 30min
+    paths:
+      - .
+  script:
+    - npx tsc -p tsconfig.json || true
+
+test:
+  stage: test
+  dependencies:
+    - build
+  script:
+    - bundle exec jekyll build -d test
+  artifacts:
+    expire_in: 30min
+    paths:
+      - test
+
+deploy:
+  stage: pages
+  dependencies:
+    - build
+  only:
+    - master
+  script:
+    - bundle exec jekyll build -d public
+  artifacts:
+    paths:
+      - public
+
+stages:
+  - build
+  - test
+  - pages
