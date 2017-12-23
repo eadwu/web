@@ -20,6 +20,7 @@ build:
       - .
   script:
     - npx sass --sourcemap=none --update .
+    - npx pug assignments
     - npx tsc -p tsconfig.json || true
 
 test:
