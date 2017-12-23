@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--
+  Edmund Wu
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <script src="utilities.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var results;
+    var maxRows;
+
+    function initialize()
+    {
+      results = [];
+      maxRows = 100;
+
+      for (var i = 2; i <= 12; i++)
+        results[ i ] = 0;
+      rollDie();
+    }
+
+    function rollDie()
+    {
+      forNDo(maxRows, () =>
+      {
+        var dieSum = getRandomInteger(1, 6) + getRandomInteger(1, 6);
+        results[ dieSum ]++;
+      });
+      display();
+    }
+
+    function display()
+    {
+      forNDo(results.length, index =>
+      {
+        var value = results[ index ];
+        if (typeof value !== "number") return;
+        var indexTableRow = document.getElementById(index);
+        var tableRowCells = indexTableRow.querySelectorAll("td");
+
+        tableRowCells[ 1 ].textContent = value;
+        tableRowCells[ 2 ].textContent = parseInt(value / maxRows * 1e2, 10) + "%";
+      });
+    }
+  </script>
+</head>
+<body onload="initialize();">
+  <table>
+    <tr>
+      <th>Result</th>
+      <th>Frequency</th>
+      <th>Percent</th>
+    </tr>
+
+    <tr id="2">
+      <td>2</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="3">
+      <td>3</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="4">
+      <td>4</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="5">
+      <td>5</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="6">
+      <td>6</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="7">
+      <td>7</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="8">
+      <td>8</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="9">
+      <td>9</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="10">
+      <td>10</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="11">
+      <td>11</td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr id="12">
+      <td>12</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</body>
+</html>

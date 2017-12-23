@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<!--
+  Edmund Wu
+-->
+<html>
+<!--
+
+		You have been given a page with a list of grocery items.  By clicking on those items, the user will be able to fill up a shopping cart with items.
+
+		Each time the user clicks on one of the items in the list, the program will store that item in an array and display all of the items in the cart (see the screen shot).
+
+		When displaying the items in the cart, you should not display any item more than once.  Instead, you will put the quantity of that item in parentheses next to the item image.
+
+		The cart is displayed in the <span> with the id of "cart".
+
+		Refer to the screen shot for an idea of how it's supposed to look.  Note that there is a 3 in the parentheses next to the cheese, meaning that the user clicked on cheese 3 times.
+
+	-->
+<head>
+  <title>Grocery List</title>
+
+  <style>
+    h1 {
+      text-align: center;
+      font: 36pt calibri bold;
+      margin-top: 20px;
+    }
+
+    ul {
+      margin-left: 50px;
+      margin-top: 50px;
+      list-style-type: none;
+      text-align: center;
+      display: inline-block;
+      width: 40%;
+    }
+
+    li {
+      font: 18pt calibri black;
+      border: thick outset grey;
+      width: 300px;
+      background-color: lightgrey;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    img {
+      width: 110px;
+    }
+
+    div {
+      display: inline-block;
+      width: 48%;
+      font: 18pt comic sans ms;
+      vertical-align: top;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .bground {
+      width: 100%;
+      position: fixed;
+      top: -40px;
+      left: 0px;
+      text-align: center;
+      z-index: -1;
+      opacity: 0.25;
+    }
+  </style>
+
+  <script type="text/javascript">
+    function initialize()
+    {
+      productElements = Array.from(document.querySelectorAll("ul > li"));
+      products = productElements.map(p => p.textContent);
+      quantities = products.map(() => 0);
+
+      cart = document.querySelector("#cart");
+    }
+
+    function newProduct(index)
+    {
+      quantities[ index ] = (quantities[ index ] | 0) + 1;
+      display();
+    }
+
+    function display()
+    {
+      var tmp = [];
+
+      for (var i = 0; i < products.length; i++)
+      {
+        if (quantities[ i ] > 0 && typeof quantities[ i ] === "number")
+          tmp.push(products[ i ] + " (" + quantities[ i ] + ")");
+      }
+
+      cart.innerHTML = tmp.join("<br />");
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <img class="bground" src="https://www.dropbox.com/s/ud7w28cl7z4hbzs/supermarket.jpg?raw=1" />
+  </div>
+  <h1>Shopping List</h1>
+  <ul>
+    <li onclick="newProduct(0);">Bread</li>
+    <li onclick="newProduct(1);">Milk</li>
+    <li onclick="newProduct(2);">Cheese</li>
+    <li onclick="newProduct(3);">Juice</li>
+    <li onclick="newProduct(4);">Fruit</li>
+    <li onclick="newProduct(5);">Vegetables</li>
+    <li onclick="newProduct(6);">Ice Cream</li>
+    <li onclick="newProduct(7);">Cookies</li>
+    <li onclick="newProduct(8);">Laundry Detergent</li>
+    <li onclick="newProduct(9);">Dish Detergent</li>
+    <li onclick="newProduct(10);">Paper Towels</li>
+    <li onclick="newProduct(11);">Napkins</li>
+  </ul>
+  <div>
+    <h2>Shopping Cart</h2>
+    <span id="cart"></span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE HTML>
+<!--
+  Edmund Wu
+-->
+<html>
+<head>
+  <title>Kidnapped By Aliens!!!!!!</title>
+
+  <link rel="stylesheet" href="https://www.dropbox.com/s/73ithjlt7zfxn0o/columns.css?raw=1" />
+  <link rel="stylesheet" href="https://www.dropbox.com/s/hncvhcgnlp6g8jq/dressing.css?raw=1" />
+
+  <style>
+    body {
+      color: white;
+    }
+
+    .column {
+      border: thick double cornflowerblue;
+      border-radius: 20px;
+      position: relative;
+    }
+
+    .colcontent {
+      font: 18pt comic sans ms;
+
+    }
+
+    .bgrnd {
+      opacity: 0.45;
+    }
+
+    .titlecontent {
+      font: 36pt arial;
+      font-weight: bold;
+      border: 10px double cornflowerblue;
+      border-radius: 20px;
+    }
+
+    .columncontainer {
+      margin-top: 75px;
+    }
+
+    button {
+      font: 18pt arial;
+      background-color: cornflowerblue;
+    }
+  </style>
+
+  <script src="utilities.js"></script>
+  <script>
+
+    function nOfVInX(v, x)
+    {
+      return x.reduce(function (a, cV)
+      {
+        return cV === v ? a + 1 : a;
+      }, 0);
+    }
+
+    function addCharacter(character, skillLevel)
+    {
+      characters.push(character);
+      skills.push(skillLevel);
+    }
+
+    function deleteCharacter(cIdx)
+    {
+      characters.splice(cIdx, 1);
+      skills.splice(cIdx, 1);
+      items.splice(cIdx, 1);
+    }
+
+    function caveIn()
+    {
+      var adjuster = getRandomInteger(1, 10);
+      var adjustedMetersRemaining = metersRemaining + adjuster;
+
+      roundMessage = "A cave in has occured, digging regressed by " + adjuster + " m! ";
+      metersRemaining = adjustedMetersRemaining >= TUNNEL_METERS ? TUNNEL_METERS : adjustedMetersRemaining;
+    }
+
+    function caveSpider()
+    {
+      roundMessage = "A cave spider has appeared, ";
+      if (aliens.length > 0)
+      {
+        var chosenAlienIdx = getRandomInteger(0, aliens.length - 1);
+        var chosenAlienType = ALIEN_NAMES[ aliens[ chosenAlienIdx ] - 3 ];
+
+        roundMessage += "One of the aliens, a(n) " + chosenAlienType + " has been eaten by the spider! ";
+        aliens.splice(getRandomInteger(0, aliens.length - 1), 1);
+      }
+      else
+      {
+        var chosenCharacterIdx = getRandomInteger(0, characters.length - 1);
+        var chosenCharacterType = CHARACTER_NAMES[ characters[ chosenCharacterIdx ] ];
+
+        roundMessage += "One of your party members, a(n) " + chosenCharacterType + " has been eaten by the spider! ";
+        deleteCharacter(chosenCharacterIdx, 1);
+      }
+    }
+
+    function survivor()
+    {
+      var rand = Math.random();
+      var chosenCharacter = rand < PLANNER_CHANCE ? PLANNER
+        : rand < FIGHTER_CHANCE ? FIGHTER
+          : DIGGER;
+      var chosenCharacterName = CHARACTER_NAMES[ chosenCharacter ];
+
+      roundMessage = "A survivor was found, the " + chosenCharacterName + " has joined your party! ";
+      addCharacter(chosenCharacter, getRandomInteger(1, 3));
+    }
+
+    function hollowSpace()
+    {
+      var adjustedMetersRemaining = getRandomInteger(1, 10);
+
+      roundMessage = "The diggers have found an empty space, digging progressed by " + adjustedMetersRemaining + " m! ";
+      metersRemaining -= adjustedMetersRemaining;
+    }
+
+    function initialize()
+    {
+      IN_PROGRESS = 0, ESCAPED = 1, DESTROYED = 2;
+      DIGGER_CHANCE = 1, FIGHTER_CHANCE = 0.6, PLANNER_CHANCE = 0.2;
+      DRONE_CHANCE = 1, WARRIOR_CHANCE = 0.25, OVERLORD_CHANCE = 0.1;
+      ITEM_CHANCE = 0.05;
+      EVENT_CHANCE = 0.05;
+
+      CHARACTER_NAMES = [ "Digger", "Fighter", "Planner" ];
+      ALIEN_NAMES = [ "Drone", "Warrior", "Overlord" ];
+      ITEM_NAMES = [ "Power Shovel", "Ray Gun", "Head Lamp" ];
+      EVENTS = [ caveIn, caveSpider, survivor, hollowSpace ];
+
+      OVERLORD_BASE_INCREMENT = 0.1;
+      DIGGER = 0, FIGHTER = 1, PLANNER = 2;
+      DRONE = 3, WARRIOR = 4, OVERLORD = 5;
+      POWER_SHOVEL = 6, RAY_GUN = 7, HEAD_LAMP = 8;
+
+      DIG = 0, FIGHT = 1;
+      TUNNEL_METERS = 100;
+      ALIENS = 0.6, ALIEN_PARTY = 6;
+      DIFFERENTIAL = 2;
+
+      aliens = [];
+      characters = [];
+      skills = [];
+      items = [];
+      roundChoice = DIG;
+      aliensComing = ALIENS;
+      gameState = IN_PROGRESS;
+      roundMessage = "";
+
+      metersRemaining = TUNNEL_METERS;
+
+      messageOut = document.getElementById("round");
+      rosterOut = document.getElementById("party");
+      alienRosterOut = document.getElementById("alien_party");
+      metersOut = document.getElementById("distance");
+
+      buildCharacters(getRandomInteger(6, 10), getRandomInteger(6, 10));
+      display();
+    }
+
+    function buildCharacters(howManyNoobs, howManyAliens)
+    {
+      forNDo(howManyNoobs, function ()
+      {
+        addCharacter(getRandomInteger(DIGGER, PLANNER), getRandomInteger(1, 3));
+      });
+
+      forNDo(howManyAliens, function ()
+      {
+        var rand = Math.random();
+        var chosenAlien = aliens.indexOf(OVERLORD) > -1 ? rand <= WARRIOR_CHANCE ? WARRIOR
+          : DRONE
+          : rand <= OVERLORD_CHANCE ? (ALIENS += OVERLORD_BASE_INCREMENT, aliensComing = ALIENS, OVERLORD)
+            : rand <= WARRIOR_CHANCE ? WARRIOR
+              : DRONE;
+
+        aliens.push(chosenAlien);
+      });
+    }
+
+    function aliensAttack()
+    {
+      if (Math.random() > aliensComing || aliens.length <= 0)
+      {
+        aliensComing += 0.1;
+        if (aliensComing > ALIENS)
+          aliensComing = ALIENS;
+
+        return 0;
+      }
+      else
+      {
+        var numAliens = aliens.length;
+        aliensComing -= 0.1;
+        return numAliens;
+      }
+    }
+
+    function getCharacterSkill(cType)
+    {
+      return characters.reduce(function (a, v, i)
+      {
+        return v === cType ? a + skills[ i ] : a;
+      }, 0);
+    }
+
+    function runAttack(numAliens)
+    {
+      var fighterSkill = getCharacterSkill(FIGHTER);
+
+      if (roundChoice === FIGHT)
+      {
+        fighterSkill += getCharacterSkill(PLANNER);
+        fighterSkill += items.reduce(function (a, cV, i)
+        {
+          return cV === RAY_GUN ? a + getRandomInteger(1, 3) * skills[ i ]
+            : cV === HEAD_LAMP ? a + getRandomInteger(1, 6)
+              : a;
+        }, 0);
+      }
+      else
+      {
+        fighterSkill /= DIFFERENTIAL;
+      }
+
+      var alienSkill = aliens.reduce(function (a, v)
+      {
+        return v === WARRIOR ? a + 2 : a + 1;
+      }, 0);
+      if (alienSkill > fighterSkill)
+      {
+        deleteCharacter(getRandomInteger(0, characters.length - 1));
+        return "You were overwhelmed by " + numAliens + " of them and lost a character.";
+      }
+
+      if (aliens.indexOf(DRONE) > -1)
+        aliens.splice(aliens.indexOf(DRONE), 1);
+      else if (aliens.indexOf(WARRIOR) > -1)
+        aliens.splice(aliens.indexOf(WARRIOR), 1);
+      else
+        aliens = [];
+
+      return "You beat back " + numAliens + " aliens!";
+    }
+
+    function runDig()
+    {
+      var diggerSkill = getCharacterSkill(DIGGER);
+
+      if (roundChoice === DIG)
+      {
+        diggerSkill += getCharacterSkill(PLANNER);
+        diggerSkill += items.reduce(function (a, cV, i)
+        {
+          return cV === POWER_SHOVEL ? a + getRandomInteger(1, 3) * skills[ i ]
+            : cV === HEAD_LAMP ? a + getRandomInteger(1, 6)
+              : a
+        }, 0);
+      }
+      else
+      {
+        diggerSkill /= DIFFERENTIAL;
+      }
+
+      diggerSkill = Math.round(diggerSkill);
+      if (diggerSkill <= 1)
+        diggerSkill = 1;
+
+      metersRemaining -= diggerSkill;
+      return diggerSkill;
+    }
+
+    function runRound(plan)
+    {
+      if (gameState !== IN_PROGRESS)
+        return;
+
+      roundChoice = plan;
+      numAliens = aliensAttack();
+
+      if (Math.random() <= EVENT_CHANCE)
+        EVENTS[ getRandomInteger(0, EVENTS.length - 1) ]();
+
+      if (numAliens > 0)
+      {
+        roundMessage += "The aliens are attacking!";
+        roundMessage += "  " + runAttack(numAliens);
+      }
+      else
+      {
+        if (Math.random() <= ITEM_CHANCE)
+        {
+          var chosenItemIndex = getRandomInteger(POWER_SHOVEL, HEAD_LAMP);
+          var adjustedChosenItemIndex = chosenItemIndex - 6;
+
+          var chosenItemName = ITEM_NAMES[ adjustedChosenItemIndex ];
+          var formattedItemName = chosenItemName.toLowerCase();
+          var validCharacterType = CHARACTER_NAMES[ adjustedChosenItemIndex ];
+
+          var numberOfValidCharacters = nOfVInX(adjustedChosenItemIndex, characters);
+          var numberOfValidItemsOwned = nOfVInX(chosenItemIndex, items);
+
+          roundMessage += "A " + formattedItemName + " was found! ";
+          if (numberOfValidCharacters === numberOfValidItemsOwned)
+          {
+            roundMessage += "The item has been discarded due to an insufficient amount of " + validCharacterType + "s. ";
+          }
+          else
+          {
+            var dividerIdx = items.indexOf(chosenItemIndex);
+            var adjustedDividerIdx = dividerIdx < 0 ? 0 : dividerIdx + 1;
+            var targetIdx = characters.slice(adjustedDividerIdx).indexOf(adjustedChosenItemIndex) + adjustedDividerIdx;
+
+            items[ targetIdx ] = chosenItemIndex;
+          }
+        }
+
+        roundMessage += "You dug through " + runDig() + " meters.";
+      }
+
+      checkGameOver();
+
+      display();
+      roundMessage = "";
+    }
+
+    function checkGameOver()
+    {
+      if (characters.length === 0)
+        gameState = DESTROYED;
+
+      if (metersRemaining <= 0)
+        gameState = ESCAPED;
+    }
+
+    function display()
+    {
+      rosterOut.innerHTML = "";
+      alienRosterOut.innerHTML = "";
+
+      rosterOut.innerHTML = characters.map(function (_, i)
+      {
+        return CHARACTER_NAMES[ characters[ i ] ] + " (" + skills[ i ] + ")" + (items[ i ] ? " [" + ITEM_NAMES[ items[ i ] - 6 ] + "]" : "");
+      }).join("<br />");
+
+      alienRosterOut.innerHTML = aliens.map(function (_, i)
+      {
+        return ALIEN_NAMES[ aliens[ i ] - 3 ];
+      }).join("<br />");
+
+      metersOut.innerHTML = metersRemaining;
+      messageOut.innerHTML = roundMessage + "<br />";
+
+      if (gameState === DESTROYED)
+        messageOut.innerHTML += "You were destroyed!";
+
+      if (gameState === ESCAPED)
+        messageOut.innerHTML += "You made it to freedom!";
+    }
+
+  </script>
+</head>
+
+<body onload="initialize();">
+  <img class="bgrnd" src="https://www.dropbox.com/s/edduwzez1fbs46s/alien%20tunnels.png?raw=1" />
+  <h1 class="titlecontainer">
+    <span class="titlecontent">Kidnapped By Aliens!!!!!!</span>
+  </h1>
+  <div class="columncontainer">
+    <div class="column">
+      <img class="bgrnd" src="https://www.dropbox.com/s/d5xjwzxj4o03aud/alien%20walls.jpg?raw=1" />
+      <div class="contentbox">
+        <h1 class="coltitle">Your Party</h1>
+        <div class="colcontent" id="party"></div>
+      </div>
+    </div>
+    <div class="column">
+      <img class="bgrnd" src="https://www.dropbox.com/s/d5xjwzxj4o03aud/alien%20walls.jpg?raw=1" />
+      <div class="contentbox">
+        <h1 class="coltitle">Control Board</h1>
+        <button onclick="runRound(DIG);">Plan to Dig</button>
+        <button onclick="runRound(FIGHT);">Plan to Fight</button>
+        <hr />
+        <div class="colcontent">
+          <span id="distance">100</span> meters remaining.</div>
+        <hr />
+        <div class="colcontent" id="round"></div>
+      </div>
+    </div>
+    <div class="column">
+      <img class="bgrnd" src="https://www.dropbox.com/s/d5xjwzxj4o03aud/alien%20walls.jpg?raw=1" />
+      <div class="contentbox">
+        <h1 class="coltitle">Alien Party</h1>
+        <div class="colcontent" id="alien_party"></div>
+      </div>
+    </div>
+</body>
+</html>
