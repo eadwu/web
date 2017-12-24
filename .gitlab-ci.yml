@@ -9,7 +9,7 @@ before_script:
   - npm install
 
 after_script:
-  - rm -r typings
+  - rm -r .git typings node_modules
   - find . -type f \( -name \*.ts -o -name \*.jade \) -delete
 
 build:
