@@ -8,21 +8,10 @@
       "type": "chrome",
       "request": "launch",
       "name": "Front End (Linux)",
-      "file": "${fileDirname}/index.html",
-      "runtimeExecutable": "/usr/bin/opera-developer",
+      "file": "${file}",
+      "runtimeExecutable": "/usr/bin/vivaldi-snapshot",
       "runtimeArgs": [
-        "--user-data-dir=/tmp/opera-debug",
-        "--remote-debugging-port=9222"
-      ]
-    },
-    {
-      "type": "chrome",
-      "request": "launch",
-      "name": "Front End (Windows)",
-      "file": "${fileDirname}/index.html",
-      "runtimeExecutable": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
-      "runtimeArgs": [
-        "--user-data-dir=/tmp/chrome-debug",
+        "--user-data-dir=/tmp/vivaldi-debug",
         "--remote-debugging-port=9222"
       ]
     }
