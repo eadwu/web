@@ -1,16 +1,12 @@
-extends: stylelint-config-standard
+extends:
+  - stylelint-config-standard
+  - stylelint-config-sass-guidelines
 plugins:
   - stylelint-no-unsupported-browser-features
 rules:
-  # Possible Errors
   color-no-invalid-hex: true
   font-family-no-duplicate-names: true
   function-calc-no-unspaced-operator: true
-  # Stylistic Issues
-  string-quotes: double
-  block-opening-brace-newline-before: always
-  block-opening-brace-space-before: null
-  # Plugin Configuration
   plugin/no-unsupported-browser-features:
     - true
     - browsers:

@@ -4,6 +4,20 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "scss: build",
+      "type": "shell",
+      "command": "npx sass --sourcemap=none --update assignments classwork",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "scss: watch",
+      "type": "shell",
+      "command": "npx sass --sourcemap=none --watch assignments classwork",
+    },
+    {
       "type": "typescript",
       "tsconfig": "web/tsconfig.json",
       "problemMatcher": [

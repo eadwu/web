@@ -1,5 +1,7 @@
+.sass-cache
 node_modules
 
 *.js
+*.css
 *.log
 .DS_Store

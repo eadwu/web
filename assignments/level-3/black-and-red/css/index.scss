@@ -1,0 +1,51 @@
+body {
+  background-color: #fff;
+}
+
+table {
+  color: #fff;
+  display: inline-block;
+  margin-left: 5vw;
+  position: absolute;
+  table-layout: fixed;
+}
+
+td {
+  text-align: center;
+}
+
+div button {
+  display: block;
+  height: 3vh;
+  margin-bottom: 1vh;
+}
+
+tr,
+td,
+th {
+  padding: 5px 10px;
+}
+
+tr:nth-of-type(2n+2),
+th:nth-of-type(odd) {
+  background-color: #f44336;
+}
+
+tr:nth-of-type(2n+3),
+th:nth-of-type(even) {
+  background-color: #424242;
+}
+
+.container {
+  display: inline-block;
+}
+
+.output {
+  display: block;
+  position: absolute;
+}
+
+.container,
+.output {
+  color: #000;
+}

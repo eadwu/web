@@ -2,119 +2,115 @@
 <html>
 <head>
   <title>Into The Woods</title>
-  <link rel = "stylesheet" href = "woods.css" />
+  <link rel="stylesheet" href="woods.css" />
   <style>
-    .bgrnd
-    {
-      top: 0;
+    .bgrnd {
       left: 0;
+      position: fixed;
+      top: 0;
       width: 100%;
       z-index: -1;
-      position: fixed;
     }
 
-    li > img, li div
-    {
+    li > img,
+    li div {
       display: none;
     }
 
-    li, span
-    {
+    li,
+    span {
       background-color: #d9ecca;
       color: #3e6022;
     }
 
-    h1, li
-    {
+    h1,
+    li {
       font-weight: bold;
     }
 
-    h1
-    {
-      text-align: center;
+    h1 {
       margin-top: 100px;
+      text-align: center;
     }
 
-    li
-    {
-      width: 175px;
+    li {
       height: 40px;
       padding: 12px;
+      width: 175px;
     }
 
-    span
-    {
+    span {
       padding: 2px 6px;
     }
 
-    li:hover img, li:hover div
-    {
+    li:hover img,
+    li:hover div {
       display: inline;
     }
 
-    li > img
-    {
+    li > img {
       height: 40px;
     }
 
-    li div img
-    {
-      top: 0;
-      left: 35%;
+    li div img {
       height: 413px;
+      left: 35%;
       position: absolute;
+      top: 0;
     }
 
-    ul
-    {
+    ul {
       position: relative;
     }
 
-    li, span
-    {
+    li,
+    span {
       background-color: #d9ecca;
+      border: 2px solid rgb(0, 100, 0);
+      border-radius: 12px;
+      box-shadow: 8px 8px 5px rgb(169, 169, 169);
       color: #3e6022;
       opacity: 0.85;
-      border: 2px solid darkgreen;
-      border-radius: 12px;
-      box-shadow: 8px 8px 5px darkgrey;
     }
   </style>
 </head>
 <body>
   <!-- Background image -->
-  <img class = "bgrnd" src = "https://www.dropbox.com/s/zvukoxi0n8emm5y/bamboo-forest.jpg?raw=1" />
+  <img class="bgrnd" src="https://www.dropbox.com/s/zvukoxi0n8emm5y/bamboo-forest.jpg?raw=1" />
 
   <!--
     By putting the title into a span inside the h1, we can style just the title words, leaving the rest of the line invisible.
   -->
-  <h1><span>Welcome to the Bamboo Forest</span></h1><br />
+  <h1>
+    <span>Welcome to the Bamboo Forest</span>
+  </h1>
+  <br />
 
   <!--
     The nesting of the individual elements on the page allows us to use CSS selectors to change the styling of individual elements.
   -->
   <ul>
     <li>
-      <img src = "https://www.dropbox.com/s/lnmcc7v4jbavc7u/panda%20wide%20eyes.png?raw=1" />
-      About Forests
+      <img src="https://www.dropbox.com/s/lnmcc7v4jbavc7u/panda%20wide%20eyes.png?raw=1" /> About Forests
       <div>
-        <img src = "https://www.dropbox.com/s/io4bpfelc0rrxjr/Usal-Redwood-Forest.jpg?raw=1" />
+        <img src="https://www.dropbox.com/s/io4bpfelc0rrxjr/Usal-Redwood-Forest.jpg?raw=1" />
       </div>
-    </li><br />
+    </li>
+    <br />
     <li>
-      <img src = "https://www.dropbox.com/s/lnmcc7v4jbavc7u/panda%20wide%20eyes.png?raw=1" />
-      About Bamboo
+      <img src="https://www.dropbox.com/s/lnmcc7v4jbavc7u/panda%20wide%20eyes.png?raw=1" /> About Bamboo
       <div>
-        <img src = "https://www.dropbox.com/s/of0z7ane752ldn6/bamboo.jpg?raw=1" />
+        <img src="https://www.dropbox.com/s/of0z7ane752ldn6/bamboo.jpg?raw=1" />
       </div>
-    </li><br />
+    </li>
+    <br />
     <li>
-      <img src = "https://www.dropbox.com/s/lnmcc7v4jbavc7u/panda%20wide%20eyes.png?raw=1" />
-      About Pandas
+      <img src="https://www.dropbox.com/s/lnmcc7v4jbavc7u/panda%20wide%20eyes.png?raw=1" /> About Pandas
       <div>
-        <img src = "https://www.dropbox.com/s/p91ey6psufwie2i/panda_thumb.jpg?raw=1" />
+        <img src="https://www.dropbox.com/s/p91ey6psufwie2i/panda_thumb.jpg?raw=1" />
       </div>
-    </li><br />
+    </li>
+    <br />
   </ul>
 </body>
 </html>
