@@ -1,9 +1,6 @@
 {
   "name": "web",
   "version": "1.0.0",
-  "scripts": {
-    "clean": "git ls-files --ignored --others --exclude-standard | grep -v 'node_modules' | xargs -d '\\n' rm"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bt-wcsp/web.git"
