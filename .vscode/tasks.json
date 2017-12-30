@@ -10,28 +10,22 @@
     },
     {
       "label": "scss: build",
+      "group": "build",
       "type": "shell",
-      "command": "npx sass --sourcemap=none --update assignments classwork",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
+      "command": "npx sass --sourcemap=none --update assignments classwork"
     },
     {
       "label": "scss: watch",
       "type": "shell",
-      "command": "npx sass --sourcemap=none --watch assignments classwork",
+      "command": "npx sass --sourcemap=none --watch assignments classwork"
     },
     {
+      "group": "build",
       "type": "typescript",
       "tsconfig": "web/tsconfig.json",
       "problemMatcher": [
         "$tsc"
-      ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
+      ]
     }
   ]
 }
