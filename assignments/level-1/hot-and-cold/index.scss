@@ -1,81 +1,65 @@
-button
-{
-  color: #e0e0e0;
+button {
   background-color: #616161;
-
-  border: none;
+  border: 0;
   border-radius: 3px;
-
-  width: 70px;
-  height: 30px;
-
-  word-wrap: break-word;
   box-shadow: 1px 1px 4px #616161;
+  color: #e0e0e0;
+  height: 30px;
   transition: box-shadow 1ms;
+  width: 70px;
+  word-wrap: break-word;
 }
 
-button:focus
-{
+button:focus {
   outline: none;
 }
 
-button:active
-{
+button:active {
   box-shadow: 0 0 0 #616161;
 }
 
-div > button
-{
+div > button {
   width: 30px;
 }
 
-div
-{
+div {
   margin-bottom: 5px;
 }
 
-#reset
-{
+.reset {
   background-color: #ef5350;
 }
 
-#submit_guess
-{
+.submit-guess {
   background-color: #78909c;
 }
 
-table
-{
+table {
   border: 1px solid #d84315;
   border-collapse: collapse;
 }
 
-th
-{
-  color: #fff;
+th {
   background-color: #d84315;
+  color: #fff;
   text-decoration: underline;
 }
 
 td,
-th
-{
+th {
+  border-bottom: 1px solid #d84315;
   padding: 3px;
   text-align: left;
-  border-bottom: 1px solid #d84315;
 }
 
-tr:nth-child(odd) td
-{
+tr:nth-child(odd) td {
   border-right: 1px solid #d84315;
 }
 
-th:first-child
-{
+th:first-child {
   border-right: 1px solid #e0e0e0;
 }
 
-td:first-child
-{
+td:first-child {
   font-weight: bold;
 }

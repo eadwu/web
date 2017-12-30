@@ -1,56 +1,51 @@
-body
-{
-  background-color: white;
+body {
+  background-color: #fff;
 }
 
-table
-{
-  color: white;
+table {
+  color: #fff;
   display: inline-block;
-  position: absolute;
   margin-left: 5vw;
+  position: absolute;
   table-layout: fixed;
 }
 
-td
-{
+td {
   text-align: center;
 }
 
-div button
-{
+div button {
   display: block;
   height: 3vh;
   margin-bottom: 1vh;
 }
 
-tr, td, th
-{
-  padding: 5px 10px 5px 10px;
+tr,
+td,
+th {
+  padding: 5px 10px;
 }
 
-tr:nth-of-type(2n+2), th:nth-of-type(odd)
-{
+tr:nth-of-type(2n+2),
+th:nth-of-type(odd) {
   background-color: #f44336;
 }
 
-tr:nth-of-type(2n+3), th:nth-of-type(even)
-{
+tr:nth-of-type(2n+3),
+th:nth-of-type(even) {
   background-color: #424242;
 }
 
-#container
-{
+.container {
   display: inline-block;
 }
 
-#game_output
-{
+.output {
   display: block;
   position: absolute;
 }
 
-#container, #game_output
-{
-  color: black;
+.container,
+.output {
+  color: #000;
 }
