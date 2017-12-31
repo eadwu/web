@@ -4,9 +4,18 @@ extends:
 plugins:
   - stylelint-no-unsupported-browser-features
 rules:
-  color-no-invalid-hex: true
+  block-opening-brace-newline-after: 'always'
+  block-closing-brace-newline-before: 'always'
+  declaration-block-no-duplicate-properties: true
+  declaration-block-no-shorthand-property-overrides: true
+  declaration-colon-space-after: 'always' # always-single-line
   font-family-no-duplicate-names: true
   function-calc-no-unspaced-operator: true
+  function-comma-space-after: 'always' # always-single-line
+  function-linear-gradient-no-nonstandard-direction: true
+  max-empty-lines: 1
+  selector-max-specificity: '0,2,0'
+  selector-max-universal: 0
   plugin/no-unsupported-browser-features:
     - true
     - browsers:
