@@ -4,9 +4,21 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "sass: build",
+      "type": "npm",
+      "script": "sass: build",
+      "group": "build"
+    },
+    {
       "label": "sass: watch",
       "type": "shell",
       "command": "npx sass --sourcemap=none --watch assignments classwork"
+    },
+    {
+      "label": "tsc: build - web/tsconfig.json",
+      "type": "npm",
+      "script": "tsc: build",
+      "group": "build"
     },
     {
       "type": "typescript",
