@@ -25,6 +25,12 @@
       "command": "npx sass --sourcemap=none --poll --watch assignments classwork"
     },
     {
+      "label": "pug: build",
+      "type": "npm",
+      "script": "pug",
+      "group": "build"
+    },
+    {
       "label": "pug: watch",
       "type": "shell",
       "command": "npx pug -w assignments classwork"
