@@ -9,13 +9,13 @@
       "command": "git ls-files --ignored --others --exclude-standard | grep -v 'node_modules' | xargs -d '\\n' rm"
     },
     {
-      "label": "scss: build",
+      "label": "sass: build",
       "group": "build",
       "type": "shell",
       "command": "npx sass --sourcemap=none --update assignments classwork"
     },
     {
-      "label": "scss: watch",
+      "label": "sass: watch",
       "type": "shell",
       "command": "npx sass --sourcemap=none --watch assignments classwork"
     },
