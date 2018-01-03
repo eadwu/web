@@ -27,13 +27,12 @@
     {
       "label": "pug: build",
       "type": "shell",
-      "command": "npx pug assignments",
-      "group": "build"
+      "command": "npx pug assignments classwork"
     },
     {
       "label": "pug: watch",
       "type": "shell",
-      "command": "npx pug -w assignments"
+      "command": "npx pug -w assignments classwork"
     },
     {
       "label": "tsc: build - web/tsconfig.json",
