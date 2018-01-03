@@ -9,11 +9,11 @@
       "command": "npx sass --sourcemap=none --watch assignments classwork"
     },
     {
-      "group": "build",
       "type": "typescript",
       "tsconfig": "web/tsconfig.json",
+      "option": "watch",
       "problemMatcher": [
-        "$tsc"
+        "$tsc-watch"
       ]
     }
   ]
