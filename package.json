@@ -5,6 +5,7 @@
     "build": "npm run tsc && npm run sass",
     "clean": "git ls-files --ignored --others --exclude-standard | grep -v 'node_modules' | xargs -d '\\n' rm",
     "sass": "npx sass --sourcemap=none --update assignments classwork",
+    "pug": "npx pug assignments classwork",
     "tsc": "npx tsc -p tsconfig.json || :"
   },
   "repository": {
