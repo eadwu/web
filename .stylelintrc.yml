@@ -4,6 +4,10 @@ extends:
 plugins:
   - stylelint-no-unsupported-browser-features
 rules:
+  at-rule-no-unknown:
+    - true
+    - ignoreAtRules:
+      - extend
   block-opening-brace-newline-after: 'always'
   block-closing-brace-newline-before: 'always'
   declaration-block-no-duplicate-properties: true
@@ -14,10 +18,16 @@ rules:
   function-comma-space-after: 'always' # always-single-line
   function-linear-gradient-no-nonstandard-direction: true
   max-empty-lines: 1
-  selector-max-specificity: '0,2,0'
+  selector-class-pattern:
+    - '[a-z]{2,3}-[A-z]+(_[A-z]+)?(-[a-z]+)?'
+    - message: 'Selector should be written ECSS style (selector-class-pattern)'
+  selector-list-comma-newline-after: 'always-multi-line'
   selector-max-universal: 0
   plugin/no-unsupported-browser-features:
     - true
     - browsers:
       - defaults
       ignore: []
+  scss/percent-placeholder-pattern:
+    - '[a-z]{2,3}-[A-z]+(_[A-z]+)?(-[a-z]+)?'
+    - message: 'Selector should be written ECSS style (scss/percent-placeholder-pattern)'
