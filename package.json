@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "clean": "git ls-files --ignored --others --exclude-standard | grep -v 'node_modules' | xargs -d '\\n' rm",
-    "sass: build": "npx sass --sourcemap=none --update assignments classwork",
-    "tsc: build": "npx tsc -p tsconfig.json"
+    "sass": "npx sass --sourcemap=none --update assignments classwork",
+    "tsc": "npx tsc -p tsconfig.json || :"
   },
   "repository": {
     "type": "git",
