@@ -149,7 +149,7 @@
 
   document.addEventListener("DOMContentLoaded", () =>
   {
-    const resetButton = document.querySelector("#reset");
+    const resetButton = document.querySelector(".reset");
 
     unkOutput = document.querySelector("#unk");
     takeStoneButtons = document.querySelectorAll("div > button");

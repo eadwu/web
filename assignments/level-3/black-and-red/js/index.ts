@@ -9,7 +9,7 @@
     const User = new Player();
     const Computer = new Player();
 
-    const stdout = document.querySelector("#game_output") as HTMLSpanElement;
+    const stdout = document.querySelector(".output") as HTMLSpanElement;
     // Take advantage of logic, returns first element that matches `selectors`
     const rollDieButton = document.querySelector("button") as HTMLButtonElement;
     const dataTableElement = document.querySelector("#data_table") as HTMLTableElement;
