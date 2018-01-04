@@ -1,0 +1,31 @@
+.cm-Footer,
+.ft-Section_Top,
+.ft-Section_Middle,
+.ft-Section_Bottom {
+  display: flex;
+}
+
+.ft-Section_Top,
+.ft-Section_Middle,
+.ft-Section_Bottom {
+  margin: 0 0 1vh 0;
+}
+
+.cm-Footer {
+  flex-flow: column;
+  padding: 2vw;
+}
+
+.ft-Section_Bottom {
+  .ft-Section_Container {
+    flex-grow: 1;
+  }
+}
+
+.ft-Section_Heading {
+  font-size: 1.65rem;
+}
+
+.ft-Section_SubHeading {
+  font-size: 1.35rem;
+}

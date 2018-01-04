@@ -1,0 +1,22 @@
+include ../navbar/navbar.pug
+
+mixin header(pageIndex)
+  header.cm-Header.sw-Background_Primary
+    .hd-Title Artificial Intelligence
+    // Breadcrumbs used as a navigation bar, logic
+    +navbar("", [{
+      link: "index.html",
+      text: "Home"
+    }, {
+      link: "rl.html",
+      text: "Reinforcement Learning"
+    }, {
+      link: "ml.html",
+      text: "Machine Learning"
+    }, {
+      link: "pathfinding.html",
+      text: "Pathfinding"
+    }, {
+      link: "implementation.html",
+      text: "Implementation"
+    }], pageIndex)

@@ -1,0 +1,16 @@
+//-
+  Creates a navbar
+  @param component {string} Component name of the Module
+  @param entries {Object[]} Array which contains the information to create list items
+  @param index {number} The index of the current page in entries so that the link would be dead
+  @return {HTMLElement} The navbar
+mixin navbar(component, entries, index)
+  nav(class=`cm-Navbar${component}`)
+    ul.nv-List
+      each v, i in entries
+        if i !== index
+          li.nv-List_Entry
+            a(href=v.link)= v.text
+        else
+          li.nv-List_Entry-active
+            a= v.text

@@ -1,0 +1,44 @@
+.cm-Navbar {
+  margin: 0 0 0 2vw;
+}
+
+.nv-List {
+  margin: 0;
+}
+
+.nv-List_Entry, %cm-Navbar_Entry {
+  display: inline;
+  font-size: 1.65rem;
+
+  &:not(:last-child)::after {
+    content: '/';
+  }
+
+  a {
+    padding: 0 5px;
+  }
+}
+
+.nv-List_Entry-active {
+  @extend %cm-Navbar_Entry;
+
+  a {
+    color: $foreground;
+  }
+}
+
+.cm-Navbar_Dropdown {
+  .nv-List_Entry,
+  .nv-List_Entry-active {
+    display: block;
+
+    &::after {
+      content: '';
+    }
+
+    a {
+      font-size: 1.35rem;
+      padding: 0;
+    }
+  }
+}
