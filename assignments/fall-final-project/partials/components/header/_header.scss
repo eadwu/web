@@ -1,12 +1,21 @@
 .cm-Header {
   align-items: center;
-  box-shadow: 0 3px 5px rgba(18, 18, 18, 0.3);
   display: flex;
   justify-content: space-between;
   min-height: 8vh;
   padding: 0 5vw;
   position: sticky;
   top: 0;
+
+  &::after {
+    background: linear-gradient(to right, $color0, $color1);
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
 }
 
 .hd-Title {
