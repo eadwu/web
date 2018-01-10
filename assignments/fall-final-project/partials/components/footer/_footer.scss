@@ -1,3 +1,8 @@
+.cm-Footer {
+  flex-flow: column;
+  padding: 2vw 5vw;
+}
+
 .cm-Footer,
 .ft-Section_Top,
 .ft-Section_Middle,
@@ -11,11 +16,6 @@
   margin: 0 0 1vh 0;
 }
 
-.cm-Footer {
-  flex-flow: column;
-  padding: 2vw;
-}
-
 .ft-Section_Bottom {
   .ft-Section_Container {
     flex-grow: 1;
@@ -26,6 +26,6 @@
   font-size: 1.65rem;
 }
 
-.ft-Section_SubHeading {
+.ft-Section_Details {
   font-size: 1.35rem;
 }
