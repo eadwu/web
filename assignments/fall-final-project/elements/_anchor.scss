@@ -1,3 +1,9 @@
 a {
   color: $color1;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #64b5f6;
+  }
 }
