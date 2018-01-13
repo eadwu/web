@@ -22,7 +22,7 @@
     {
       "label": "sass: watch",
       "type": "shell",
-      "command": "npx sass --sourcemap=none --watch assignments classwork"
+      "command": "npx sass --sourcemap=none --poll --watch assignments classwork"
     },
     {
       "label": "tsc: build - web/tsconfig.json",
