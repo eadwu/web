@@ -1,31 +1,26 @@
 .cm-Footer {
+  display: flex;
   flex-flow: column;
   padding: 2vw 5vw;
 }
 
-.cm-Footer,
-.ft-Section_Top,
-.ft-Section_Middle,
-.ft-Section_Bottom {
-  display: flex;
-}
+.ft-Section {
+  &_Heading {
+    font-size: 1.65rem;
+  }
 
-.ft-Section_Top,
-.ft-Section_Middle,
-.ft-Section_Bottom {
-  margin: 0 0 1vh 0;
-}
+  &_Details {
+    font-size: 1.35rem;
+  }
 
-.ft-Section_Bottom {
-  .ft-Section_Container {
+  &_Bottom &_Container {
     flex-grow: 1;
   }
-}
 
-.ft-Section_Heading {
-  font-size: 1.65rem;
-}
-
-.ft-Section_Details {
-  font-size: 1.35rem;
+  &_Top,
+  &_Middle,
+  &_Bottom {
+    display: flex;
+    margin: 0 0 1vh;
+  }
 }
