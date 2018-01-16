@@ -1,0 +1,39 @@
+extends partials/layouts/boilerplate/boilerplate.pug
+
+block css
+  +link("assets/css/index.css")
+
+block header
+  +header(0)
+
+block content
+  .cm-Container_Section
+    .ct-Section_Main
+      .cm-Card
+        .cd-Title Artifical Intelligence
+        .cd-Body Artificial intelligence (AI, also machine intelligence, MI) is intelligence displayed by machines, in contrast with the natural intelligence (NI) displayed by humans and other animals. In computer science AI research is defined as the study of "intelligent agents": any device that perceives its environment and takes actions that maximize its chance of success at some goal. Colloquially, the term "artificial intelligence" is applied when a machine mimics "cognitive" functions that humans associate with other human minds, such as "learning" and "problem solving".
+        .cd-Footer For more information, see #[a(href="https://en.wikipedia.org/wiki/Artificial_intelligence") here]
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-3
+      +card("_Square", "https://www.sciencedaily.com/images/2018/01/180110150445_1_540x360.jpg", "https://www.sciencedaily.com/releases/2018/01/180110150445.htm", "Robotic implants spur tissue regeneration inside the body")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-7
+      +card("", "http://news.mit.edu/sites/mit.edu.newsoffice/files/styles/news_article_image_top_slideshow/public/images/2017/MIT-Materials-Synthesis_0.jpg?itok=PxmBWnjf", "http://news.mit.edu/2017/machine-learning-system-synthesizes-new-materials-recipes-1221", "Can computers help us synthesize new materials?", "height: 100%;")
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-5
+      +card("", "https://www.sciencedaily.com/images/2017/12/171214141923_1_540x360.jpg", "https://www.sciencedaily.com/releases/2017/12/171214141923.htm", "Engineers program tiny robots to move, think like insects", "height: 40vh;")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-5
+      +card("", "https://www.sciencedaily.com/images/2017/12/171212184131_1_540x360.jpg", "https://www.sciencedaily.com/releases/2017/12/171212184131.htm", "Engineers create artificial graphene in a nanofabricated semiconductor structure", "height: 40vh;")
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-7
+      +card("", "http://news.mit.edu/sites/mit.edu.newsoffice/files/styles/news_article_image_top_slideshow/public/images/2017/MIT-Tensor-Algebra_0.jpg?itok=qoAtbZSs", "http://news.mit.edu/2017/faster-big-data-analysis-tensor-algebra-1031", "Faster big-data analysis", "height: 100%;")
+    .cd-HardFix_Align
+      .cd-Container
+        a.cd-Container_Title(href=href)= text
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-3
+      +card("_Square", "https://www.sciencedaily.com/images/2017/12/171222090313_1_540x360.jpg", "https://www.sciencedaily.com/releases/2017/12/171222090313.htm", "Memristors power quick-learning neural network")

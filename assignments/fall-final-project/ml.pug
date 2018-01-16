@@ -1,0 +1,36 @@
+extends partials/layouts/boilerplate/boilerplate.pug
+
+block css
+  +link("assets/css/ml.css")
+
+block header
+  +header(1)
+
+block content
+  .cm-Container_Section
+    .ct-Section_Main
+      .cm-Card
+        .cd-Title Machine Learning
+        .cd-Body Machine learning is a method of data analysis that automates analytical model building. Using algorithms that iteratively learn from data, machine learning allows computers to find hidden insights without being explicitly programmed where to look.
+        .cd-Footer For more information, see #[a(href="https://en.wikipedia.org/wiki/Machine_learning") here]
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-3
+      +card("_Square", "https://media.wired.com/photos/59f786c09664785d9b95c4f1/master/w_582,c_limit/GeoffHinton-TA-h_14977198.jpg", "https://www.wired.com/story/googles-ai-wizard-unveils-a-new-twist-on-neural-networks/", "Google’s AI Wizard Unveils a New Twist on Neural Networks")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-7
+      +card("", "https://media.wired.com/photos/5a2c4368b266200b7c8e1638/master/w_582,c_limit/Apple-TopArt.jpg", "https://www.wired.com/story/apple-executive-reveals-more-of-its-self-driving-technology/", "Apple Executive Reveals More of Its Self-Driving Technology", "height: 100%;")
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-5
+      +card("", "https://media.wired.com/photos/5a20b13a531a6368b4c810d8/master/w_582,c_limit/CLOUD-TA.jpg", "https://www.wired.com/story/google-amazon-find-not-everyone-is-ready-for-ai/", "Google, Amazon Find Not Everyone Is Ready for AI", "height: 40vh;")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-5
+      +card("", "https://media.wired.com/photos/5a299dee15e73c599bf953fa/master/w_582,c_limit/AI-Conscience-FINAL.jpg", "https://www.wired.com/story/artificial-intelligence-seeks-an-ethical-conscience/", "Artificial Intelligence Seeks An Ethical Conscience", "height: 40vh;")
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-7
+      +card("", "https://media.wired.com/photos/59dfe8bd0140795b7495f8c9/master/w_582,c_limit/ai_builds_ai-01.png", "https://www.wired.com/story/googles-learning-software-learns-to-write-learning-software/", "Google's Learning Software Learns to Write Learning Software", "height: 100%;")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-3
+      +card("_Square", "https://media.wired.com/photos/59d3b570b828a21de366b082/master/w_1798,c_limit/HHLEAD.png", "https://www.wired.com/story/how-to-build-a-self-conscious-ai-machine/", "How to Build a Self-Conscious Machine")

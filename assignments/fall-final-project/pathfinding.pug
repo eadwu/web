@@ -1,0 +1,36 @@
+extends partials/layouts/boilerplate/boilerplate.pug
+
+block css
+  +link("assets/css/pathfinding.css")
+
+block header
+  +header(3)
+
+block content
+  .cm-Container_Section
+    .ct-Section_Main
+      .cm-Card
+        .cd-Title Pathfinding
+        .cd-Body Pathfinding or pathing is the plotting, by a computer application, of the shortest route between two points. It is a more practical variant on solving mazes. This field of research is based heavily on Dijkstra's algorithm for finding a shortest path on a weighted graph.
+        .cd-Footer For more information, see #[a(href="https://en.wikipedia.org/wiki/Pathfinding") here]
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-3
+      +card("_Square", "http://aigamedev.com/static/tutorials/aap-AnyAnglePaths.icon.png", "http://aigamedev.com/open/tutorials/theta-star-any-angle-paths/", "Theta*: Any-Angle Path Planning for Smoother Trajectories in Continuous Environments")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-7
+      +card("", "http://aigamedev.com/wp-content/blogs.dir/5/files/imported/path.jpg", "http://aigamedev.com/open/review/near-optimal-hierarchical-pathfinding/", "Near-Optimal Hierarchical Pathfinding (HPA*)", "height: 100%;")
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-5
+      +card("", "http://aigamedev.com/wp-content/blogs.dir/5/files/2012/02/rooms_astar-290x150.png", "http://aigamedev.com/open/tutorial/symmetry-in-pathfinding/", "Fast Pathfinding via Symmetry Breaking", "height: 40vh;")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-5
+      +card("", "http://aigamedev.com/wp-content/blogs.dir/5/files/2013/07/lazy_trace-290x150.png", "http://aigamedev.com/open/tutorial/lazy-theta-star/", "Lazy Theta*: Faster Any-Angle Path Planning", "height: 40vh;")
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-7
+      +card("", "https://i.imgur.com/8QA7mx3.png", "https://www.aaai.org/ocs/index.php/ICAPS/ICAPS13/paper/viewFile/6060/6194", "An Optimal Any-Angle Pathfinding Algorithm", "height: 100%;")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-3
+      +card("_Square", "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Pathfinding_2D_Illustration.svg/1200px-Pathfinding_2D_Illustration.svg.png", "https://redblobgames.github.io/circular-obstacle-pathfinding/", "Circular Obstacle Pathfinding")
