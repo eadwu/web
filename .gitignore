@@ -4,4 +4,6 @@ node_modules
 *.js
 *.css
 *.log
+!**/vendor/**/*.js
+!**/vendor/**/*.css
 .DS_Store

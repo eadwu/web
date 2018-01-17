@@ -2,9 +2,10 @@
   "name": "web",
   "version": "1.0.0",
   "scripts": {
-    "build": "npm run tsc && npm run sass",
+    "build": "npm run tsc && npm run sass && npm run pug",
     "clean": "git ls-files --ignored --others --exclude-standard | grep -v 'node_modules' | xargs -d '\\n' rm",
     "sass": "npx sass --sourcemap=none --update assignments classwork",
+    "pug": "npx pug assignments classwork",
     "tsc": "npx tsc -p tsconfig.json || :"
   },
   "repository": {
@@ -16,6 +17,7 @@
   "dependencies": {
     "eslint": "^4.13.1",
     "postcss-scss": "^1.0.2",
+    "pug-cli": "^1.0.0-alpha6",
     "stylelint": "^8.2.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2"

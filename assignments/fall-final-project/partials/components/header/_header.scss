@@ -1,0 +1,24 @@
+.cm-Header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 8vh;
+  padding: 0 5vw;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  &::after {
+    background: linear-gradient(to right, $color3, $color4);
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.hd-Title {
+  font-size: 2.25rem;
+}

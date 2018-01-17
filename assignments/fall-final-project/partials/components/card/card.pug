@@ -1,0 +1,13 @@
+//-
+  Creates a card
+  @param component {string} Component name of the Module
+  @param bg {string} The background image for the card
+  @param href {string} The location of the material
+  @param text {string} The value assigned as HTMLElement.textContent
+  @param extra {string=} Extra styling besides the default, hard coded fix
+  @return {HTMLElement} The card
+mixin card(component, bg, href, text, extra)
+  div(class=`cm-Card${component}`, style=`background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5)), url('${bg}') 0 / cover; ${extra}`)
+    .cd-HardFix_Align
+      .cd-Container
+        a.cd-Container_Title(href=href)= text

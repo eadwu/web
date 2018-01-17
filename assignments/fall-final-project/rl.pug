@@ -1,0 +1,36 @@
+extends partials/layouts/boilerplate/boilerplate.pug
+
+block css
+  +link("assets/css/rl.css")
+
+block header
+  +header(2)
+
+block content
+  .cm-Container_Section
+    .ct-Section_Main
+      .cm-Card
+        .cd-Title Reinforcement Learning
+        .cd-Body Reinforcement learning (RL) is an area of machine learning inspired by behaviourist psychology, concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward. The problem, due to its generality, is studied in many other disciplines, such as game theory, control theory, operations research, information theory, simulation-based optimization, multi-agent systems, swarm intelligence, statistics and genetic algorithms. In the operations research and control literature, the field where reinforcement learning methods are studied is called approximate dynamic programming. The problem has been studied in the theory of optimal control, though most studies are concerned with the existence of optimal solutions and their characterization, and not with the learning or approximation aspects. In economics and game theory, reinforcement learning may be used to explain how equilibrium may arise under bounded rationality.
+        .cd-Footer For more information, see #[a(href="https://en.wikipedia.org/wiki/Reinforcement_learning") here]
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-3
+      +card("_Square", "https://futurism.com/wp-content/uploads/2017/07/depen-1124x600.jpg", "https://futurism.com/deepmind-has-taught-an-ai-to-do-something-quite-remarkable/", "DeepMind Has Taught an AI to Do Something Quite Remarkable")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-7
+      +card("", "https://i.imgur.com/heDcaBN.png", "https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf", "Human-level control through Deep Reinforcement Learning", "height: 100%;")
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-5
+      +card("", "https://futurism.com/wp-content/uploads/2017/07/aibot-1400x600.png", "https://futurism.com/researchers-develop-a-new-algorithm-to-teach-ai-to-learn-and-how-to-adapt/", "Researchers Develop a New Algorithm to Teach AI to Learn — and How to Adapt", "height: 40vh;")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-5
+      +card("", "https://futurism.com/wp-content/uploads/2017/08/Elon_Musks_and_the_Need_for_Symbiosis_with_Machines_in_the_Age_of_AI-1376x600-1376x600.jpg", "https://futurism.com/elon-musks-research-venture-has-trained-ai-to-teach-itself/", "Elon Musk’s Research Venture Has Trained AI To Teach Itself", "height: 40vh;")
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-7
+      +card("", "https://cdn-images-1.medium.com/max/800/1*1BZWu1-RoTcDbzsUngkPfw.jpeg", "https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0", "Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks", "height: 100%;")
+    .sw-Layout_Spacer.sw-Flex_Col-2
+    .ct-Section_Default.sw-Flex_Col-3
+      +card("_Square", "https://futurism.com/wp-content/uploads/2017/05/GettyImages-717157841-1-1400x600.jpg", "https://futurism.com/researchers-have-created-an-ai-that-is-naturally-curious/", "Researchers Have Created an AI That Is Naturally Curious")

@@ -1,0 +1,62 @@
+include ../navbar/navbar.pug
+
+footer.cm-Footer.sw-Background_Color8
+  .ft-Section_Top
+    .ft-Section_Heading About this Website #[br]
+      span.ft-Section_Details #[a(href="https://bt-wcsp.gitlab.io/web/assignments/fall-final-project/") Hosted] with Gitlab Pages - #[a(href="https://gitlab.com/bt-wcsp/web/tree/master/assignments/fall-final-project") Source Code]
+  .ft-Section_Bottom
+    .ft-Section_Container
+      .ft-Section_Heading Pages
+      +navbar("_Dropdown", [{
+        link: "index.html",
+        text: "Home"
+      }, {
+        link: "ml.html",
+        text: "Machine Learning"
+      }, {
+        link: "rl.html",
+        text: "Reinforcement Learning"
+      }, {
+        link: "pathfinding.html",
+        text: "Pathfinding"
+      }, {
+        link: "implementation.html",
+        text: "Implementation"
+      }])
+    .ft-Section_Container
+      .ft-Section_Heading Third Party Vendors
+      +navbar("_Dropdown", [{
+        link: "https://p5js.org/",
+        text: "p5.js"
+      }, {
+        link: "https://highlightjs.org/",
+        text: "highlight.js"
+      }, {
+        link: "http://getskeleton.com/",
+        text: "Skeleton"
+      }])
+    .sw-Layout_Spacer
+    .ft-Section_Container
+      .ft-Section_Heading Resources
+      +navbar("_Dropdown", [{
+        link: "http://aigamedev.com/",
+        text: "AiGameDev.com"
+      }, {
+        link: "https://deepmind.com/research/dqn/",
+        text: "Deepmind"
+      }, {
+        link: "https://futurism.com/",
+        text: "Futurism"
+      }, {
+        link: "http://news.mit.edu/",
+        text: "MIT News"
+      }, {
+        link: "https://www.redblobgames.com/",
+        text: "Red Blob Games"
+      }, {
+        link: "https://www.sciencedaily.com/news/computers_math/artificial_intelligence/",
+        text: "Science Daily"
+      }, {
+        link: "https://www.wired.com/",
+        text: "Wired"
+      }])

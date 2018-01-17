@@ -1,0 +1,26 @@
+.cm-Footer {
+  display: flex;
+  flex-flow: column;
+  padding: 2vw 5vw;
+}
+
+.ft-Section {
+  &_Heading {
+    font-size: 1.65rem;
+  }
+
+  &_Details {
+    font-size: 1.35rem;
+  }
+
+  &_Bottom &_Container {
+    flex-grow: 1;
+  }
+
+  &_Top,
+  &_Middle,
+  &_Bottom {
+    display: flex;
+    margin: 0 0 1vh;
+  }
+}
