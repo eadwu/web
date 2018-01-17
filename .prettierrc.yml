@@ -1,0 +1,7 @@
+---
+printWidth: 480
+overrides:
+  -
+    files: "*.scss"
+    options:
+      singleQuote: true
