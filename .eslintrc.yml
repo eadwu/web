@@ -13,7 +13,7 @@
       - allman
     curly:
       - 2
-      - multi
+      - multi-or-nest
       - consistent
     compat/compat: error
   plugins:
