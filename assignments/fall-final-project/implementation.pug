@@ -1,0 +1,271 @@
+extends partials/layouts/boilerplate/boilerplate.pug
+include partials/components/header/header.pug
+include tools/utilities.pug
+
+block css
+  +link("assets/css/implementation.css")
+
+block js
+  +script("assets/js/pathfinding.js")
+  script(type="text/javascript").
+    document.addEventListener("DOMContentLoaded", function () {
+      hljs.initHighlightingOnLoad();
+    });
+
+block vendors
+  // highlight.js
+  +link("vendor/highlight/styles/hybrid.css")
+  +script("vendor/highlight/highlight.pack.js")
+  // p5.js
+  +script("vendor/p5/p5.min.js")
+
+block header
+  +header(4)
+
+block content
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-1
+      .cm-Card(style="height: 60vh;")
+        .cd-HardFix_Align
+
+  .cm-Container_Section
+    .ct-Section_Default.sw-Flex_Col-1
+      input(placeholder="0-14, Starting X Coordinate", type="number", data-target-type="X")
+      input(placeholder="0-14, Starting Y Coordinate", type="number", data-target-type="Y")
+
+  h1 Code Explanation
+  p.
+    Inefficient thing that gets the right path with a bunch of other nonsense.
+  pre
+    code.javascript.
+      var _this = this;
+      (function ()
+      {
+        var _window = _this;
+        ...
+      }.call(this));
+  p.
+    In this snippet, we store the current global namespace into #[code _this] so that we can access #[code window] later while _window is a variable that references #[code _this].
+  pre
+    code.javascript.
+      function getRandomInteger (min, max)
+      {
+        return parseInt(Math.random() * (max + 1 - min), 10) + min;
+      }
+
+      function loop (arr, func)
+      {
+        for (var i = 0; i < arr.length; i++)
+          func(arr[i], i, arr);
+      }
+  p.
+    In this snippet here, we define some "global" functions, #[code getRandomInteger], which gets an integer between [min, max] and #[code loop], which loops around an array and executes a function for every value whose parameters are the value, the current index, and the source array.
+  pre
+    code.javascript.
+      document.addEventListener("DOMContentLoaded", function ()
+      {
+          ...
+      });
+  p.
+    Initialize function, runs when the DOM is finished loading.
+  pre
+    code.javascript.
+      var container = document.querySelector(".cd-HardFix_Align");
+      var inputElements = document.querySelectorAll("input");
+
+      var modifiers = [
+        [-1, -1],
+        [0, -1],
+        [-1, 0],
+        [0, 1],
+        [1, 0],
+        [1, 1]
+      ];
+
+      var types = {
+        SPACE: 0,
+        ORIGINPOINT: 1,
+        ENDPOINT: 2,
+        WALL: 3,
+        PATH: 4
+      };
+  p.
+    Setup variables, #[code container] is the parent element of the canvas needed for p5.js, #[code inputElements] holds an #[code Array] of elements of type #[code HTMLInputElement], #[code modifiers] are the valid movement options for the next #[code Node], and #[code types] are the types for a #[code Node].
+  pre
+    code.javascript.
+      var root = new p5(function (base)
+      {
+        ...
+      }, container);
+  p.
+    Initialize p5.js in #[a(href="https://github.com/processing/p5.js/wiki/Global-and-instance-mode") instance mode].
+  pre
+    code.javascript.
+      var Node = /** @class */ (function ()
+      {
+        function Node (x, y)
+        {
+          this.x = x;
+          this.y = y;
+          this.g = Math.abs(endX - x) + Math.abs(endY - y);
+          // this.g = Math.sqrt((endX - x) ** 2 + (endY - y) ** 2);
+
+          if (x + "," + y === start)
+            this.type = types.ORIGINPOINT;
+          else if (x + "," + y === end)
+            this.type = types.ENDPOINT;
+          else
+            this.type = types.SPACE;
+        }
+
+        Node.prototype.next = function ()
+        {
+          var _this = this;
+          var next = { type: 0, g: 1000 };
+
+          loop(modifiers, function (mod)
+          {
+            var modX = mod[0];
+            var modY = mod[1];
+            var newX = _this.x + modX;
+            var newY = _this.y + modY;
+
+            if (newX >= 0 && newY >= 0 && newX < rows && newY < columns)
+            {
+              var targetNode = grid[newX][newY];
+
+              if (targetNode.type === types.SPACE && targetNode.g < next.g)
+                next = targetNode;
+              else if (targetNode.type === types.ENDPOINT)
+                next = true;
+            }
+          });
+
+          if (typeof next === "object")
+            next.type = types.PATH;
+
+          return next;
+        };
+
+        Node.prototype.render = function ()
+        {
+          if (this.type === types.ORIGINPOINT)
+            base.fill("#4caf50");
+          else if (this.type === types.ENDPOINT)
+            base.fill("#f44336");
+          else if (this.type === types.WALL)
+            base.fill(0);
+          else if (this.type === types.PATH)
+            base.fill("#03a9f4");
+          else
+            base.fill(207, 90, 0 + this.g / Math.sqrt(2 * Math.pow(15, 2)) * 100);
+
+          base.stroke(0);
+          base.rect(this.x * rowWidth, this.y * columnHeight, rowWidth, columnHeight);
+        };
+
+        return Node;
+      })();
+  p.
+    This snippet defines the #[code Node] class. Its constructor function requires its fake 2D coordinate while its methods: #[code Node.next] retrieves the next step in the path for the #[code Node] and #[code Node.render], which displays the rectangle through p5.js.
+  pre
+    code.javascript.
+      var rows = 15;
+      var columns = 15;
+
+      _window.startX = 0;
+      _window.startY = 0;
+
+      var endX = 14;
+      var endY = 14;
+      var start = startX + "," + startY;
+      var end = endX + "," + endY;
+
+      var grid = Array.apply(null, new Array(rows)).map(function (_, y)
+      {
+        return Array.apply(null, new Array(columns)).map(function (_, x)
+        {
+          return new Node(x, y);
+        });
+      });
+
+      var rowWidth;
+      var columnHeight;
+
+      _window.updateEndpoints = function ()
+      {
+        start = startX + "," + startY;
+        end = endX + "," + endY;
+        resetGrid();
+      };
+
+      function resetGrid ()
+      {
+        grid = Array.apply(null, new Array(rows)).map(function (_, y)
+        {
+          return Array.apply(null, new Array(columns)).map(function (_, x)
+          {
+            return new Node(x, y);
+          });
+        });
+      }
+
+      function updateDefaults ()
+      {
+        rowWidth = container.clientWidth / rows;
+        columnHeight = container.clientHeight / columns;
+      }
+  p.
+    More variables and functions, although constrained to another scope.
+  pre
+    code.javascript.
+      base.setup = function ()
+      {
+        base.colorMode(base.HSB);
+        base.createCanvas(container.clientWidth, container.clientHeight);
+        updateDefaults();
+      };
+
+      base.draw = function ()
+      {
+        loop(grid, function (row)
+        {
+          loop(row, function (node)
+          {
+            node.render();
+          });
+        });
+
+        var cNode = grid[startX][startY];
+        while (true)
+        {
+          if (!cNode.next) return;
+          var response = cNode.next();
+          if (response === true) break;
+          else cNode = response;
+        }
+      };
+
+      base.windowResized = function ()
+      {
+        base.resizeCanvas(container.clientWidth, container.clientHeight);
+        updateDefaults();
+      };
+  p.
+    Built in functions in the p5 instance.
+  pre
+    code.javascript.
+      loop(inputElements, function (element)
+      {
+        var coordinateDimension = element.getAttribute("data-target-type");
+        element.addEventListener("keydown", function (event)
+        {
+          if (event.key === "Enter")
+          {
+            _window["start" + coordinateDimension] = element.value || 0;
+            updateEndpoints();
+          }
+        });
+      });
+  p.
+    Handles the return key press for the input element which changes the starting point of the demo.
