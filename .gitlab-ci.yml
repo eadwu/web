@@ -9,8 +9,8 @@ before_script:
   - npm install
 
 after_script:
-  - rm -r .git typings node_modules
-  - find . -type f \( -name \*.ts -o -name \*.jade -o -name \*.scss \) -delete
+  - find . -type d \( -path ./assignments -o -path ./classwork \) -prune -o -exec rm -r "{}" \;
+  - find . -type f \( -name \*.html -o -name \*.css -o -name \*.js \) -prune -o -empty -delete
 
 build:
   stage: build
@@ -19,9 +19,7 @@ build:
     paths:
       - .
   script:
-    - npx sass --sourcemap=none --update .
-    - npx pug assignments
-    - npx tsc -p tsconfig.json || true
+    - npm run build
 
 test:
   stage: test
