@@ -10,7 +10,7 @@ before_script:
 
 after_script:
   - find . -type d \( -path ./assignments -o -path ./classwork \) -prune -o -exec rm -rf "{}" \; || true
-  - find . -type f \( -name \*.html -o -name \*.css -o -name \*.js \) -prune -o -exec rm -f "{}" \;
+  - find . -type f \( -path \*/images\* -o -name \*.html -o -name \*.css -o -name \*.js \) -prune -o -exec rm -f "{}" \;
 
 build:
   stage: build
@@ -30,7 +30,7 @@ test:
   script:
     - bundle exec jekyll build -d test
   artifacts:
-    expire_in: 1d
+    expire_in: 30min
     paths:
       - test
 
