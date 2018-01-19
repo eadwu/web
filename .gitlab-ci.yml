@@ -14,6 +14,7 @@ build:
     paths:
       - .
   before_script:
+    - bundle install
     - npm install
   script:
     - npm run build
