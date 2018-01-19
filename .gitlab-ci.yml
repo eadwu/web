@@ -4,22 +4,19 @@ variables:
   JEKYLL_ENV: production
   NODE_ENV: production
 
-before_script:
-  - bundle install
-  - npm install
-
-after_script:
-  - find . -type d \( -path ./assignments -o -path ./classwork \) -prune -o -exec rm -rf "{}" \; || true
-  - find . -type f \( -path \*/images\* -o -name \*.html -o -name \*.css -o -name \*.js \) -prune -o -exec rm -f "{}" \;
-
 build:
   stage: build
   artifacts:
     expire_in: 1d
     paths:
       - .
+  before_script:
+    - npm install
   script:
     - npm run build
+  after_script:
+    - find . -type d \( -path ./assignments -o -path ./classwork \) -prune -o -exec rm -rf "{}" \;
+    - find . -type f \( -path \*/images\* -o -name \*.html -o -name \*.css -o -name \*.js \) -prune -o -exec rm -f "{}" \;
 
 test:
   stage: test
@@ -27,12 +24,14 @@ test:
     - build
   except:
     - master
-  script:
-    - bundle exec jekyll build -d test
   artifacts:
     expire_in: 30min
     paths:
       - test
+  before_script:
+    - bundle install
+  script:
+    - bundle exec jekyll build -d test
 
 pages:
   stage: deploy
@@ -40,11 +39,13 @@ pages:
     - build
   only:
     - master
-  script:
-    - bundle exec jekyll build -d public
   artifacts:
     paths:
       - public
+  before_script:
+    - bundle install
+  script:
+    - bundle exec jekyll build -d public
 
 stages:
   - build
