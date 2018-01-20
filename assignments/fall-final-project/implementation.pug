@@ -30,8 +30,10 @@ block content
 
   .cm-Container_Section
     .ct-Section_Default.sw-Flex_Col-1
-      input(placeholder="0-14, Starting X Coordinate", type="number", data-target-type="X")
-      input(placeholder="0-14, Starting Y Coordinate", type="number", data-target-type="Y")
+      input(placeholder="0-14, Starting X Coordinate", type="number", data-state="start", data-target-type="X")
+      input(placeholder="0-14, Starting Y Coordinate", type="number", data-state="start", data-target-type="Y")
+      input(placeholder="0-14, Ending X Coordinate", type="number", data-state="end", data-target-type="X")
+      input(placeholder="0-14, Ending Y Coordinate", type="number", data-state="end", data-target-type="Y")
 
   h1 Code Explanation
   p.
