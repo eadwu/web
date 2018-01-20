@@ -1,3 +1,4 @@
+builds
 .sass-cache
 node_modules
 
@@ -6,4 +7,6 @@ node_modules
 *.log
 !**/vendor/**/*.js
 !**/vendor/**/*.css
+
 .DS_Store
+Gemfile.*
