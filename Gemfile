@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 ruby RUBY_VERSION
 
+gem "sass"
 gem "jekyll"
 gem "jekyll-assets"
 gem "autoprefixer-rails"
