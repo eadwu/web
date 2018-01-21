@@ -90,11 +90,11 @@ type ArrayLike = Array<any> | NodeListOf<any>;
               // Should only have to ensure the type is Space
               // if (targetNode.type > 0 && (targetNode.type % 2 === 0 || targetNode.type === 1 || targetNode.type === 5))
               if (targetNode.type !== types.ORIGINPOINT && targetNode.type !== types.WALL)
-                current = current ?
-                  targetNode.g <= current.g ?
-                    targetNode :
-                    current :
-                  targetNode;
+                current = current
+                  ? targetNode.g <= current.g
+                    ? targetNode
+                    : current
+                  : targetNode;
             }
           });
 
@@ -199,20 +199,20 @@ type ArrayLike = Array<any> | NodeListOf<any>;
           {
             const originalValue = element.value;
             const constrainedValue = originalValue ?
-              originalValue < 0 ?
-                length + ~~originalValue :
-                originalValue > length - 1 ?
-                  originalValue % length :
-                  +originalValue :
-              0;
+              originalValue < 0
+                ? length + ~~originalValue
+                : originalValue > length - 1
+                  ? originalValue % length
+                  : +originalValue
+              : 0;
 
-            coordinateState === "start" ?
-              coordinateDimension === "X" ?
-                startX = constrainedValue :
-                startY = constrainedValue :
-              coordinateDimension === "X" ?
-                endX = constrainedValue :
-                endY = constrainedValue;
+            coordinateState === "start"
+              ? coordinateDimension === "X"
+                ? startX = constrainedValue
+                : startY = constrainedValue
+              : coordinateDimension === "X"
+                ? endX = constrainedValue
+                : endY = constrainedValue;
 
             element.value = constrainedValue;
             updateEndpoints();
