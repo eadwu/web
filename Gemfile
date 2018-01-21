@@ -5,6 +5,5 @@ ruby RUBY_VERSION
 
 gem "sass"
 gem "jekyll"
-gem "jekyll-assets"
-gem "autoprefixer-rails"
+gem "octopress-autoprefixer"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
