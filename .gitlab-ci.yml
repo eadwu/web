@@ -1,53 +1,54 @@
-image: starefossen/ruby-node:latest
+---
+  image: starefossen/ruby-node:latest
 
-variables:
-  JEKYLL_ENV: production
-  NODE_ENV: production
+  variables:
+    JEKYLL_ENV: production
+    NODE_ENV: production
 
-before_script:
-  - bundle install
-
-build:
-  stage: build
-  artifacts:
-    expire_in: 1d
-    paths:
-      - .
   before_script:
     - bundle install
-    - npm install
-  script:
-    - npm run build
-  after_script:
-    - find . -mindepth 1 -maxdepth 1 \( -path ./assignments -o -path ./classwork \) -prune -o -exec rm -rf "{}" \;
-    - find . -mindepth 1 \( -path \*/images\* -o -name \*.html -o -name \*.css -o -name \*.js \) -prune -o -type f -exec rm -f "{}" \;
 
-test:
-  stage: test
-  dependencies:
+  build:
+    stage: build
+    artifacts:
+      expire_in: 1d
+      paths:
+        - .
+    before_script:
+      - bundle install
+      - npm install
+    script:
+      - npm run build
+    after_script:
+      - find . -mindepth 1 -maxdepth 1 \( -path ./assignments -o -path ./classwork \) -prune -o -exec rm -rf "{}" \;
+      - find . -mindepth 1 \( -path \*/images\* -o -name \*.html -o -name \*.css -o -name \*.js \) -prune -o -type f -exec rm -f "{}" \;
+
+  test:
+    stage: test
+    dependencies:
+      - build
+    except:
+      - master
+    artifacts:
+      expire_in: 30min
+      paths:
+        - test
+    script:
+      - bundle exec jekyll build -d test
+
+  pages:
+    stage: deploy
+    dependencies:
+      - build
+    only:
+      - master
+    artifacts:
+      paths:
+        - public
+    script:
+      - bundle exec jekyll build -d public
+
+  stages:
     - build
-  except:
-    - master
-  artifacts:
-    expire_in: 30min
-    paths:
-      - test
-  script:
-    - bundle exec jekyll build -d test
-
-pages:
-  stage: deploy
-  dependencies:
-    - build
-  only:
-    - master
-  artifacts:
-    paths:
-      - public
-  script:
-    - bundle exec jekyll build -d public
-
-stages:
-  - build
-  - test
-  - deploy
+    - test
+    - deploy
