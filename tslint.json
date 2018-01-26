@@ -1,5 +1,5 @@
 {
-  "extends": "tslint-config-standard",
+  "extends": ["tslint-config-standard"],
   "rules": {
     "brace-style": [
       true,
@@ -9,8 +9,19 @@
       }
     ],
     "curly": [true, "as-needed"],
-    "one-line": [false],
+    "early-exit": true,
+    "ext-curly": ["consistent"],
+    "no-accessor-recursion": true,
+    "no-return-undefined": true,
+    "no-static-this": true,
+    "no-unnecessary-else": true,
+    "no-unnecessary-if": true,
+    "no-unnecessary-type-annotation": true,
+    "object-shorthand-properties-first": true,
+    "one-line": false,
+    "prefer-while": true,
     "quotemark": [true, "double"],
     "semicolon": [true, "always"]
-  }
+  },
+  "rulesDirectory": ["tslint-consistent-codestyle"]
 }
