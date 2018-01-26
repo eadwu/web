@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function ()
 {
-  var currentImageElement = document.getElementById("current") as HTMLImageElement;
-  var otherImageElements = document.querySelectorAll("div > img");
+  const currentImageElement = document.getElementById("current") as HTMLImageElement;
+  const otherImageElements = document.querySelectorAll("div > img");
 
   function onOtherImageClick (imageElement)
   {
@@ -11,6 +11,6 @@ document.addEventListener("DOMContentLoaded", function ()
     });
   }
 
-  for (var index = 0; index < otherImageElements.length; index++)
+  for (let index = 0; index < otherImageElements.length; index++)
     onOtherImageClick(otherImageElements[ index ]);
 });

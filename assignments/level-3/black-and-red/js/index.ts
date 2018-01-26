@@ -81,12 +81,10 @@
       strategies[ strategyIndex ](p1, p2);
       updateCurrentTokens();
 
-      if (isGameDone())
-      {
-        const determinedWinner = User.getRedTokens() > Computer.getRedTokens() ? "Player" : "Computer";
-        stdout.textContent = `The winner is the ${determinedWinner}!`;
-        gameEnded = true;
-      }
+      if (!isGameDone()) return;
+      const determinedWinner = User.getRedTokens() > Computer.getRedTokens() ? "Player" : "Computer";
+      stdout.textContent = `The winner is the ${determinedWinner}!`;
+      gameEnded = true;
     }
     // Initialize step
     updateCurrentTokens();

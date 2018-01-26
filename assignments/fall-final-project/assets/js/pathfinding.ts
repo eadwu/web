@@ -1,5 +1,5 @@
 /// <reference path="../../../../typings/p5.d.ts" />
-type ArrayLike = Array<any> | NodeListOf<any>;
+type ArrayAdapt = Array<any> | NodeListOf<any>;
 
 (() =>
 {
@@ -8,7 +8,7 @@ type ArrayLike = Array<any> | NodeListOf<any>;
     return Math.floor(Math.random() * (max + 1 - min)) + min;
   }
 
-  function loop (arr: ArrayLike<any>, func: (value: any, index: number, source: ArrayLike<any>) => void)
+  function loop (arr: ArrayAdapt, func: (value: any, index: number, source: ArrayAdapt) => void)
   {
     const transformedArr = Array.isArray(arr) ? arr : Array.from(arr);
     for (let i = 0; i < arr.length; i++)
@@ -82,20 +82,18 @@ type ArrayLike = Array<any> | NodeListOf<any>;
             const newX = this.x + modX;
             const newY = this.y + modY;
 
-            if (newX >= 0 && newX < length && newY >= 0 && newY < length)
-            {
-              const targetNode = grid[ newY ][ newX ];
+            if (newX < 0 || newX >= length || newY < 0 || newY >= length) return;
+            const targetNode = grid[ newY ][ newX ];
 
-              // Ensure type is either Space, Checked, or Path
-              // Should only have to ensure the type is Space
-              // if (targetNode.type > 0 && (targetNode.type % 2 === 0 || targetNode.type === 1 || targetNode.type === 5))
-              if (targetNode.type !== types.ORIGINPOINT && targetNode.type !== types.WALL)
-                current = current
-                  ? targetNode.g <= current.g
-                    ? targetNode
-                    : current
-                  : targetNode;
-            }
+            // Ensure type is either Space, Checked, or Path
+            // Should only have to ensure the type is Space
+            // if (targetNode.type > 0 && (targetNode.type % 2 === 0 || targetNode.type === 1 || targetNode.type === 5))
+            if (targetNode.type === types.ORIGINPOINT || targetNode.type === types.WALL) return;
+            current = current
+              ? targetNode.g <= current.g
+                ? targetNode
+                : current
+              : targetNode;
           });
 
           return current;
@@ -145,14 +143,10 @@ type ArrayLike = Array<any> | NodeListOf<any>;
           const response = cNode.next();
 
           if (response.type === types.ENDPOINT)
-          {
             break;
-          }
-          else
-          {
-            cNode = response;
-            cNode.type = types.PATH;
-          }
+
+          cNode = response;
+          cNode.type = types.PATH;
         }
       }
 
@@ -161,12 +155,11 @@ type ArrayLike = Array<any> | NodeListOf<any>;
         const newStart = `${startX},${startY}`;
         const newEnd = `${endX},${endY}`;
 
-        if (newStart !== newEnd)
-        {
-          start = newStart;
-          end = newEnd;
-          resetGrid();
-        }
+        if (newStart === newEnd) return;
+
+        start = newStart;
+        end = newEnd;
+        resetGrid();
       }
 
       function resetGrid ()

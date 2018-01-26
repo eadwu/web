@@ -81,9 +81,7 @@
         tmp = amount;
       }
       else if (amount === tmp)
-      {
         largestPiles.push(pile);
-      }
     });
     return largestPiles[ floor(random() * largestPiles.length) ];
   }
@@ -101,14 +99,13 @@
     stonePiles[ pile ] -= stones;
     syncDisplayToSource();
     disableInvalidButtons();
-    if (isGameOver())
-    {
-      activeGame = false;
-      if (isPlayer)
-        unkOutput.textContent = "You lose!";
-      else
-        unkOutput.innerHTML = "Tch! I lost.";
-    }
+    if (!isGameOver()) return;
+
+    activeGame = false;
+    if (isPlayer)
+      unkOutput.textContent = "You lose!";
+    else
+      unkOutput.innerHTML = "Tch! I lost.";
   }
   /**
    * Execute a move for the "computer"
