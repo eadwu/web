@@ -4,3 +4,7 @@
       files: "*.scss"
       options:
         singleQuote: true
+    -
+      files: ["*.json", "*.yml"]
+      options:
+        printWidth: 1100
