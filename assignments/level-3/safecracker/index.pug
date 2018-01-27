@@ -1,0 +1,25 @@
+mixin link (href)
+  link(rel="stylesheet", href=href, type="text/css")
+
+mixin script (src)
+  script(src=src, type="text/javascript")
+
+<!DOCTYPE html>
+//
+  ---
+  author: Edmund Wu <ewu1985@bths.edu>
+  namespaces:
+    cm: Component
+    gd: Good
+    sp: Shop
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Safecracker
+    +link("css/index.css")
+    +script("js/lib/constants.js")
+    +script("js/helpers/utilities.js")
+    +script("js/app/index.js")
+  body
