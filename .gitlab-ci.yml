@@ -16,7 +16,7 @@
         - .
     before_script:
       - bundle install
-      - npm install
+      - npm install --production
     script:
       - npm run build
     after_script:
