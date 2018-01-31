@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transition Extra</title>
+  <style>
+    img {
+      width: 300px;
+      height: 300px;
+    }
+
+    div > img {
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+
+  <script src="dragondata.js" type="text/javascript"></script>
+  <script>
+    function setMainImage(imgElement, cap)
+    {
+      mainImage.src = imgElement.src;
+      captionOutput.innerHTML = imgElement.dragonName;
+      descriptionOutput.innerHTML = imgElement.dragonDesc;
+    }
+
+    function initialize()
+    {
+      var dragonNames = dragons.split(";");
+      var dragonDesc = dragoninfo.split(";");
+
+      mainImage = document.getElementById("mainimg");
+      captionOutput = document.getElementById("caption");
+      descriptionOutput = document.getElementById("description");
+
+      dragonThumbs = document.getElementsByClassName("thumb");
+
+      for (var i = 0; i < dragonThumbs.length; i++)
+      {
+        dragonThumbs[ i ].dragonName = dragonNames[ i ];
+        dragonThumbs[ i ].dragonDesc = dragonDesc[ i ];
+      }
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <img id="mainimg" src="https://www.dropbox.com/s/op736m3egojwb0z/Ash%20copy.png?raw=1" />
+  <div id="caption">Ash</div>
+  <div id="description">Born in flame, Ash uses the heat of his body to wound his enemies.</div>
+
+  <hr />
+
+  <div>
+    <img class="thumb" src="https://www.dropbox.com/s/14shksnvgl0xz6m/Rax%20copy.png?raw=1" onclick="setMainImage(this, 'Rax');" />
+    <img class="thumb" src="https://www.dropbox.com/s/op736m3egojwb0z/Ash%20copy.png?raw=1" onclick="setMainImage(this, 'Ash');" />
+    <img class="thumb" src="https://www.dropbox.com/s/078z4wmx6yhh4xm/Barnabas%20copy.png?raw=1" onclick="setMainImage(this, 'Barnabas');" />
+    <img class="thumb" src="https://www.dropbox.com/s/ku7h0g8o2leopcn/Drake%20copy.png?raw=1" onclick="setMainImage(this, 'Drake');" />
+    <img class="thumb" src="https://www.dropbox.com/s/ikwyxtrf2j2mozu/Endisun%20copy.png?raw=1" onclick="setMainImage(this, 'Endisun');" />
+    <img class="thumb" src="https://www.dropbox.com/s/wp86nfdmt72v16t/Lunar%20copy.png?raw=1" onclick="setMainImage(this, 'Lunar');" />
+  </div>
+
+</body>
+</html>

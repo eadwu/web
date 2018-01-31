@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transition Gallery</title>
+  <style>
+    img {
+      width: 300px;
+      height: 300px;
+    }
+
+    div > img {
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+
+  <script>
+    function switchSource(img)
+    {
+      var mainImage = img.parentElement.parentElement.childNodes[ 1 ];
+      var tmp = mainImage.getAttribute("src");
+
+      mainImage.setAttribute("src", img.getAttribute("src"));
+      img.setAttribute("src", tmp);
+    }
+
+    function initialize()
+    {
+      // mainImage = document.getElementById("main_img");
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <img id="main_img" src="https://www.dropbox.com/s/op736m3egojwb0z/Ash%20copy.png?raw=1" />
+
+  <hr />
+
+  <div>
+    <img src="https://www.dropbox.com/s/078z4wmx6yhh4xm/Barnabas%20copy.png?raw=1" onclick="switchSource(this);" />
+    <img src="https://www.dropbox.com/s/ku7h0g8o2leopcn/Drake%20copy.png?raw=1" onclick="switchSource(this);" />
+    <img src="https://www.dropbox.com/s/ikwyxtrf2j2mozu/Endisun%20copy.png?raw=1" onclick="switchSource(this);" />
+    <img src="https://www.dropbox.com/s/wp86nfdmt72v16t/Lunar%20copy.png?raw=1" onclick="switchSource(this);" />
+    <img src="https://www.dropbox.com/s/14shksnvgl0xz6m/Rax%20copy.png?raw=1" onclick="switchSource(this);" />
+  </div>
+
+</body>
+</html>

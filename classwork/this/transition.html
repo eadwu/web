@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transition</title>
+  <style>
+    img {
+      width: 300px;
+      height: 300px;
+    }
+
+    div > img {
+      width: 150px;
+      height: 150px;
+    }
+  </style>
+
+  <script>
+    function toggleCaps(toggleParagraph)
+    {
+      if (toggleParagraph.innerHTML.indexOf("E") >= 0)
+      {
+        toggleParagraph.innerHTML = toggleParagraph.innerHTML.toLowerCase();
+      }
+      else
+      {
+        toggleParagraph.innerHTML = toggleParagraph.innerHTML.toUpperCase();
+      }
+    }
+
+    function initialize()
+    {
+      gettysburgAddress = document.getElementById("gettysburg");
+      wrathOfKhan = document.getElementById("khan");
+      starWarsLeia = document.getElementById("starwars");
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <p id="gettysburg" onclick="toggleCaps(this);">
+    four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.
+    <br />
+    <br /> now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. we are met on a great battle-field of that war. we have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. it is altogether fitting and proper that we should do this.
+    <br />
+    <br /> but, in a larger sense, we can not dedicate -- we can not consecrate -- we can not hallow -- this ground. the brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. the world will little note, nor long remember what we say here, but it can never forget what they did here. it is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. it is rather for us to be here dedicated to the great task remaining before us -- that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion -- that we here highly resolve that these dead shall not have died in vain -- that this nation, under god, shall have a new birth of freedom -- and that government of the people, by the people, for the people, shall not perish from the earth.
+  </p>
+
+  <hr />
+
+  <p id="khan" onclick="toggleCaps(this);">
+    we are assembled here today to pay final respects to our honored dead. and yet it should be noted that in the midst of our sorrow, this death takes place in the shadow of new life, the sunrise of a new world; a world that our beloved comrade gave his life to protect and nourish. he did not feel this sacrifice a vain or empty one, and we will not debate his profound wisdom at these proceedings. of my friend, i can only say this. of all the souls i have encountered in my travels, his was the most... human.
+  </p>
+
+  <hr />
+
+  <p id="starwars" onclick="toggleCaps(this);">
+    general kenobi: Years ago, you served my father in the clone wars. now he begs you to help him in his struggle against the empire. i regret that i am unable to present my father's request to you in person, but my ship has fallen under attack and i'm afraid my mission to bring you to alderaan has failed. i've placed information vital to the survival of the rebellion into the memory systems of this r2 unit. my father will know how to retrieve it. You must see this droid safely delivered to him on alderaan. this is our most desperate hour. help me, obi-wan kenobi. You're my only hope.
+  </p>
+
+</body>
+</html>
