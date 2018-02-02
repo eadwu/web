@@ -3,14 +3,47 @@
 <head>
   <title>Transition Extra</title>
   <style>
+    body {
+      background: #000;
+      color: #fff;
+    }
+
     img {
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
     }
 
     div > img {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      margin: 2vh 0;
+    }
+
+    .info {
+      max-width: 25vw;
+    }
+
+    .imgcontainer {
+      margin-top: 2vh;
+      text-align: center;
+    }
+
+    #caption {
+      font-weight: bold;
+      font-size: 2rem;
+    }
+
+    #mainimg {
+      margin-right: 2vw;
     }
   </style>
 
@@ -44,13 +77,23 @@
 </head>
 
 <body onload="initialize();">
-  <img id="mainimg" src="https://www.dropbox.com/s/op736m3egojwb0z/Ash%20copy.png?raw=1" />
-  <div id="caption">Ash</div>
-  <div id="description">Born in flame, Ash uses the heat of his body to wound his enemies.</div>
+  <h1>Dragons</h1>
+
+  <div class="container">
+    <img id="mainimg" src="https://www.dropbox.com/s/op736m3egojwb0z/Ash%20copy.png?raw=1" />
+
+    <div class="info">
+      <div id="caption">Ash</div>
+
+      <hr />
+
+      <div id="description">Born in flame, Ash uses the heat of his body to wound his enemies.</div>
+    </div>
+  </div>
 
   <hr />
 
-  <div>
+  <div class="imgcontainer">
     <img class="thumb" src="https://www.dropbox.com/s/14shksnvgl0xz6m/Rax%20copy.png?raw=1" onclick="setMainImage(this, 'Rax');" />
     <img class="thumb" src="https://www.dropbox.com/s/op736m3egojwb0z/Ash%20copy.png?raw=1" onclick="setMainImage(this, 'Ash');" />
     <img class="thumb" src="https://www.dropbox.com/s/078z4wmx6yhh4xm/Barnabas%20copy.png?raw=1" onclick="setMainImage(this, 'Barnabas');" />
