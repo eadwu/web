@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Transition Objects</title>
+  <style>
+    body
+    {
+      text-align: center;
+    }
+
+    .thumb
+    {
+      width: 12%;
+    }
+
+    #mainimg
+    {
+      width: 50%;
+    }
+
+    #caption
+    {
+      font-size: 24pt;
+      font-weight: bold;
+    }
+  </style>
+
+  <script src="dragondata.js"></script>
+  <script src="itemdata.js"></script>
+  <script>
+    var Dragon = (function ()
+    {
+      function Dragon(name, blurb, image)
+      {
+        this.dragonName = name;
+        this.dragonBlurb = blurb;
+        this.dragonImage = image;
+      }
+
+      return Dragon;
+    })();
+
+    function initialize()
+    {
+      mainImage = document.getElementById("mainimg");
+      captionOutput = document.getElementById("caption");
+      blurbOutput = document.getElementById("blurb");
+
+      dragonList = [];
+      currentDragonIdx = 0;
+
+      buildData();
+      setThumbnails();
+
+      display();
+    }
+
+    function buildData()
+    {
+      // var dragonNames = dragons.split(";");
+      // var dragonBlurbs = dragoninfo.split(";");
+      // var dragonImageFiles = dragonimages.split(";");
+      var dragonDump = items.split(";");
+
+      for (var i = 0; i < dragonDump.length; i++)
+      {
+        // dragonList.push(new Dragon(dragonNames[ i ], dragonBlurbs[ i ], dragonImageFiles[ i ]))
+        var dragonInfo = dragonDump[ i ].split(/:(?=[A-z.])/);
+        dragonList.push(new Dragon(
+          dragonInfo[ 0 ], dragonInfo[ 1 ], dragonInfo[ 2 ]
+        ));
+      }
+    }
+
+    function setThumbnails()
+    {
+      var dragonThumbs = document.getElementsByClassName("thumb");
+      var dragonImageFiles = dragonimages.split(";");
+
+      for (var i = 0; i < dragonThumbs.length; i++)
+      {
+        // dragonThumbs[ i ].setAttribute("src", "images/" + dragonImageFiles[ i ]);
+        dragonThumbs[ i ].setAttribute("src", dragonImageFiles[ i ]);
+      }
+    }
+
+    function selectDragon(idx)
+    {
+      currentDragonIdx = idx;
+      display();
+    }
+
+    function display()
+    {
+      var currentDragon = dragonList[ currentDragonIdx ];
+
+      // mainImage.setAttribute("src", "images/" + currentDragon.dragonImage);
+      mainImage.setAttribute("src", currentDragon.dragonImage);
+      captionOutput.innerHTML = currentDragon.dragonName;
+      blurbOutput.innerHTML = currentDragon.dragonBlurb;
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <img id="mainimg" />
+  <div id="caption"></div>
+  <div id="blurb"></div>
+
+  <hr />
+
+  <img class="thumb" onclick="selectDragon(0);" />
+  <img class="thumb" onclick="selectDragon(1);" />
+  <img class="thumb" onclick="selectDragon(2);" />
+  <img class="thumb" onclick="selectDragon(3);" />
+  <img class="thumb" onclick="selectDragon(4);" />
+  <img class="thumb" onclick="selectDragon(5);" />
+</body>
+</html>
