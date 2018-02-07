@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Data Gallery</title>
+  <link rel="stylesheet" href="main.css" type="text/css" />
+  <style>
+    body
+    {
+      text-align: center;
+    }
+
+    .thumb
+    {
+      width: 12%;
+    }
+
+    .arrow
+    {
+      width: 8%;
+    }
+
+    #mainimg
+    {
+      width: 50%;
+    }
+
+    #caption
+    {
+      font-size: 24pt;
+      font-weight: bold;
+    }
+  </style>
+
+  <script src="itemdata.js"></script>
+  <script>
+    var Item = (() =>
+    {
+      function Item(name, info, image)
+      {
+        this.itemName = name;
+        this.itemInfo = info;
+        this.itemImage = image;
+      }
+
+      return Item;
+    })()
+
+    function initialize()
+    {
+      itemList = [];
+
+      offset = 0;
+      currentItemIdx = 0;
+
+      mainImage = document.getElementById("mainimg");
+      captionOutput = document.getElementById("caption");
+      infoOutput = document.getElementById("info");
+      itemThumbs = document.getElementsByClassName("thumb");
+
+      document.getElementById("pagetitle").innerHTML = pageTitle;
+
+      buildData();
+      setThumbnails();
+      display();
+    }
+
+    function buildData()
+    {
+      itemArray = items.split(";")
+
+      for (var i = 0; i < itemArray.length; i++)
+      {
+        // itemParts = itemArray[ i ].split(":");
+        itemParts = itemArray[ i ].split(/:(?=[A-z.])/);
+
+        itemList.push(new Item(
+          itemParts[ NAME ],
+          itemParts[ INFO ],
+          itemParts[ IMAGE ]
+        ));
+      }
+    }
+
+    function selectitem(idx)
+    {
+      currentItemIdx = idx;
+      display();
+    }
+
+    function moveOffset(mod)
+    {
+      offset = offset + mod;
+
+      if (offset < 0)
+      {
+        offset = 0;
+      }
+      else if (offset > itemList.length - 3)
+      {
+        offset = itemList.length - 3;
+      }
+
+      setThumbnails();
+    }
+
+    function setThumbnails()
+    {
+      for (var i = 0; i < itemThumbs.length; i++)
+      {
+        // itemThumbs[ i ].src = 'images/' + itemList[ i + offset ].itemImage;
+        itemThumbs[ i ].src = itemList[ i + offset ].itemImage;
+      }
+    }
+
+    function display()
+    {
+      // mainImage.setAttribute("src", "images/" + itemList[ currentItemIdx + offset ].itemImage);
+      mainImage.setAttribute("src", itemList[ currentItemIdx + offset ].itemImage);
+      captionOutput.innerHTML = itemList[ currentItemIdx + offset ].itemName;
+      infoOutput.innerHTML = itemList[ currentItemIdx + offset ].itemInfo;
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <h1 id="pagetitle"></h1>
+  <img id="mainimg" />
+  <div id="caption"></div>
+  <div id="info"></div>
+  <hr />
+  <img class="arrow" src="https://www.dropbox.com/s/o5pxodl21znsn8d/backward.png?raw=1" onclick="moveOffset(-1);" />
+  <img class="thumb" onclick="selectitem(0);" />
+  <img class="thumb" onclick="selectitem(1);" />
+  <img class="thumb" onclick="selectitem(2);" />
+  <img class="arrow" src="https://www.dropbox.com/s/0f1y0n1drzov3i3/forward.png?raw=1" onclick="moveOffset(1);" />
+</body>
+</html>

@@ -1,0 +1,37 @@
+/*
+  dressing.css
+
+  This file sets up a template for creating dressings on a web page.
+
+  In order to define a background image build containers in the format:
+
+    <img class = ".bgrnd">
+
+  In order to define a title build containers in the format:
+
+    <tag class = "titlecontainer">
+      <tag class = "titlecontent">
+      </tag>
+    </tag>
+
+  The tags that you use for your design are unimportant (except for img) as the css will redefine their styling.  Make sure they have the proper classnames.
+*/
+
+.bgrnd {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.titlecontainer {
+  text-align: center;
+}
+
+.titlecontent {
+  border: thin solid black;
+  border-radius: 10px;
+  padding: 2px 6px;
+}

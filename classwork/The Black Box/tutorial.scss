@@ -1,0 +1,83 @@
+html {
+  background-attachment: fixed;
+  // background-image: url('images/javascript-featured.png');
+  backgruond-image: url('https://www.dropbox.com/s/tmnc4h2bpt90sg1/javascript-featured.png?raw=1');
+  background-size: contain;
+}
+
+body {
+  font: 14pt calibri;
+}
+
+h1.titlecontainer {
+  margin-top: 50px;
+}
+
+.titlecontent {
+  background-color: lightgrey;
+}
+
+#navigation li {
+  cursor: pointer;
+}
+
+.columncontainer {
+  width: 90%;
+}
+
+.column {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 15px ridge grey;
+  border-radius: 20px;
+  margin-top: 100px;
+}
+
+ul.column {
+  font-weight: bold;
+  list-style-position: outside;
+  list-style-type: none;
+  text-align: left;
+  width: 20%;
+}
+
+li {
+  line-height: 150%;
+}
+
+ul.column li:hover {
+  background-color: black;
+  color: white;
+}
+
+div.column {
+  width: 65%;
+}
+
+#keypoints {
+  font-weight: bold;
+  margin: auto;
+  padding: 10px 0;
+  text-align: left;
+  width: 75%;
+}
+
+#pageinfo {
+  font-size: 20pt;
+  margin: auto;
+  text-align: justify;
+  width: 90%;
+}
+
+button {
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+hr.divider {
+  width: 80%;
+}
+
+#imgbank {
+  overflow-y: hidden;
+  width: 95%;
+}

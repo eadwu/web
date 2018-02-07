@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<!-- Ivan Turner -->
+<html>
+<head>
+  <title></title>
+
+  <link rel="stylesheet" href="columns.css" />
+  <link rel="stylesheet" href="dressing.css" />
+  <link rel="stylesheet" href="tutorial.css" />
+
+  <style></style>
+  <script src="tutorialdata.js"></script>
+  <script>
+    function initialize()
+    {
+      document.getElementById("tutorialtitle").innerHTML = tutorialTitle;
+      document.title = tutorialTitle;
+      navigationColumn = document.getElementById("navigation");
+      pageTitle = document.getElementById("pagetitle");
+      pageInfo = document.getElementById("pageinfo");
+      keyPoints = document.getElementById("keypoints");
+      imageBank = document.getElementById("imgbank");
+      rowDividers = document.getElementsByClassName("divider");
+
+      pageIdx = 0;
+
+      buildNavigation();
+
+      display();
+    }
+
+    function buildNavigation()
+    {
+      for (var i in pages)
+      {
+        var listItem = document.createElement("li");
+        listItem.innerHTML = pages[ i ].pageTitle;
+        listItem.setAttribute("onclick", "setPageIndex(" + i + ");");
+        navigationColumn.appendChild(listItem);
+      }
+    }
+
+    function modifyPageIndex(mod)
+    {
+      pageIdx += mod;
+      if (pageIdx < 0)
+        pageIdx = 0;
+
+      if (pageIdx >= pages.length)
+        pageIdx = pages.length - 1;
+
+      display();
+    }
+
+    function setPageIndex(idx)
+    {
+      pageIdx = idx;
+      display();
+    }
+
+    function display()
+    {
+      pageTitle.innerHTML = pages[ pageIdx ].pageTitle;
+      pageInfo.innerHTML = pages[ pageIdx ].pageInfo;
+
+      keyPoints.innerHTML = "";
+      for (i in pages[ pageIdx ].keyPoints)
+      {
+        var listItem = document.createElement("li");
+        listItem.innerHTML = pages[ pageIdx ].keyPoints[ i ];
+        keyPoints.appendChild(listItem);
+        keyPoints.appendChild(document.createElement("hr"));
+      }
+
+      if (pages[ pageIdx ].keyPoints.length == 0)
+        rowDividers[ 0 ].style.display = "none";
+      else
+        rowDividers[ 0 ].style.display = "block";
+
+      imageBank.innerHTML = "";
+      for (i in pages[ pageIdx ].imageBank)
+      {
+        var newImg = document.createElement("img");
+        // newImg.src = "images/" + pages[ pageIdx ].imageBank[ i ];
+        newImg.src = pages[ pageIdx ].imageBank[ i ];
+        imageBank.appendChild(newImg);
+      }
+
+      if (pages[ pageIdx ].imageBank.length == 0)
+        rowDividers[ 1 ].style.display = "none";
+      else
+        rowDividers[ 1 ].style.display = "block";
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <h1 class="titlecontainer">
+    <span class="titlecontent" id="tutorialtitle"></span>
+  </h1>
+  <div style="text-align:center">
+    <button onclick="modifyPageIndex(-1)">Previous</button>
+    <button onclick="modifyPageIndex(1)">Next</button>
+  </div>
+  <div class="columncontainer">
+    <ul class="column" id="navigation"></ul>
+
+    <div class="column">
+      <h2 class="titlecontainer">
+        <span class="titlecontent" id="pagetitle"></span>
+        </h1>
+        <div id="pageinfo"></div>
+        <hr class="divider" />
+        <ul id="keypoints"></ul>
+        <hr class="divider" />
+        <div id="imgbank"></div>
+    </div>
+  </div>
+</body>
+</html>
