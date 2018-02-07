@@ -1,5 +1,4 @@
-button
-{
+button {
   color: #e0e0e0;
   background-color: #616161;
 
@@ -13,18 +12,16 @@ button
   transition: color 1000ms, box-shadow 1ms, background-color 1000ms;
 }
 
-button:focus
-{
+button:focus {
   outline: none;
 }
 
-button:active
-{
+button:active {
   box-shadow: 0 0 0 #616161;
 }
 
-button:disabled, button[disabled]
-{
+button:disabled,
+button[disabled] {
   color: #616161;
   background-color: #fff;
 }

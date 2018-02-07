@@ -26,12 +26,12 @@ th {
   padding: 5px 10px;
 }
 
-tr:nth-of-type(2n+2),
+tr:nth-of-type(2n + 2),
 th:nth-of-type(odd) {
   background-color: #f44336;
 }
 
-tr:nth-of-type(2n+3),
+tr:nth-of-type(2n + 3),
 th:nth-of-type(even) {
   background-color: #424242;
 }
