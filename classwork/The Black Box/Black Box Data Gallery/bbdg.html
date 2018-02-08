@@ -83,7 +83,7 @@
 
     function selectitem(idx)
     {
-      currentItemIdx = idx;
+      currentItemIdx = idx + offset;
       display();
     }
 
@@ -115,9 +115,9 @@
     function display()
     {
       // mainImage.setAttribute("src", "images/" + itemList[ currentItemIdx + offset ].itemImage);
-      mainImage.setAttribute("src", itemList[ currentItemIdx + offset ].itemImage);
-      captionOutput.innerHTML = itemList[ currentItemIdx + offset ].itemName;
-      infoOutput.innerHTML = itemList[ currentItemIdx + offset ].itemInfo;
+      mainImage.setAttribute("src", itemList[ currentItemIdx ].itemImage);
+      captionOutput.innerHTML = itemList[ currentItemIdx ].itemName;
+      infoOutput.innerHTML = itemList[ currentItemIdx ].itemInfo;
     }
   </script>
 </head>
