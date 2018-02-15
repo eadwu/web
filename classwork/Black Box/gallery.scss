@@ -1,0 +1,47 @@
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.thumb {
+  width: 12%;
+}
+
+.arrow {
+  width: 8%;
+}
+
+#mainimg {
+  width: 50%;
+}
+
+#caption {
+  font: 36pt bookman old style;
+  font-weight: bold;
+}
+
+#info {
+  font: 24pt calibri;
+}
+
+#maincontainer {
+  margin: auto;
+  padding: 10px;
+  position: relative;
+  width: 85%;
+}
+
+.titlecontent {
+  font: 48pt goudy stout;
+}
+
+.column {
+  width: 40%;
+}
+
+.bgrnd {
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.2;
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Transition Objects</title>
+
+  <link rel="stylesheet" href="dressing.css" />
+  <link rel="stylesheet" href="columns.css" />
+  <link rel="stylesheet" href="gallery.css" />
+  <style></style>
+
+  <script src="itemdata.js"></script>
+  <script>
+    /*
+      initialize
+
+      Handles the creation of all of the global variables and calls any functions necessary for igniting the page.
+    */
+    function initialize()
+    {
+      //HTML Elements
+      mainImage = document.getElementById("mainimg");
+      captionOutput = document.getElementById("caption");
+      infoOutput = document.getElementById("info");
+      itemThumbs = document.getElementsByClassName("thumb");
+      backgroundImage = document.getElementById("bgrnd");
+
+      /*
+        The page title is set upon the loading of the page and never changes.  Therefore, it is more efficient to access the element anonymously (NOT set a variable for it) and update its innerHTML right away.
+      */
+      document.getElementById("pagetitle").innerHTML = pageTitle;
+
+      /*
+        The itemList array will hold all of the items in our data gallery.
+        cuurentItemIdx keeps track of the currently selected item.  We start with the first item.
+        The offset variable is used to keep track of which thumbnails to show.
+      */
+      itemList = [];
+      currentItemIdx = 0;
+      offset = 0;
+
+      buildData();
+      setThumbnails();
+
+      display();
+    }
+
+    /*
+      buildData
+
+      This function is responsible for reading the data from the data file and organizing it into objects that the page will use.
+    */
+    function buildData()
+    {
+      /*
+        The data comes in as a semi-colon delimited string.  Splitting it this way creates an array of items.
+        itemArray is a temporary variable (thus the var designation).  We won't need it beyond this function.
+      */
+      var itemArray = items.split(";");
+
+      /*
+        This loop iterates through each of the items created by the split and performs the following operations for each item:
+
+          Create a temporary object.
+          Split the item around a colon, creating an array of the current item's properties.
+          Create these properties for the temporary object, storing each piece of information into those properties.
+          Push the item object into the array.
+
+          Though the temporary item will be overwritten during each iteration of the loop, pushing it into the array creates a reference to the individual object.  That's why the array is global.  It is our page's primary (and only) reference to all of the objects in the data gallery.
+      */
+      for (var i = 0; i < itemArray.length; i++)
+      {
+        var item = {};
+        var itemParts = itemArray[ i ].split(":");
+        item.itemName = itemParts[ NAME ];
+        item.iteminfo = itemParts[ INFO ];
+        item.itemImage = itemParts[ IMAGE ];
+
+        itemList.push(item);
+      }
+    }
+
+    /*
+      selectItem
+
+      Changes the currentItemIdx to match the user's selection.
+
+      Parameters
+        idx - the index of the selected item.
+    */
+    function selectItem(idx)
+    {
+      /*
+        The use of offset here is absolutely essential because the user will see 3 thumbnails on screen.  Each thumbnail passes through its own index (0, 1, or 2) into idx.  Unless the first 3 items in the array are showing, the index passed will not match the index of the item in the list.  The offset tells us the difference between the index passed in and the actual index of the item.
+      */
+      currentItemIdx = idx + offset;
+      display();
+    }
+
+    /*
+      moveOffset
+
+      Updates the offset global variable in order to keep selected images in sync with the items their supposed to represent.
+
+      Parameters
+        mod - the change in offset.  This number is supposed to be 1 to move the selection forward or -1 to move it backward.
+    */
+    function moveOffset(mod)
+    {
+      //Adjust the offset.
+      offset += mod;
+
+      /*
+        If the offset goes out of bounds, readjust it to match either the boundaries.
+
+        The end of the boundary has to be adjusted by 3 because the page is designed to show 3 images.  Therefore, if you push the offset passed the length of the array - 3, you'll wind up with an error.
+
+        If the number of images was variable, the offset boundary would have to be variable as well.
+
+        Another solution to this would be to associate the items with the image elements themselves, adjusting whenever the user clicks one of the arrows.
+      */
+      if (offset < 0)
+        offset = 0;
+
+      if (offset >= itemList.length - 3)
+        offset = itemList.length - 3;
+
+      setThumbnails();
+      display();
+    }
+
+    /*
+      setThumbnails
+
+      This is a display function that readjusts the thumbnails shown on screen.
+    */
+    function setThumbnails()
+    {
+      /*
+        Looping through each thumbnail, show a series of 3 thumbnail images in order.  The starting image is determined by the offset.
+      */
+      for (var i = 0; i < itemThumbs.length; i++)
+        itemThumbs[ i ].src = "images/" + itemList[ i + offset ].itemImage;
+    }
+
+    /*
+      display
+
+      Update the main image, the caption, and the information shown on screen.
+    */
+    function display()
+    {
+      mainImage.src = "images/" + itemList[ currentItemIdx ].itemImage;
+      captionOutput.innerHTML = itemList[ currentItemIdx ].itemName;
+      infoOutput.innerHTML = itemList[ currentItemIdx ].iteminfo;
+      backgroundImage.src = mainImage.src;
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <h1 class="titlecontainer">
+    <span class="titlecontent" id="pagetitle"></span>
+  </h1>
+  <img class="bgrnd" id="bgrnd" />
+  <div id="maincontainer">
+    <div class="columncontainer">
+      <img class="column" id="mainimg" />
+
+      <div class="column">
+        <div class="colcontent" id="caption"></div>
+        <hr />
+        <div class="colcontent" id="info"></div>
+      </div>
+    </div>
+
+    <img class="arrow" src="images/backward.png" onclick="moveOffset(-1);" />
+    <img class="thumb" onclick="selectItem(0);" />
+    <img class="thumb" onclick="selectItem(1);" />
+    <img class="thumb" onclick="selectItem(2);" />
+    <img class="arrow" src="images/forward.png" onclick="moveOffset(1);" />
+  </div>
+</body>
+</html>
