@@ -1,0 +1,44 @@
+a {
+  color: antiquewhite;
+  font: 14pt calibri;
+  padding: 10px;
+  width: 15%;
+}
+
+h1 {
+  text-align: center;
+}
+
+p a {
+  color: rgb(0, 204, 0);
+  padding: 0;
+}
+
+body {
+  font: 14pt times new roman;
+}
+
+.content {
+  background: rgba(200, 200, 200, 0.95);
+  color: darkgreen;
+  text-align: justify;
+}
+
+.header {
+  background: rgba(50, 50, 50, 0.45);
+  border-color: black;
+  border-style: groove;
+  border-width: 2px;
+  font: bold 15pt times new roman;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.theme {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}

@@ -14,7 +14,7 @@
       {
         const cards = container.querySelectorAll("img") as NodeListOf<HTMLImageElement>;
 
-        loop(cards, (card, index) =>
+        loop(Array.from(cards), (card, index) =>
         {
           container.removeChild(card);
         });
@@ -25,7 +25,7 @@
     {
       const newCardElement = document.createElement("img");
 
-      newCardElement.setAttribute("src", `cardimages/${source}`);
+      newCardElement.setAttribute("src", `assets/images/${source}`);
       parent.appendChild(newCardElement);
     }
 
