@@ -17,9 +17,9 @@
     before_script:
       - bundle install
       - npm install --production
-      - find . -name setup.sh -exec sh "{}" \;
     script:
       - npm run build
+      - find . -name setup.sh -exec sh "{}" \;
     after_script:
       - find . -mindepth 1 -maxdepth 1 \( -path ./assignments -o -path ./classwork -o -name _config.yml \) -prune -o -exec rm -rf "{}" \;
       - find . -mindepth 1 \( -path \*/images\* -o -name \*.html -o -name \*.css -o -name \*.js -o -name _config.yml \) -prune -o -type f -exec rm -f "{}" \;
