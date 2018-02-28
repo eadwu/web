@@ -63,7 +63,7 @@
     static step ()
     {
       if (!Game.active) return;
-      if (Game.pendAction) { Game.cleanup(); Game.pendAction = false; };
+      if (Game.pendAction) { Game.cleanup(); Game.pendAction = false; }
       const cpuCardDump = document.querySelectorAll(".computer .deck img") as NodeListOf<HTMLImageElement>;
       const plrCardDump = document.querySelectorAll(".player .deck img") as NodeListOf<HTMLImageElement>;
       const cpuCardContainer = document.querySelector(".computer .cards") as HTMLDivElement;
@@ -87,17 +87,17 @@
 
       Game.updateDisplay();
 
-      if (Computer.hand.length <= 0 || Player.hand.length <= 0)
-      {
-        if (Computer.hand.length <= 0 && Player.hand.length <= 0)
-          alert("Nice tie.");
-        else if (Computer.hand.length <= 0)
-          alert("You won!");
-        else if (Player.hand.length <= 0)
-          alert("You lose!");
+      if (Computer.hand.length > 0 || Player.hand.length > 0)
+        return;
 
-        Game.active = false;
-      }
+      if (Computer.hand.length <= 0 && Player.hand.length <= 0)
+        alert("Nice tie.");
+      else if (Computer.hand.length <= 0)
+        alert("You won!");
+      else if (Player.hand.length <= 0)
+        alert("You lose!");
+
+      Game.active = false;
     }
 
     static war ()
