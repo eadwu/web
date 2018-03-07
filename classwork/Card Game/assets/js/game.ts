@@ -109,7 +109,7 @@
 
       Game.updateDisplay();
 
-      if (Computer.hand.length > 0 || Player.hand.length > 0)
+      if (Computer.hand.length > 0 && Player.hand.length > 0)
         return;
 
       if (Computer.hand.length <= 0 && Player.hand.length <= 0)
@@ -120,6 +120,7 @@
         alert("You lose!");
 
       Game.active = false;
+      document.querySelector("button").removeAttribute("disabled");
     }
 
     static war ()
