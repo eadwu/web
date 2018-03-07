@@ -36,6 +36,22 @@
       Game.pendAction = true;
     }
 
+    static shuffleDeck (deck)
+    {
+      const newDeck = [ ...deck ];
+
+      forNDo(getRandomInteger(1, newDeck.length), () =>
+      {
+        const firstIndex = getRandomInteger(0, newDeck.length);
+        const secondIndex = getRandomInteger(firstIndex, newDeck.length);
+        const indexDiff = secondIndex - firstIndex;
+        const deckCut = newDeck.splice(firstIndex, indexDiff);
+
+        newDeck.push(...deckCut);
+      });
+      return newDeck;
+    }
+
     static updateDisplay ()
     {
       cpuLeft.textContent = Game.players[ 0 ].hand.length;
@@ -44,8 +60,14 @@
 
     static initialize ()
     {
-      const fullDeck = mapRange(RANKS * SUITS, i => { return { rank: Math.ceil((i + 1) / SUITS), suit: i % 4 }; });
       const players = Game.players = mapRange(MAX_PLAYERS, i => new Player(i));
+      const fullDeck = Game.shuffleDeck(mapRange(RANKS * SUITS, i =>
+      {
+        return {
+          rank: Math.ceil((i + 1) / SUITS),
+          suit: i % 4
+        };
+      }));
 
       loop(fullDeck, v =>
       {
