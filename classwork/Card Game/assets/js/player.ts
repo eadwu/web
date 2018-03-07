@@ -12,6 +12,11 @@
       this.hand = [];
     }
 
+    getFirstCard ()
+    {
+      return this.hand.shift();
+    }
+
     getRandomCard ()
     {
       const chosenIndex = getRandomInteger(0, this.hand.length - 1);

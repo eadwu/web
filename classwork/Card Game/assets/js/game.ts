@@ -93,8 +93,8 @@
 
       const [ Computer, Player ] = Game.players;
 
-      const computerCard = Computer.getRandomCard();
-      const playerCard = Player.getRandomCard();
+      const computerCard = Computer.getFirstCard();
+      const playerCard = Player.getFirstCard();
 
       Game.globalQueue.push(computerCard, playerCard);
       Game.newCard(`${computerCard.rank}-${computerCard.suit}.png`, cpuCardContainer);
@@ -132,7 +132,7 @@
         forNDo(WAR_BET, () =>
         {
           if (player.hand.length <= 1) return;
-          Game.globalQueue.push(player.getRandomCard());
+          Game.globalQueue.push(player.getFirstCard());
           const newSourceImageType = parseInt(playerType, 10) === 0 ? "blue" : "red";
           Game.newCard(`back-${newSourceImageType}-75-2.png`, container);
         });
