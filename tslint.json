@@ -11,6 +11,7 @@
     "curly": [true, "as-needed"],
     "early-exit": true,
     "ext-curly": ["consistent"],
+    "max-line-length": [true, 120],
     "no-accessor-recursion": true,
     "no-return-undefined": true,
     "no-static-this": true,
