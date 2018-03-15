@@ -1,0 +1,39 @@
+html {
+  background-attachment: fixed;
+  background-image: url('redblocks.png');
+  background-size: cover;
+}
+
+.columncontainer {
+  width: 90%;
+}
+
+.column {
+  text-align: left;
+  width: 40%;
+}
+
+hr {
+  width: 80%;
+}
+
+ol {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  cursor: pointer;
+  list-style-type: none;
+  padding-bottom: 8px;
+}
+
+.column ol {
+  border: thin solid #000;
+}
+
+ol h1 {
+  font: bold 20pt calibri;
+}
+
+li {
+  font: bold 16pt courier;
+  margin-left: 10%;
+}
