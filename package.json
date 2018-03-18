@@ -2,7 +2,7 @@
   "name": "web",
   "version": "1.0.0",
   "scripts": {
-    "build": "npm run tsc && npm run sass && npm run pug",
+    "build": "npm run tsc && npm run sass && npm run pug && find . -name setup.sh -exec sh '{}' \\;",
     "clean": "git ls-files --ignored --others --exclude-standard | grep -v 'node_modules' | xargs -d '\\n' rm",
     "sass": "npx sass --sourcemap=none --update assignments classwork",
     "pug": "npx pug assignments classwork",
@@ -21,6 +21,7 @@
     "eslint-plugin-compat": "^2.1.0",
     "eslint-plugin-html": "^4.0.1",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.5.1",
     "postcss-scss": "^1.0.2",
     "prettier": "^1.10.2",
@@ -36,7 +37,6 @@
   "devDependencies": {
     "eslint-config-semistandard": "^12.0.1",
     "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "postcss-html": "^0.13.0",
     "stylelint-config-standard": "^17.0.0",
