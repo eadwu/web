@@ -1,130 +1,193 @@
 (() =>
 {
-  const maxDiff = 500;
-  const groups = {
-    A: [],
-    B: [],
-    C: [],
-    D: []
-  };
-
-  let id = 0;
-  let prospects = [];
+  const maxDiff = 1000;
   let tick = performance.now();
 
-  let targetGroup;
-  let prospectiveListElement;
+  function fixIndices (i0: number, source: Array<any>): Array<any>
+  {
+    return source.map((v, index) => v.index > i0 ? { ...v, index } : v);
+  }
 
   function loop (
     source: Array<any> | NodeListOf<any>,
-    func: (value: any, index: number, source: Array<any> | NodeListOf<any>) => void)
+    func: (v: any, i: number, source: Array<any> | NodeListOf<any>) => void)
   {
-    if (source.length <= 0) return;
     for (let i = 0; i < source.length; i++) func(source[ i ], i, source);
   }
 
-  function newGroupProspect (text: string, reference: { id: number, name: string, gender: string }, parent: HTMLElement)
+  function getIndexFromId (id: number, source: Array<any>): number
   {
-    const newListElement = document.createElement("li") as HTMLLIElement;
-    reference.element = newListElement;
-    newListElement.textContent = text;
-    newListElement.reference = reference;
-
-    newListElement.addEventListener("click", function ()
+    let n = -1;
+    loop(source, (v, i) =>
     {
-      if (prospects.length >= 30) return;
-      const groupArray = groups[ this.reference.group ];
-
-      groupArray.splice(this.reference.id, 1);
-      prospects.push(this.reference);
-      newProspect(`Name: ${this.reference.name}, Id: ${this.reference.id}`, this.reference, prospectiveListElement);
-      parent.removeChild(this);
+      if (v.id === id) n = i;
     });
-
-    parent.appendChild(newListElement);
+    return n;
   }
 
-  function newProspect (text: string, reference: { id: number, name: string, gender: string }, parent: HTMLElement)
+  function newListElement (text: string, onClick: (event?: Event) => void, opt?: { [ key: string ]: any }): HTMLElement
   {
-    const newListElement = document.createElement("li") as HTMLLIElement;
-    reference.element = newListElement;
-    newListElement.textContent = text;
-    newListElement.reference = reference;
+    let newElement = document.createElement("li");
 
-    newListElement.addEventListener("click", function ()
-    {
-      const groupName = targetGroup.getAttribute("data-group");
-      const groupArray = groups[ groupName ];
-
-      if (!targetGroup || targetGroup === parent || groups[ groupName ].length >= 12) return;
-
-      prospects.splice(this.reference.id, 1);
-      this.reference.group = groupName;
-      groupArray[ this.reference.id ] = this.reference;
-      newGroupProspect(`${this.textContent}, Gender: ${this.reference.gender}`, this.reference, targetGroup);
-      parent.removeChild(this);
-    });
-    parent.appendChild(newListElement);
+    newElement.textContent = text;
+    for (key in opt) newElement[ key ] = opt[ key ];
+    newElement.addEventListener("click", onClick);
+    return newElement;
   }
 
   document.addEventListener("DOMContentLoaded", () =>
   {
-    prospectiveListElement = document.querySelector("ol") as HTMLOListElement;
-    const groupListElements = document.querySelectorAll("ol") as NodeListOf<HTMLOListElement>;
+    const prospectiveListElement = document.querySelector("#newgroup") as HTMLOListElement;
+    const targetGroupElements = document.querySelectorAll("ol") as NodeListOf<HTMLOListElement>;
 
-    let intervalLoop;
+    const groups = {
+      A: [],
+      B: [],
+      C: [],
+      D: []
+    };
 
-    loop(groupListElements, orderedList =>
+    let id = 0;
+    let prospects = [];
+    let currentGroup = targetGroupElements[ 1 ];
+
+    function executeClick (
+      event: Event | null | undefined,
+      rootArray: Array<any>,
+      newArray: Array<any>,
+      i: number,
+      text: string,
+      parentElement: HTMLElement,
+      func: (event?: Event) => void,
+      reference: {
+        id: number,
+        name: string,
+        gender: string,
+        index: number
+      })
     {
-      orderedList.addEventListener("click", function ()
-      {
-        const now = performance.now();
-
-        if (now - tick <= maxDiff && orderedList !== targetGroup)
+      if (event) event.stopPropagation();
+      rootArray.splice(i, 1);
+      this.parentNode.removeChild(this);
+      reference.index = newArray.length;
+      newArray.push(reference);
+      parentElement.appendChild(newListElement(
+        text,
+        func,
         {
-          const targetElement = this;
-          const isGroupList = targetElement.hasAttribute("data-group");
-
-          let rootArray = targetGroup.hasAttribute("data-group")
-            ? groups[ targetGroup.getAttribute("data-group") ]
-            : prospects;
-          let targetArray = isGroupList ? groups[ this.getAttribute("data-group") ] : prospects;
-
-          console.log(rootArray);
-          loop(rootArray, def =>
-          {
-            if (!def) return;
-            const baseText = `Name: ${def.name}, Id: ${def.id}`;
-            const text = isGroupList
-              ? `${baseText}, Gender ${def.gender}`
-              : baseText;
-
-            def.element.parentNode.removeChild(def.element);
-
-            if (isGroupList)
-              newGroupProspect(text, def, targetElement);
-            else
-              newProspect(text, def, prospectiveListElement);
-          });
-
-          if (isGroupList)
-            groups[ this.getAttribute("data-group") ] = [ ...rootArray, ...targetArray ];
-          else
-            prospects = [ ...rootArray, ...targetArray ];
-
-          if (targetGroup.hasAttribute("data-group"))
-            groups[ targetGroup.getAttribute("data-group") ] = [];
-          else
-            prospects = [];
+          reference
         }
-        targetGroup = this;
-        tick = now;
+      ));
+    }
+
+    function prospectiveClick (event?: Event)
+    {
+      const groupArray = groups[ currentGroup.getAttribute("data-group") ];
+      const { reference, textContent } = this;
+      const { id, gender } = reference;
+      const index = getIndexFromId(id, prospects);
+
+      if (currentGroup === prospectiveListElement || groupArray.length >= 12) return;
+      executeClick.call(
+        this,
+        event,
+        prospects,
+        groupArray,
+        index,
+        `${textContent}, Gender: ${gender}`,
+        currentGroup,
+        groupClick,
+        reference
+      );
+      prospects = fixIndices(index, prospects);
+    }
+
+    function groupClick (event?: Event)
+    {
+      const groupName = this.parentNode.getAttribute("data-group");
+      const groupArray = groups[ groupName ];
+      const { reference } = this;
+      const { name, id } = reference;
+      const index = getIndexFromId(id, groupArray);
+
+      if (prospects.length >= 30) return;
+      executeClick.call(
+        this,
+        event,
+        groupArray,
+        prospects,
+        index,
+        `Name: ${name}, Id: ${id}`,
+        prospectiveListElement,
+        prospectiveClick,
+        reference
+      );
+      groups[ groupName ] = fixIndices(index, groupArray);
+    }
+
+    loop(targetGroupElements, oListElement =>
+    {
+      oListElement.addEventListener("click", function ()
+      {
+        if (this === currentGroup) return;
+        const tmp = performance.now();
+
+        if (tmp - tick <= maxDiff)
+        {
+          const parent = this;
+          const isCurrentGroup = currentGroup.hasAttribute("data-group");
+          const isNewGroup = this.hasAttribute("data-group");
+          const prevElementParent = isCurrentGroup ? currentGroup : prospectiveListElement;
+          const prevArray = isCurrentGroup ? groups[ currentGroup.getAttribute("data-group") ] : prospects;
+          const newArray = isNewGroup ? groups[ this.getAttribute("data-group") ] : prospects;
+          const listLIElements = prevElementParent.querySelectorAll("li") as NodeListOf<HTMLLIElement>;
+
+          loop(listLIElements, (v, i) =>
+          {
+            const { reference } = v;
+            const { name, id, gender } = reference;
+
+            reference.index = newArray.length + i;
+            v.parentNode.removeChild(v);
+            if (isNewGroup)
+            {
+              parent.appendChild(newListElement(
+                `Name: ${name}, Id: ${id}, Gender: ${gender}`,
+                groupClick,
+                {
+                  reference
+                }
+              ));
+            }
+            else
+            {
+              parent.appendChild(newListElement(
+                `Name: ${name}, Id: ${id}`,
+                prospectiveClick,
+                {
+                  reference
+                }
+              ));
+            }
+          });
+          newArray.push(...prevArray);
+          prevArray.splice(0, prevArray.length);
+
+          if (isNewGroup)
+            groups[ this.getAttribute("data-group") ] = fixIndices(0, newArray);
+          else
+            prospects = fixIndices(0, prospects);
+        }
+
+        tick = tmp;
+        currentGroup = this;
       });
     });
-    intervalLoop = setInterval(() =>
+
+    const intLoop = setInterval(() =>
     {
-      if (allPeople.length <= 0 || prospects.length >= 30)
-        return;
+      if (allPeople.length <= 0) clearInterval(intLoop);
+      if (prospects.length >= 30) return;
 
       const randomPersonIndex = getRandomInteger(0, allPeople.length - 1);
       const randomPerson = allPeople[ randomPersonIndex ];
@@ -134,11 +197,18 @@
       const person = {
         id,
         name,
-        gender
+        gender,
+        index: id
       };
 
       prospects.push(person);
-      newProspect(`Name: ${name}, Id: ${id}`, person, prospectiveListElement);
+      prospectiveListElement.appendChild(newListElement(
+        `Name: ${name}, Id: ${id}`,
+        prospectiveClick,
+        {
+          reference: person
+        }
+      ));
       id++;
     }, 1000);
   });
