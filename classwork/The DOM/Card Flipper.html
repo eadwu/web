@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title></title>
+  <style></style>
+  <script src="utilities.js"></script>
+  <script src="card deck.js"></script>
+  <script>
+    var deck;
+    var flippedCardsContainer;
+
+    function initialize()
+    {
+      flippedCardsContainer = document.getElementById("flipped");
+
+      // deck = shuffleDeck(generateStandardDeck());
+      deck = generateStandardDeck();
+    }
+
+    function flipCard()
+    {
+      if (deck.length === 0)
+        return;
+
+      var card = dealCard(deck);
+      var cardImage = document.createElement("img");
+      cardImage.src = "images/" + card.imgFile;
+      flippedCardsContainer.appendChild(cardImage);
+    }
+  </script>
+</head>
+<body onload="initialize();">
+  <img src="images/back-blue-75-3.png" onclick="flipCard();" />
+  <div id="flipped"></div>
+</body>
+</html>
