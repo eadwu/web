@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<!--
+  Objective: To introduce yourself to how your browser (and windows in general) handles hardware and software events.
+
+  STEP 1
+    The following code responds to a mouse click anywhere on the page.  Whenever you click the page, you will receive information regarding the event.  The information is:
+
+    altKey - A boolean determining whether or not the alt key was held down during the event.
+    ctrlKey - A boolean determining whether or not the control key was held down during the event.
+    shiftKey - a boolean determining whether or not the shift key was held down during the event.
+
+    clientX and clientY - The x and y position of the mouse cursor, RELATIVE TO THE ELEMENT, at the time of the event.
+    screenX and screenY - The x and y position of the mouse cursor, RELATIVE TO THE WINDOW, at the time of the event.
+
+    which - a numerical indicator of which button was pressed during the event.
+
+    TRY THE PROGRAM
+
+  STEP 2
+    You may have noticed that some of the information doesn't show up the way you expected it to.
+
+    Specifically, the value of "which" only seems to work with the left button (in IE, you can get the middle button to show).
+
+    Try some of these different mouse events and check the results:
+
+    ondblclick
+    onmousedown
+    onmouseup
+    onmouseover
+    onmouseout
+    onmousemove
+
+    TAKE NOTES WHILE YOU'RE TRYING THESE EVENTS, COMPARE NOTES WITH THE OTHER STUDENTS.  DRAW CONCLUSIONS.
+
+  STEP 3
+    The event is in the <html> tag so that it will respond no matter where you are in the document.  If you were to put the event into the <div> tag (which starts empty), you'd have a hard time.  The same goes for the <body>, which is also empty.
+
+  STEP 4
+    Take a look at the function call:
+      showEventData(event);
+
+    WHAT IS event and where does it come from?
+
+    Take a look at the function header:
+      function showEventData(e)
+
+    WHAT IS e and where does it come from?
+
+  STEP 5
+    Download an image and put that on screen.  Write code so that every time you click anywhere on the screen, the image will move from its current position to the position of the mouse pointer.
+
+    HINTS
+      You will need to adjust its top and left positions using the style property.
+      All measurements are in pixels so be sure to add "px" to the end of any position where you place the image.
+-->
+<html onclick="showEventData(event);">
+<head>
+  <title>Mouse Events</title>
+  <style>
+      #outbox
+      {
+        font: bold 16pt comic sans ms;
+      }
+    </style>
+  <script>
+    function initialize()
+    {
+      outBox = document.getElementById("outbox");
+      image = document.querySelector("img");
+    }
+
+    function showEventData(e)
+    {
+      str = "altKey: " + e.altKey + "<br />";
+      str += "clientX: " + e.clientX + "<br />";
+      str += "clientY: " + e.clientY + "<br />";
+      str += "ctrlKey: " + e.ctrlKey + "<br />";
+      str += "target: " + e.target + "<br />";
+      str += "screenX: " + e.screenX + "<br />";
+      str += "screenY: " + e.screenY + "<br />";
+      str += "shiftKey: " + e.shiftKey + "<br />";
+      str += "which: " + e.which + "<br />";
+
+      outBox.innerHTML = str;
+      image.style.top = e.clientY + "px";
+      image.style.left = e.clientX + "px";
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <img src="https://secure.gravatar.com/avatar/6a653bfe0f03115356de4af715344feb?s=100&d=identicon" style="position: absolute; top: 0; left: 0;" />
+  <div id="outbox"></div>
+</body>
+</html>
