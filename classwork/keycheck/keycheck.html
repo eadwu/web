@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<!--
+  Objective: To introduce yourself to how your browser (and windows in general) handles keyboard events.
+
+  STEP 1
+    The following code responds to a key press anywhere on the page.  Whenever you press a key, you will receive information regarding the event.  The information is:
+
+    altKey - A boolean determining whether or not the alt key was held down during the event.
+    ctrlKey - A boolean determining whether or not the control key was held down during the event.
+    shiftKey - a boolean determining whether or not the shift key was held down during the event.
+
+    which - a numerical indicator of which key was pressed during the event.
+    keyCode - a numerical code that represents the character.
+
+    TRY THE PROGRAM
+
+  STEP 2
+    In addition to onkeypress, your program can also respond to an onkeydown or an onkeyup.  These are similar to mousedown and mouseup.
+
+    What information is different when using onkyedown and onkeyup instead of onkeypress?
+
+    TAKE NOTES WHILE YOU'RE TRYING THESE EVENTS, COMPARE NOTES WITH THE OTHER STUDENTS.  DRAW CONCLUSIONS.
+
+  STEP 3
+    The event is in the <html> tag so that it will respond no matter where you are in the document.
+
+    In order for a key event to be triggered, the object associated with the key event has to have FOCUS.  Buttons and form controls (like input tags) can have focus.  Other tags that appear on screen cannot.  That's why the key event is in the <html> tag.  The document always has focus.  If you want your program, in general, to respond to key events, place the events in the <html> tag.
+
+  STEP 4
+    Place an image on the screen and have it respond to key events by moving across the screen.
+
+    Which event will you use?
+    Which keys will you use for the movement?
+    How many pixels should it move on each key press?
+    What happens when the image exceeds the boundaries of the screen?
+    How can you prevent the image from exceeding the boundaries of the screen?
+
+  BONUS
+    AFTER you have it working, create a "continuous movement" feature.  If you press the key once, the image will continue to move in the specified direction until you press a different key.
+
+    If you press a different direction, the image will change direction.  If you press the current direction, the image will stop moving.
+-->
+
+<html onkeypress="showKey(event);">
+<head>
+  <title></title>
+  <style>
+    img {
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  </style>
+  <script>
+    function initialize()
+    {
+      outBox = document.getElementById("outbox");
+      image = document.querySelector("img");
+    }
+
+    function showKey(e)
+    {
+      str = "altKey: " + e.altKey + "<br />";
+      str += "ctrlKey: " + e.ctrlKey + "<br />";
+      str += "charCode: " + e.charCode + "<br />";
+      str += "key: " + e.key + "<br />";
+      str += "keyCode: " + e.keyCode + "<br />";
+      str += "location: " + e.location + "<br />";
+      str += "shiftKey: " + e.shiftKey + "<br />";
+      str += "which: " + e.which + "<br />";
+      str += "target: " + e.target + "<br />";
+
+      outBox.innerHTML = str;
+      if (e.keyCode === 68)
+      {
+        image.style.left = (((parseInt(image.style.left.match(/[0-9]+/), 10) || 0) + 5) % window.innerWidth) + "px";
+        image.style.top = (((parseInt(image.style.top.match(/[0-9]+/), 10) || 0) + 5) % window.innerHeight) + "px";
+      }
+    }
+  </script>
+</head>
+
+<body onload="initialize();">
+  <img src="https://secure.gravatar.com/avatar/6a653bfe0f03115356de4af715344feb?s=100&d=identicon" />
+  <div id="outbox"></div>
+</body>
+</html>
