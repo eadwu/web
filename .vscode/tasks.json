@@ -6,7 +6,8 @@
     {
       "label": "web: build",
       "type": "npm",
-      "script": "build"
+      "script": "build",
+      "group": "build"
     },
     {
       "label": "web: clean",
@@ -16,8 +17,7 @@
     {
       "label": "sass: build",
       "type": "npm",
-      "script": "sass",
-      "group": "build"
+      "script": "sass"
     },
     {
       "label": "sass: watch",
@@ -27,8 +27,7 @@
     {
       "label": "pug: build",
       "type": "npm",
-      "script": "pug",
-      "group": "build"
+      "script": "pug"
     },
     {
       "label": "pug: watch",
@@ -38,8 +37,7 @@
     {
       "label": "tsc: build - web/tsconfig.json",
       "type": "npm",
-      "script": "tsc",
-      "group": "build"
+      "script": "tsc"
     },
     {
       "type": "typescript",
