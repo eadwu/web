@@ -38,14 +38,17 @@
       "command": "npx pug -w assignments classwork"
     },
     {
-      "label": "tsc: build - web/tsconfig.json",
+      "label": "tsc: build",
       "type": "npm",
-      "script": "tsc"
+      "script": "tsc",
+      "problemMatcher": ["$tsc"]
     },
     {
+      "label": "tsc: watch",
       "type": "typescript",
-      "tsconfig": "web/tsconfig.json",
-      "option": "watch"
+      "tsconfig": "tsconfig.json",
+      "option": "watch",
+      "problemMatcher": ["$tsc-watch"]
     }
   ]
 }
