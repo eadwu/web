@@ -6,5 +6,5 @@
     "removeComments": false,
     "lib": ["dom", "es2017"]
   },
-  "exclude": ["**/*.spec.ts", "node_modules"]
+  "exclude": ["node_modules"]
 }

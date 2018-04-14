@@ -18,11 +18,6 @@
       "script": "clean"
     },
     {
-      "label": "web: test",
-      "type": "npm",
-      "script": "test"
-    },
-    {
       "label": "sass: build",
       "type": "npm",
       "script": "sass"

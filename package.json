@@ -4,7 +4,6 @@
   "scripts": {
     "build": "npm run tsc && npm run sass && npm run pug && find . -name setup.sh -exec sh '{}' \\;",
     "clean": "git ls-files --ignored --others --exclude-standard | grep -v 'node_modules' | xargs -d '\\n' rm",
-    "test": "npx mocha -r ts-node/register **/*.spec.ts",
     "sass": "npx sass --sourcemap=none --update assignments classwork",
     "pug": "npx pug assignments classwork",
     "tsc": "npx tsc -p tsconfig.json || :"
@@ -46,7 +45,6 @@
     "postcss-html": "^0.13.0",
     "stylelint-config-standard": "^17.0.0",
     "stylelint-no-unsupported-browser-features": "^1.0.0",
-    "ts-node": "^5.0.1",
     "tslint-config-standard": "^7.0.0"
   },
   "browserslist": [
