@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dynamic Table Transfer</title>
+
+  <script type="text/javascript">
+    var homeForm;
+    var homeFormButton;
+
+    function newBoxes()
+    {
+      if (!homeForm || !homeFormButton) return;
+      var newTitleInput = document.createElement("input");
+      var newDateInput = document.createElement("input");
+      var newProfitInput = document.createElement("input");
+
+      newTitleInput.setAttribute("type", "text");
+      newTitleInput.setAttribute("name", "title");
+      newDateInput.setAttribute("type", "date");
+      newDateInput.setAttribute("name", "date");
+      newProfitInput.setAttribute("type", "number");
+      newProfitInput.setAttribute("name", "earnings");
+
+      homeForm.appendChild(document.createElement("br"));
+      homeForm.innerHTML += "Title: ";
+      homeForm.appendChild(newTitleInput);
+      homeForm.innerHTML += " Release Date: ";
+      homeForm.appendChild(newDateInput);
+      homeForm.innerHTML += " Earnings: ";
+      homeForm.appendChild(newProfitInput);
+    }
+
+    document.addEventListener("DOMContentLoaded", function ()
+    {
+      homeForm = document.querySelector("#home_form");
+      homeFormButton = homeForm.querySelector("input[type=submit]");
+      var localForm = document.querySelector("#local_form");
+      var localFormInput = localForm.querySelector("input[type=number]");
+      var localFormButton = localForm.querySelector("input[type=button]");
+
+      localFormButton.addEventListener("click", function ()
+      {
+        var n = localFormInput.value || 0;
+        n = parseInt(n, 10);
+
+        for (var i = 0; i < n; i++)
+        {
+          newBoxes();
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <form action="destination.html" method="get" id="home_form">
+    <input type="submit" value="Submit All Data" />
+    <br /> Title:
+    <input type="text" name="title" /> Release Date:
+    <input type="date" name="date" /> Earnings:
+    <input type="number" name="earnings" />
+  </form>
+
+  <hr />
+
+  <form destination="" method="get" id="local_form">
+    <input type="button" value="Add N Rows" /> Amount of Rows:
+    <input type="number" />
+  </form>
+</body>
+</html>

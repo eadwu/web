@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dynamic Table Transfer</title>
+
+  <style>
+    td,
+    th,
+    table {
+      border: 2px solid #000;
+    }
+  </style>
+
+  <script type="text/javascript">
+    var table;
+    var data = [];
+    var params = [ "title", "date", "earnings" ];
+
+    function newEntry(title, date, earnings)
+    {
+      if (!table) return;
+
+      var rootElement = document.createElement("tr");
+      var titleElement = document.createElement("td");
+      var dateElement = document.createElement("td");
+      var profitElement = document.createElement("td");
+
+      titleElement.innerHTML = title;
+      dateElement.innerHTML = date;
+      profitElement.innerHTML = earnings;
+
+      rootElement.appendChild(titleElement);
+      rootElement.appendChild(dateElement);
+      rootElement.appendChild(profitElement);
+      table.appendChild(rootElement);
+    }
+
+    document.addEventListener("DOMContentLoaded", function ()
+    {
+      table = document.querySelector("table");
+      var uri = new URL(location.href);
+      var URIParams = uri.searchParams;
+
+      for (var i = 0; i < params.length; i++)
+      {
+        data[ i ] = URIParams.getAll(params[ i ]);
+      }
+
+      for (var entry = 0; entry < data[ 0 ].length; entry++)
+      {
+        newEntry(data[ 0 ][ entry ], data[ 1 ][ entry ], data[ 2 ][ entry ]);
+      }
+    });
+  </script>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Release Date</th>
+      <th>Earnings</th>
+    </tr>
+  </table>
+</body>
+</html>
