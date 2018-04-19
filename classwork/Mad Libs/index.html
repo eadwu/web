@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mad Libs</title>
+
+  <script src="story.js" type="text/javascript"></script>
+  <script src="utilities.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function ()
+    {
+      var localForm = document.querySelector("form");
+      var indexInput = document.querySelector("input[type=hidden]");
+
+      var escapedDelimiter = DELIMITER.replace(/\*/g, "\\$&");
+      var storyIndex = getRandomInteger(0, STORIES.length - 1);
+      var story = STORIES[ storyIndex ];
+
+      indexInput.value = storyIndex;
+      localForm.innerHTML += story.replace(
+        new RegExp(escapedDelimiter + "([a-z-]+)" + escapedDelimiter, "g"),
+        "<input type=\"text\" name=\"blank\" value=\"insert a `$1`\" />"
+      );
+    });
+  </script>
+</head>
+<body>
+  <form action="destination.html" method="get">
+    <input type="submit" value="Submit" />
+    <br /> Story Index:
+    <input type="hidden" name="storyIndex" />
+    <br />
+  </form>
+</body>
+</html>

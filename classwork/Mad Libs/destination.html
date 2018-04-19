@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mad Libs</title>
+
+  <script src="story.js" type="text/javascript"></script>
+  <script src="utilities.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function ()
+    {
+      var uri = new URL(location.href);
+      var URIParams = uri.searchParams;
+
+      var escapedDelimiter = DELIMITER.replace(/\*/g, "\\$&");
+      var storyIndex = URIParams.get("storyIndex");
+      var story = STORIES[ storyIndex ];
+
+      var inputs = URIParams.getAll("blank");
+
+      forNDo(inputs.length, function (index)
+      {
+        var input = inputs[ index ];
+        story = story.replace(new RegExp(escapedDelimiter + "([a-z-]+)" + escapedDelimiter), input);
+      });
+
+      document.body.innerHTML = story;
+    });
+  </script>
+</head>
+<body>
+</body>
+</html>
