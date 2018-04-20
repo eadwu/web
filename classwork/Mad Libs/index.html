@@ -18,18 +18,27 @@
       var storyIndex = getRandomInteger(0, STORIES.length - 1);
       var story = STORIES[ storyIndex ];
 
+      var blanks = story.match(new RegExp(escapedDelimiter + "([a-z-]+)" + escapedDelimiter, "g"));
+
       indexInput.value = storyIndex;
-      localForm.innerHTML += story.replace(
-        new RegExp(escapedDelimiter + "([a-z-]+)" + escapedDelimiter, "g"),
-        "<input type=\"text\" name=\"blank\" value=\"insert a `$1`\" />"
-      );
+      forNDo(blanks.length, function (index)
+      {
+        var blankType = blanks[ index ].split(new RegExp(escapedDelimiter))[ 1 ];
+        var inputElement = document.createElement("input");
+
+        inputElement.setAttribute("type", "text");
+        inputElement.setAttribute("name", "blank");
+
+        localForm.innerHTML += blankType.toUpperCase() + " ";
+        localForm.appendChild(inputElement);
+        localForm.appendChild(document.createElement("br"));
+      });
     });
   </script>
 </head>
 <body>
   <form action="destination.html" method="get">
     <input type="submit" value="Submit" />
-    <br /> Story Index:
     <input type="hidden" name="storyIndex" />
     <br />
   </form>
