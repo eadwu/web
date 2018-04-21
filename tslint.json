@@ -8,7 +8,7 @@
         "allowSingleLine": true
       }
     ],
-    "curly": [true, "as-needed"],
+    "curly": [true, "ignore-same-line"],
     "early-exit": true,
     "ext-curly": ["consistent"],
     "max-line-length": [true, 120],
