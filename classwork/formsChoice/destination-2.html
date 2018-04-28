@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script>
+    function initialize()
+    {
+      var div = document.getElementById("mydiv");
+      var values = new URL(location.href).searchParams.values();
+
+      div.innerHTML = [ ...values ].join("<br />");
+    }
+  </script>
+</head>
+<body onload="initialize();">
+  <div id="mydiv"></div>
+</body>
+</html>
