@@ -13,6 +13,7 @@
     block-closing-brace-newline-before: 'always'
     declaration-block-no-duplicate-properties: true
     declaration-block-no-shorthand-property-overrides: true
+    declaration-colon-newline-after: 'always-multi-line' # always
     declaration-colon-space-after: 'always' # always-single-line
     font-family-no-duplicate-names: true
     function-calc-no-unspaced-operator: true
