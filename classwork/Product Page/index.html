@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--
+  ---
+    author: Zeng
+    author: Edmund Wu <ewu1985@bths.edu>
+    namespaces:
+      ct: Container
+      pd: Product
+      pg: Page
+      re: Related
+      rit: Review Item
+      rv: Review
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Product Page</title>
+
+  <link rel="stylesheet" href="css/base.css" type="text/css" />
+  <link rel="stylesheet" href="css/index.css" type="text/css" />
+
+  <script src="js/extend.js" type="text/javascript"></script>
+  <script src="js/data.js" type="text/javascript"></script>
+  <script src="js/utilities.js" type="text/javascript"></script>
+  <script src="js/index.js" type="text/javascript"></script>
+</head>
+<body class="sw-Background_Primary sw-Foreground_Primary">
+  <!-- source: https://zellwk.com/blog/#star-rating/ -->
+  <svg style="display: none;">
+    <symbol id="star" viewBox="0 0 98 92">
+      <title>star</title>
+      <path stroke='#000' stroke-width='5' d='M49 73.5L22.55 87.406l5.05-29.453-21.398-20.86 29.573-4.296L49 6l13.225 26.797 29.573 4.297-21.4 20.86 5.052 29.452z' fill-rule='evenodd' />
+  </svg>
+
+  <div class="pg-Container">
+    <div class="ct-Title">
+      <span class="ct-Title_Content">1D Inc.</span>
+    </div>
+
+    <div class="ct-Product">
+      <div class="pd-Name">
+        <span class="pd-Name_Content"></span>
+      </div>
+
+      <div class="pd-Image">
+        <img src="" class="pd-Image_Source" />
+      </div>
+
+      <div class="pd-Description">
+        <span class="pd-Description_Content"></span>
+      </div>
+
+      <div class="pd-Price">
+        <span class="pd-Price_Content"></span>
+      </div>
+
+      <div class="pd-Options">
+        <form name="productOptions">
+          <span>Quantity</span>
+          <!-- Should stop doing bad hacks for this? -->
+          <select class="pd-Quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </form>
+      </div>
+    </div>
+
+    <div class="ct-Buttons">
+      <!-- Ehhh, forcing active state but whatever -->
+      <button class="bt-Submit bt-Submit-active">Add to Cart</button>
+
+      <!-- Ehhh, forcing active state but whatever -->
+      <button class="bt-Purchase bt-Purchase-active">Purchase</button>
+    </div>
+
+    <div class="ct-Reviews">
+      <div class="rv-Item">
+        <div class="rit-User">John Doe</div>
+
+        <div class="rit-Info">
+          <div class="rit-Info_Rating">
+            <svg active>
+              <use xlink:href="#star"></use>
+            </svg>
+
+            <svg active>
+              <use xlink:href="#star"></use>
+            </svg>
+
+            <svg active>
+              <use xlink:href="#star"></use>
+            </svg>
+
+            <svg active>
+              <use xlink:href="#star"></use>
+            </svg>
+
+            <svg active>
+              <use xlink:href="#star"></use>
+            </svg>
+          </div>
+
+          <div class="rit-Info_Title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+        </div>
+
+        <div class="rit-Body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non varius felis. Nullam auctor, ligula quis laoreet porttitor, neque tellus aliquam erat, sed posuere nibh nisi nec lorem. Pellentesque convallis, justo ac varius consequat, est massa interdum est, sed luctus mi dui ut enim. Vivamus pretium porttitor ligula sit amet cursus. Duis vitae sem eu mauris facilisis condimentum sit amet quis felis. Nulla at elit ut odio rutrum accumsan id ut lorem. Duis sodales consequat enim porta malesuada. Quisque non quam in nisi feugiat consectetur. Curabitur tempus libero nec diam sollicitudin, sit amet mattis nisl egestas. Donec at lectus odio. Sed ut ligula maximus, bibendum arcu id, vestibulum nisi. Praesent ut velit et purus sollicitudin tincidunt. Fusce et nulla quis ipsum fringilla fringilla.
+        </div>
+      </div>
+
+      <div class="rv-Item">
+        <div class="rit-User">Jane Doe</div>
+
+        <div class="rit-Info">
+          <div class="rit-Info_Rating">
+            <svg active>
+              <use xlink:href="#star"></use>
+            </svg>
+
+            <svg active>
+              <use xlink:href="#star"></use>
+            </svg>
+
+            <svg active>
+              <use xlink:href="#star"></use>
+            </svg>
+
+            <svg>
+              <use xlink:href="#star"></use>
+            </svg>
+
+            <svg>
+              <use xlink:href="#star"></use>
+            </svg>
+          </div>
+
+          <div class="rit-Info_Title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+        </div>
+
+        <div class="rit-Body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sapien sem, posuere vitae quam a, tempor eleifend nisl. Quisque tristique est sit amet tempus euismod. Nam a nunc dui. Sed eu molestie turpis. Mauris vulputate metus nec commodo hendrerit. Nunc laoreet cursus finibus. Vivamus placerat magna at nunc ornare bibendum. Ut eleifend ornare risus a suscipit. Nam nulla neque, ornare quis purus posuere, tempus rhoncus ante. In gravida, ipsum id feugiat fermentum, arcu purus fermentum odio, eu aliquam enim velit non mauris. Quisque pulvinar justo quis ultrices sollicitudin. Nam pretium molestie sapien, ac vehicula risus cursus id. Suspendisse massa ipsum, sodales vitae viverra a, aliquam a magna. Morbi porttitor, nisi id sollicitudin pretium, purus mi imperdiet enim, ac varius dui purus et ligula. Quisque id iaculis nunc.
+        </div>
+      </div>
+    </div>
+
+    <!-- Ehhh, forcing active state but whatever -->
+    <button class="rv-Compose rv-Compose-active">Compose Review</button>
+
+    <div class="rv-Main">
+      <form>
+        <div class="rv-Rating">
+          <a>
+            <svg>
+              <use xlink:href="#star"></use>
+            </svg>
+          </a>
+
+          <a>
+            <svg>
+              <use xlink:href="#star"></use>
+            </svg>
+          </a>
+
+          <a>
+            <svg>
+              <use xlink:href="#star"></use>
+            </svg>
+          </a>
+
+          <a>
+            <svg>
+              <use xlink:href="#star"></use>
+            </svg>
+          </a>
+
+          <a>
+            <svg>
+              <use xlink:href="#star"></use>
+            </svg>
+          </a>
+        </div>
+
+        <input type="text" name="creator" class="rv-Author" placeholder="Input your name here" />
+        <input type="text" name="title" class="rv-Title" placeholder="Input review title here" />
+        <textarea name="blob" class="rv-Content" placeholder="Input review content here"></textarea>
+      </form>
+    </div>
+
+    <div class="ct-Related"></div>
+  </div>
+</body>
+</html>

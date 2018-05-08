@@ -1,0 +1,178 @@
+@font-face {
+  font-family: 'Zelega Zenega';
+  src: url('../fonts/zelega-zenega/zelega zenega.eot') format('eot'),
+    url('../fonts/zelega-zenega/zelega zenega.ttf') format('truetype');
+}
+
+@import './base/colors';
+$activeButton: #2e7d32;
+$activeStar: #fdd835;
+
+svg {
+  fill: $foreground;
+  height: 1em;
+  width: 1em;
+
+  &[active] {
+    fill: $activeStar;
+  }
+}
+
+.pg-Container {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+}
+
+.pg-Container > div {
+  margin: 0 0 5%;
+}
+
+.ct-Buttons {
+  display: inherit;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.ct-Product {
+  align-items: center;
+  display: inherit;
+  flex-flow: inherit;
+  justify-content: space-evenly;
+}
+
+.ct-Product div {
+  margin: 0 0 10px;
+}
+
+.ct-Product img {
+  height: 50vh;
+}
+
+.pd-Name {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.pd-Price {
+  font-weight: bold;
+}
+
+.pd-Options {
+  width: 100%;
+}
+
+.pd-Options form {
+  display: flex;
+  justify-content: center;
+}
+
+.pd-Name,
+.pd-Options span {
+  border-bottom: solid $foreground 1px;
+}
+
+.ct-Related {
+  display: inherit;
+  height: 200px;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.ct-Related img {
+  height: 200px;
+}
+
+.ct-Title_Content {
+  font-family: 'Zelega Zenega';
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.re-Item {
+  position: relative;
+  text-align: center;
+}
+
+.re-Item .re-Item_Info {
+  align-content: center;
+  background: unquote($background + 'ab');
+  bottom: 0;
+  display: flex;
+  height: 10%;
+  justify-content: space-evenly;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.ct-Reviews,
+.rv-Main {
+  width: 80%;
+}
+
+.rv-Author,
+.rv-Title {
+  margin: 0 0 10px;
+}
+
+.bt-Submit,
+.bt-Purchase,
+.rv-Compose {
+  width: 10em;
+
+  &-active {
+    background: $activeButton;
+    box-shadow: 1px 1px 4px $activeButton;
+  }
+}
+
+.rv-Content {
+  height: 20em;
+}
+
+.rv-Item {
+  margin: 0 0 2%;
+}
+
+.rv-Main form {
+  display: flex;
+  flex-flow: column;
+  margin: 10px 0 0;
+  transition: max-height 150ms;
+}
+
+.rv-Rating {
+  align-self: flex-start;
+  display: flex;
+  flex-flow: row-reverse;
+  margin: 0 0 10px;
+}
+
+// Hacky workaround since lazy
+.rv-Rating a[active] svg,
+.rv-Rating a:hover svg,
+.rv-Rating a:hover ~ a svg,
+.rv-Rating a[active] ~ a svg {
+  fill: $activeStar;
+}
+
+.rit-User {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.rit-Info {
+  align-items: center;
+  display: flex;
+  font-size: 1.65rem;
+  justify-content: space-between;
+}
+
+.rit-Info_Rating {
+  display: inherit;
+}
+
+.rit-Info_Title {
+  border-bottom: solid $foreground 1px;
+}

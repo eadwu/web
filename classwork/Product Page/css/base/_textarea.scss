@@ -1,0 +1,10 @@
+textarea {
+  @include font;
+
+  background: $background;
+  border: none;
+  color: $foreground;
+  font-size: 1em;
+  overflow-y: hidden;
+  resize: none;
+}

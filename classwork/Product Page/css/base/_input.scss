@@ -1,0 +1,9 @@
+input {
+  @include font;
+
+  background: $background;
+  border: none;
+  color: $foreground;
+  font-size: 1em;
+  padding: 2px;
+}
