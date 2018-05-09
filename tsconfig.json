@@ -4,6 +4,8 @@
     "declaration": true,
     "module": "commonjs",
     "removeComments": false,
+    "typeRoots": ["node_modules/@types"],
+    "types": ["node"],
     "lib": ["dom", "es2017"]
   },
   "exclude": ["node_modules"]

@@ -18,6 +18,11 @@
       "script": "clean"
     },
     {
+      "label": "web: run",
+      "type": "shell",
+      "command": "node ${fileDirname}/${fileBasenameNoExtension}.js"
+    },
+    {
       "label": "sass: build",
       "type": "npm",
       "script": "sass"
