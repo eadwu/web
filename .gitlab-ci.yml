@@ -20,8 +20,8 @@
     script:
       - npm run build
     after_script:
-      - find . -mindepth 1 -maxdepth 1 \( -path ./nodejs -path ./assignments -o -path ./classwork -o -name _config.yml \) -prune -o -exec rm -rf "{}" \;
-      - find . -mindepth 1 \( -path \*/fonts\* -path \*/images\* -o -name \*.html -o -name \*.css -o -name \*.js -o -name _config.yml \) -prune -o -type f -exec rm -f "{}" \;
+      - find . -mindepth 1 -maxdepth 1 \( -path ./nodejs -o -path ./assignments -o -path ./classwork -o -name _config.yml \) -prune -o -exec rm -rf "{}" \;
+      - find . -mindepth 1 \( -path \*/fonts\* -o -path \*/images\* -o -name \*.html -o -name \*.css -o -name \*.js -o -name _config.yml \) -prune -o -type f -exec rm -f "{}" \;
 
   test:
     stage: test
