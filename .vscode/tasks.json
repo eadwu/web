@@ -20,7 +20,7 @@
     {
       "label": "web: run",
       "type": "shell",
-      "command": "node ${fileDirname}/${fileBasenameNoExtension}.js"
+      "command": "node '${fileDirname}/${fileBasenameNoExtension}.js'"
     },
     {
       "label": "sass: build",
