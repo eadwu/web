@@ -39,7 +39,7 @@ createServer((req, res) =>
 
   if (!routes[ pathname ])
   {
-    res.writeHead(400, { "Content-Type": "text/plain" });
+    res.writeHead(404, { "Content-Type": "text/plain" });
     res.end("Page Not Found");
   } else routes[ pathname ](req, res);
 }).listen(8081);
