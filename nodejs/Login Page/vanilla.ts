@@ -6,7 +6,7 @@ import * as url from "url";
 import * as lookup from "./data.json";
 
 const routes = {
-  "/": (_, res) =>
+  "/": [ "GET", (_, res) =>
   {
     res.writeHead(200, { "Content-Type": "text/html" });
     fs.readFile(resolve(__dirname, "index.html"), { encoding: "utf8" }, (err, data) =>
@@ -14,8 +14,8 @@ const routes = {
       if (err) console.error(err);
       res.end(data);
     });
-  },
-  "/welcome": (req, res) =>
+  } ],
+  "/welcome": [ "POST", (req, res) =>
   {
     let data = "";
 
@@ -30,17 +30,18 @@ const routes = {
       if (source) res.end(`Hello ${source.firstName} ${source.lastName}`);
       else res.end("Username or Password is incorrect");
     });
-  }
+  } ]
 };
 
 createServer((req, res) =>
 {
   const { pathname } = url.parse(req.url);
+  const [ method, cb ] = routes[ pathname ] ? routes[ pathname ] : [];
 
-  if (!routes[ pathname ])
+  if (!method || req.method !== method)
   {
     res.writeHead(404, { "Content-Type": "text/plain" });
     res.end("Page Not Found");
-  } else routes[ pathname ](req, res);
+  } else cb(req, res);
 }).listen(8081);
 console.log("Server is now running. It is located at localhost:8081 or 127.0.0.1:8081");
