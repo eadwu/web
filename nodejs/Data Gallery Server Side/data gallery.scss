@@ -1,0 +1,58 @@
+body {
+  text-align: center;
+}
+
+.arrow,
+.thumb {
+  display: block;
+  height: 120px;
+  left: 50px;
+  position: absolute;
+}
+
+.arrow {
+  top: 100px;
+}
+
+.arrow + .thumb {
+  top: 225px;
+}
+
+.arrow + .thumb + .thumb {
+  top: 350px;
+}
+
+.arrow + .thumb + .thumb + .thumb {
+  top: 475px;
+}
+
+.arrow + .thumb + .thumb + .thumb + .arrow {
+  top: 600px;
+}
+
+hr {
+  display: none;
+}
+
+#pagetitle {
+  font-size: 36pt;
+}
+
+#mainimg {
+  display: inline-block;
+  margin-left: 20%;
+  vertical-align: middle;
+  width: 30%;
+}
+
+#caption {
+  display: inline-block;
+  font-size: 24pt;
+  font-weight: bold;
+  width: 20%;
+}
+
+#info {
+  display: inline-block;
+  width: 20%;
+}

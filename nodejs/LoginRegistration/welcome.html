@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>Sample Page</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <script>
+    function initialize()
+    {
+      if (data.firstname)
+        document.getElementById("greet").innerHTML = data.firstname + " " + data.lastname + ".";
+      else
+        document.getElementById("greet").innerHTML = "person who put in the wrong username and password.";
+    }
+  </script>
+</head>
+<body onload="initialize();">
+  Hello,
+  <span id="greet"></span>
+</body>
+</html>
