@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bt-wcsp/web.git"
+    "url": "git+https://gitlab.com/eadwu/web.git"
   },
   "author": "Edmund Wu",
   "license": "UNLICENSED",
