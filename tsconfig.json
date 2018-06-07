@@ -4,7 +4,7 @@
     "declaration": true,
     "module": "commonjs",
     "removeComments": false,
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": ["typings", "node_modules/@types"],
     "types": ["node"],
     "lib": ["dom", "es2017"]
   },

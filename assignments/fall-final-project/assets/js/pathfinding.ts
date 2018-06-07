@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/p5.d.ts" />
+/// <reference types="p5" />
 type ArrayAdapt = Array<any> | NodeListOf<any>;
 
 (() =>
