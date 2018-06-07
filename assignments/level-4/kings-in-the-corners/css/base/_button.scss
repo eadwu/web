@@ -1,0 +1,24 @@
+button {
+  background-color: #616161;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 1px 1px 4px #616161;
+  color: #e0e0e0;
+  height: 30px;
+  transition: color 1000ms, box-shadow 1ms, background-color 1000ms;
+  width: 80px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  box-shadow: 0 0 0 #616161;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: #fff;
+  color: #616161;
+}
