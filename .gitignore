@@ -8,10 +8,5 @@ node_modules
 !**/vendor/**/*.js
 !**/vendor/**/*.css
 
-*.ico
-*.jpg
-*.jpeg
-*.png
-
 .DS_Store
 Gemfile.*
