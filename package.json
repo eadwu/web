@@ -4,7 +4,7 @@
   "scripts": {
     "build": "npm run tsc && npm run sass && npm run pug && find . -name setup.sh -exec sh '{}' \\;",
     "clean": "git ls-files --ignored --others --exclude-standard | grep -v 'node_modules' | xargs -d '\\n' rm",
-    "sass": "npx sass --sourcemap=none --update assignments classwork",
+    "sass": "sass --sourcemap=none --update assignments classwork",
     "pug": "npx pug assignments classwork",
     "tsc": "npx tsc -p tsconfig.json || :"
   },
