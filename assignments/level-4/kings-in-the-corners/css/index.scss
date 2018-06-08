@@ -1,0 +1,100 @@
+/* #region imports */
+
+@import 'base/colors';
+
+/* #endregion imports */
+
+/* #region normalize */
+
+img {
+  height: 108px;
+  width: 75px;
+}
+
+/* #endregion normalize */
+
+.pg-Container {
+  align-items: center;
+  flex-flow: column;
+}
+
+.ct-Container {
+  margin: 0 0 2%;
+}
+
+.ct-Title {
+  border-bottom: 1px solid $foreground;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.ct-Deck {
+  padding: 0 10%;
+}
+
+.dk-Deck {
+  padding: 0 2em;
+}
+
+.dk-Count {
+  align-items: center;
+  font-size: 2em;
+}
+
+.ct-Board {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 50%;
+}
+
+.bd-Card {
+  flex-basis: 25%;
+}
+
+.bd-Card img:hover {
+  border: solid 5px $foreground;
+  border-radius: 5px;
+}
+
+.ct-Hint {
+  align-items: center;
+  bottom: 0;
+  flex-flow: column;
+  max-height: 70%;
+  max-width: 20%;
+  position: absolute;
+}
+
+.ct-Hint_WLC {
+  left: 0;
+}
+
+.ct-Hint_HTW {
+  right: 0;
+}
+
+.ht-Title {
+  border-bottom: 1px solid $foreground;
+  font-size: 1.5em;
+}
+
+.hbd-Section_Heading {
+  border-bottom: 1px solid $foreground;
+}
+
+.ht-Body {
+  word-wrap: break-word;
+}
+
+.ht-Title,
+.ht-Body {
+  min-width: 100%;
+}
+
+.pg-Container,
+.ct-Deck,
+.dk-Count,
+.ct-Board,
+.ct-Hint {
+  display: flex;
+}

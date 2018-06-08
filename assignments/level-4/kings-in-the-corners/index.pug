@@ -1,0 +1,124 @@
+mixin link(href)
+  link(rel="stylesheet", type="text/css", href=href)
+
+mixin script(src)
+  script(type="text/javascript", src=src)
+
+<!DOCTYPE html>
+//
+  ---
+  author: Edmund Wu <ewu1985@bths.edu>
+  namespaces:
+    bd: Board
+    ct: Container
+    dk: Deck
+    ht: Hint
+    hbd: Hint Body
+    pg: Page
+    sw: Site Wide
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Kings In The Corner
+
+    +link("css/base.css")
+    +link("css/index.css")
+
+    +script("js/constants.js")
+    +script("js/utilities.js")
+    +script("js/extend.js")
+    +script("js/card.js")
+    +script("js/deck.js")
+    +script("js/game.js")
+    +script("js/index.js")
+  body.sw-Background_Primary.sw-Foreground_Primary
+    .pg-Container
+      .ct-Title.ct-Container
+        span Kings In The Corner
+
+      .ct-Deck.ct-Container
+        //- Structure here could be improved
+        .dk-Count
+          span 52
+        .dk-Deck
+          img(src="images/back-red-75-3.png")
+
+      //- Improvements can be made to adjust alignment
+      .ct-Board.ct-Container
+        .bd-Card
+          img(src="images/back-blue-75-2.png")
+        .bd-Card
+          img(src="images/back-red-75-2.png")
+        .bd-Card
+          img(src="images/back-blue-75-2.png")
+        .bd-Card
+          img(src="images/back-red-75-2.png")
+        .bd-Card
+          img(src="images/back-blue-75-2.png")
+        .bd-Card
+          img(src="images/back-red-75-2.png")
+        .bd-Card
+          img(src="images/back-blue-75-2.png")
+        .bd-Card
+          img(src="images/back-red-75-2.png")
+        .bd-Card
+          img(src="images/back-blue-75-2.png")
+        .bd-Card
+          img(src="images/back-red-75-2.png")
+        .bd-Card
+          img(src="images/back-blue-75-2.png")
+        .bd-Card
+          img(src="images/back-red-75-2.png")
+        .bd-Card
+          img(src="images/back-blue-75-2.png")
+        .bd-Card
+          img(src="images/back-red-75-2.png")
+        .bd-Card
+          img(src="images/back-blue-75-2.png")
+        .bd-Card
+          img(src="images/back-red-75-2.png")
+
+    .pg-Information
+      .ct-Hint.ct-Hint_WLC
+        .ht-Title
+          span Game Goals
+        .ht-Body
+          .ht-Body_Section
+            .hbd-Section_Heading
+              span Win Conditions
+            .hbd-Section_Content.
+              All of the picture cards must be in the proper spaces and all number cards are removed from the board
+          .ht-Body_Section
+            .hbd-Section_Heading
+              span Lose Conditions
+            .hbd-Section_Content.
+              There are no appropriate empty slots for a picture card when it is flipped
+              #[br]
+              The board is full and no cards can be removed
+
+      .ct-Hint.ct-Hint_HTW
+        .ht-Title
+          span How To Play
+        .ht-Body
+          .ht-Body_Section
+            .hbd-Section_Heading
+              span Player Turn
+            .hbd-Section_Content.
+              Flip the top card of your deck by clicking on the card right next to the card count
+              #[br]
+              Click the target "spot" you wish to place the card on
+              #[br]
+              If board is filled, any 10s or any two cards that add up to 10 may be taken off the board together (value of an Ace is 1)
+          .ht-Body_Section
+            .hbd-Section_Heading
+              span Card Constraints
+            .hbd-Section_Content.
+              Jacks may only be placed into one of the 4 side spaces.
+              #[br]
+              Queens may only be placed into the top or bottom spaces.
+              #[br]
+              Kings may only be placed in the corner spaces.
+              #[br]
+              All other cards may be placed in any of the 16 slots.
