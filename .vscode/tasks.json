@@ -33,7 +33,7 @@
     {
       "label": "sass: watch",
       "type": "shell",
-      "command": "npx sass --sourcemap=none --poll --watch assignments classwork"
+      "command": "sass --sourcemap=none --poll --watch assignments classwork"
     },
     {
       "label": "pug: build",
