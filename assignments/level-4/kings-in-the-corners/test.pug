@@ -1,0 +1,42 @@
+mixin link(href)
+  link(rel="stylesheet", type="text/css", href=href)
+
+mixin script(src)
+  script(type="text/javascript", src=src)
+
+<!DOCTYPE html>
+//
+  ---
+  author: Edmund Wu <ewu1985@bths.edu>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title KitC Unit Test
+
+    +link("../../../node_modules/mocha/mocha.css")
+    +script("../../../node_modules/chai/chai.js")
+    +script("../../../node_modules/mocha/mocha.js")
+
+    script(type="text/javascript") mocha.setup('bdd')
+    +script("js/constants.js")
+    +script("js/utilities.js")
+    +script("js/extend.js")
+    +script("js/card.js")
+    +script("js/deck.js")
+    +script("js/game.js")
+
+    +script("js/constants.spec.js")
+    +script("js/utilities.spec.js")
+    +script("js/extend.spec.js")
+    +script("js/card.spec.js")
+    +script("js/deck.spec.js")
+    +script("js/game.spec.js")
+    script(type="text/javascript").
+      document.addEventListener("DOMContentLoaded", () => {
+        mocha.checkLeaks();
+        mocha.run();
+      })
+  body
+    #mocha
