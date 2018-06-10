@@ -12,6 +12,7 @@
    */
   function flatten2D (matrix: any[][]): Array<any>
   {
+    if (!matrix || matrix.length <= 0) return [];
     return matrix.reduce((a, v) => a.concat(v));
   }
 

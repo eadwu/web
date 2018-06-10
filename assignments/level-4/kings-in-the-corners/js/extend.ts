@@ -4,6 +4,12 @@ interface Array<T>
   sum (): number;
 }
 
+Array.prototype.includesArr = function (this: any[], arr: any): boolean
+{
+  const self = this;
+  return JSON.stringify(self).indexOf(JSON.stringify(arr)) > -1;
+};
+
 Array.prototype.fold = function (this: any[], func: (value: any, index: any) => any): any[]
 {
   const self = this;

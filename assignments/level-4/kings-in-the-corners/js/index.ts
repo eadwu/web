@@ -1,5 +1,7 @@
 (() =>
 {
+  // TODO: Don't use variables in switch
+
   document.addEventListener("DOMContentLoaded", () =>
   {
     // Setup
@@ -10,6 +12,9 @@
 
     const titleElement = document.querySelector(".ct-Title span") as HTMLSpanElement;
 
+    // Arrays can be a "constant", but it's contents are still mutable as a const
+    const selectedCards = [];
+
     // Oops, mutable values, totally not because I'm lazy
     let currentCard;
     let currentState = STATES.NORMAL;
@@ -19,35 +24,37 @@
      */
     function computerExec ()
     {
-      if (currentState === STATES.NORMAL)
+      switch (currentState)
       {
-        // Simple algorithm, first spot that has nothing, left to right, top to down
-        // const targetPlace = flatten2D(matrix).indexOf(undefined);
+        case STATES.NORMAL:
+          updateDeckView();
+          const validSpaces = validSpots(currentCard.rank);
 
-        updateDeckView();
-        const validSpaces = validSpots(currentCard.rank);
+          if (validSpaces.length > 0)
+          {
+            const targetPlace = validSpaces[ 0 ];
 
-        if (validSpaces.length > 0)
-        {
-          const targetPlace = validSpaces[ 0 ];
+            matrix[ Math.floor(targetPlace / MATRIX_R) ][ targetPlace % MATRIX_C ] = currentCard;
+          }
+          else
+          {
+            currentState = STATES.WIN;
+            endGame();
+            return;
+          }
 
-          matrix[ Math.floor(targetPlace / MATRIX_R) ][ targetPlace % MATRIX_C ] = currentCard;
-          updateGameState();
-        }
-        else
-        {
-          currentState = STATES.WIN;
-          endGame();
-          return;
-        }
-
-        currentCard = null;
-        updateBoard();
+          currentCard = null;
+          break;
+        case STATES.REMOVE:
+          removeSpots()[ 0 ].fold(v =>
+          {
+            matrix[ Math.floor(v / MATRIX_R) ][ v % MATRIX_C ] = undefined;
+          });
+          break;
       }
-      else if (currentState === STATES.REMOVE)
-      {
-        // Don't really see the point of having to do this
-      }
+
+      updateBoard();
+      updateGameState();
     }
 
     /**
@@ -55,7 +62,9 @@
      */
     function endGame ()
     {
-      titleElement.textContent = currentState === STATES.WIN ? "Player wins!" : "Player loses!";
+      titleElement.textContent = currentState === STATES.WIN
+        ? "Player wins!"
+        : "Player loses!";
     }
 
     /**
@@ -87,6 +96,31 @@
       // Given [ 0, n ], get valid spots and retrieve first or if none exist player wins
       return mapRange(MATRIX_R * MATRIX_C, i => i)
         .filter(v => !matrix1D[ v ] && validConstraint(v, rank));
+    }
+
+    /**
+     * Determines the combinations that can be removed from the board (includes redundants)
+     * @return {Array<number[]>} An Array that contains another Array which contains the indexes
+     *   from the flattened matrix that can be removed
+     */
+    function removeSpots (): Array<number[]>
+    {
+      const intStream = mapRange(MATRIX_R * MATRIX_C, i => i);
+      const matrix1D = flatten2D(matrix);
+
+      // Transform from 1D to multidimensional which is then flattened to get a 2D Array
+      // Not really what I should've done
+      return flatten2D(matrix1D.map((cV, i) =>
+      {
+        if (!cV) return null;
+        if (cV.rank === 10) return [ [ i ] ];
+        const validCompanions = intStream
+          .filter(v => v !== i && matrix1D[ v ] && matrix1D[ v ].rank + cV.rank === 10);
+
+        return validCompanions.length > 0
+          ? [ ...validCompanions.map(v => [ i, v ]) ]
+          : null;
+      }).filter(v => Array.isArray(v)));
     }
 
     /**
@@ -139,60 +173,23 @@
         ? emptySpaces.length > 0
           ? STATES.NORMAL
           : STATES.REMOVE
-        // : currentState === STATES.REMOVE
-        // ? validDuos.length > 0
-        // ? STATES.REMOVE
-        // : STATES.NORMAL
-        : currentState;
-
-      // Automate cleanup if STATES.REMOVE
-      if (currentState === STATES.REMOVE)
-      {
-        const intStream = mapRange(MATRIX_R * MATRIX_C, i => i);
-        const matrix1D = flatten2D(matrix);
-
-        matrix1D.fold((cV, i: number) =>
-        {
-          if (!cV) return;
-          let targetIndex;
-
-          if (cV.rank === 10)
-          {
-            targetIndex = i;
-          }
-          else
-          {
-            const validCompanions = intStream
-              .filter(v => v !== i && matrix1D[ v ] && matrix1D[ v ].rank + cV.rank === 10);
-
-            targetIndex = validCompanions.length > 0 ? validCompanions[ 0 ] : null;
-          }
-
-          if (!targetIndex) return;
-          matrix[ Math.floor(i / MATRIX_R) ][ i % MATRIX_C ] = undefined;
-          matrix[ Math.floor(targetIndex / MATRIX_R) ][ targetIndex % MATRIX_C ] = undefined;
-
-          matrix1D[ i ] = undefined;
-          matrix1D[ targetIndex ] = undefined;
-        });
-      }
-
-      updateBoard();
+        : currentState === STATES.REMOVE
+          ? removeSpots().length > 0
+            ? STATES.REMOVE
+            : STATES.NORMAL
+          // Should never end up at this point
+          : currentState;
 
       // Check to see if all picture cards are valid
-      // "all of the picture cards into the proper spaces" to win
+      // "player must place all of the picture cards into the proper spaces" to win
       // Turn seems irrelevant?
-      if (validSpots(SPECIAL.JACK).length <= 0 &&
-        validSpots(SPECIAL.QUEEN).length <= 0 &&
-        validSpots(SPECIAL.KING).length <= 0 &&
-        emptySpaces.length === 4)
-      {
-        currentState = STATES.WIN;
-        endGame();
-        return;
-      }
+      if (validSpots(SPECIAL.JACK).length > 0 ||
+        validSpots(SPECIAL.QUEEN).length > 0 ||
+        validSpots(SPECIAL.KING).length > 0 ||
+        emptySpaces.length !== 4) return;
 
-      currentState = STATES.NORMAL;
+      currentState = STATES.WIN;
+      endGame();
     }
 
     deckElement.addEventListener("click", () =>
@@ -211,21 +208,43 @@
     {
       cardElement.addEventListener("click", function ()
       {
-        if (!currentCard || this.hasAttribute("active")) return;
+        if (currentState === STATES.NORMAL &&
+          (!currentCard ||
+            this.hasAttribute("active") ||
+            !validConstraint(i, currentCard.rank))
+        ) return;
 
-        if (currentState === STATES.NORMAL && validConstraint(i, currentCard.rank))
+        switch (currentState)
         {
-          matrix[ Math.floor(i / MATRIX_R) ][ i % MATRIX_C ] = currentCard;
-          currentCard = null;
-          updateBoard();
-          computerExec();
-        }
-        else if (currentState === STATES.REMOVE)
-        {
-          // Don't really see the point of having to do this
+          case STATES.NORMAL:
+            matrix[ Math.floor(i / MATRIX_R) ][ i % MATRIX_C ] = currentCard;
+            currentCard = null;
+            computerExec();
+            break;
+          case STATES.REMOVE:
+            const removeable = removeSpots();
+
+            selectedCards.push(i);
+            // Determine if selection(s) can be removed
+            // Possible selections, last [2] card(s)
+            const s0 = selectedCards.slice(selectedCards.length - 1);
+            const s1 = selectedCards.slice(selectedCards.length - 2);
+            // Select valid target section
+            const s2 = removeable.includesArr(s0) ? s0 : removeable.includesArr(s1) ? s1 : null;
+
+            if (!s2) break;
+            s2.fold(v =>
+            {
+              matrix[ Math.floor(v / MATRIX_R) ][ v % MATRIX_C ] = undefined;
+            });
+            // Just in case, probably when only 1 duo
+            updateGameState();
+            computerExec();
+            break;
         }
 
-        // Just in case, probably when only 1 duo
+        updateBoard();
+        // Redundant?
         updateGameState();
       });
     });
