@@ -27,6 +27,9 @@
     let currentCard;
     let currentState = STATES.NORMAL;
 
+    /**
+     * Computes and executes the computer's action/response
+     */
     function computerExec ()
     {
       if (currentState === STATES.NORMAL)
@@ -60,11 +63,20 @@
       }
     }
 
+    /**
+     * Computes and executes the endgame action.
+     */
     function endGame ()
     {
       titleElement.textContent = currentState === STATES.WIN ? "Player wins!" : "Player loses!";
     }
 
+    /**
+     * Determines whether or not a card can be placed in a certain spot on the board
+     * @param {number} index - The target index that the player wants to place the card in
+     * @param {number} rank - The rank of the card the player wants to use
+     * @return {boolean} A boolean representing whether or not it can be placed in `index`
+     */
     function validConstraint (index: number, rank: number): boolean
     {
       // Might be better to adjust flattening algorithm?
@@ -77,6 +89,11 @@
             : true;
     }
 
+    /**
+     * Determines the places a card can be placed on the board
+     * @param rank - The rank of the card the player currently hasAttribute
+     * @return {Array<number>} An Array that contains all possible places the card can be placed
+     */
     function validSpots (rank: number): Array<number>
     {
       const matrix1D = flatten2D(matrix);
@@ -85,6 +102,9 @@
         .filter(v => !matrix1D[ v ] && validConstraint(v, rank));
     }
 
+    /**
+     * Updates the displayed board to match matrix
+     */
     function updateBoard ()
     {
       flatten2D(matrix).fold((v, i) =>
@@ -108,6 +128,9 @@
       });
     }
 
+    /**
+     * Updates the deck to display currently revealed card
+     */
     function updateDeckView ()
     {
       const nextCard = deck.nextCard();
@@ -117,6 +140,9 @@
       deckElement.setAttribute("src", `images/${nextCard.rank}-${nextCard.suit}.png`);
     }
 
+    /**
+     * Adjusts the game state inbetween turns
+     */
     function updateGameState ()
     {
       const matrix1D = flatten2D(matrix);
