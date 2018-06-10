@@ -13,10 +13,6 @@
           rank: Math.ceil((i + 1) / SUITS),
           suit: i % 4
         }))
-        // mapRange(6 * SUITS, i => new Card({
-        //   rank: Math.ceil((i + 1) / SUITS) + 7,
-        //   suit: i % 4
-        // }))
       );
     }
 
