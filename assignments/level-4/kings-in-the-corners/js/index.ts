@@ -1,18 +1,5 @@
 (() =>
 {
-  const STATES = {
-    NORMAL: 0,
-    REMOVE: 1,
-    WIN: 2,
-    LOSE: 3
-  };
-
-  const SPECIAL = {
-    JACK: 11,
-    QUEEN: 12,
-    KING: 13
-  };
-
   document.addEventListener("DOMContentLoaded", () =>
   {
     // Setup
