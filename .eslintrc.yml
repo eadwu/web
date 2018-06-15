@@ -5,6 +5,9 @@
   env:
     browser: true
   rules:
+    max-len:
+      - 2
+      - 100
     quotes:
       - 2
       - double
